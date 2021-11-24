@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{17BBCBBA-5AC5-3FE7-B8E6-8738CAD0B404}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="O:\IKW-GraphEngine\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule O:/IKW-GraphEngine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">K:\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;K:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;K:\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeCXXCompiler.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeRCCompiler.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeSystem.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;O:\IKW-GraphEngine\cmake\FindDotnet.cmake;O:\IKW-GraphEngine\cmake\PostBuild.cmake;O:\IKW-GraphEngine\cmake\TrinityVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule O:/IKW-GraphEngine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">K:\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;K:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;K:\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeCXXCompiler.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeRCCompiler.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeSystem.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;O:\IKW-GraphEngine\cmake\FindDotnet.cmake;O:\IKW-GraphEngine\cmake\PostBuild.cmake;O:\IKW-GraphEngine\cmake\TrinityVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule O:/IKW-GraphEngine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">K:\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;K:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;K:\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeCXXCompiler.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeRCCompiler.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeSystem.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;O:\IKW-GraphEngine\cmake\FindDotnet.cmake;O:\IKW-GraphEngine\cmake\PostBuild.cmake;O:\IKW-GraphEngine\cmake\TrinityVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule O:/IKW-GraphEngine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">K:\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;K:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;K:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;K:\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;K:\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeCXXCompiler.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeRCCompiler.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeSystem.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;O:\IKW-GraphEngine\cmake\FindDotnet.cmake;O:\IKW-GraphEngine\cmake\PostBuild.cmake;O:\IKW-GraphEngine\cmake\TrinityVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\ZERO_CHECK.vcxproj">
+      <Project>{A2089474-717F-31B2-8778-F74E307038E5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Modules\LIKQ\BUILD_FanoutSearch.vcxproj">
+      <Project>{D190BEE9-E41F-3A0D-B5C9-A7C98942EC7D}</Project>
+      <Name>BUILD_FanoutSearch</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\BUILD_GraphEngine.ServiceFabric.vcxproj">
+      <Project>{649261FF-E9BC-3394-9C3C-CEADA2BFC93A}</Project>
+      <Name>BUILD_GraphEngine.ServiceFabric</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Modules\GraphEngine.DynamicCluster\BUILD_Trinity.Azure.Storage.vcxproj">
+      <Project>{A03EDBAC-9C24-3366-A554-8309E675DFB8}</Project>
+      <Name>BUILD_Trinity.Azure.Storage</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Client\BUILD_Trinity.Client.vcxproj">
+      <Project>{2BCDBF87-ACF2-3299-A96C-45B730CDDEB6}</Project>
+      <Name>BUILD_Trinity.Client</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.Core\BUILD_Trinity.Core.vcxproj">
+      <Project>{3BF857A5-ADF6-32FB-AFF6-460B484F6FD5}</Project>
+      <Name>BUILD_Trinity.Core</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Modules\GraphEngine.DynamicCluster\BUILD_Trinity.DynamicCluster.vcxproj">
+      <Project>{2AB5A74F-2802-3903-AFC3-5ACB74A89578}</Project>
+      <Name>BUILD_Trinity.DynamicCluster</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\BUILD_Trinity.Storage.Composite.vcxproj">
+      <Project>{78F79685-15B4-3B4C-BB9D-4054D3FF53F2}</Project>
+      <Name>BUILD_Trinity.Storage.Composite</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.TSL\Trinity.TSL.CodeGen\BUILD_Trinity.TSL.CodeTemplates.vcxproj">
+      <Project>{73FAD8A7-58D7-3196-8F87-4C82F01324D7}</Project>
+      <Name>BUILD_Trinity.TSL.CodeTemplates</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.VSExtension\BUILD_Trinity.VSExtension.vcxproj">
+      <Project>{E7EE5862-D84F-38B1-9E95-71B1C80086C6}</Project>
+      <Name>BUILD_Trinity.VSExtension</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\DirectoryTest.vcxproj">
+      <Project>{12A7373B-4E17-386B-B3E5-57ED7918711E}</Project>
+      <Name>DirectoryTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\EventsTest.vcxproj">
+      <Project>{36244485-2307-34E9-9B22-AA3D078415B8}</Project>
+      <Name>EventsTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\InitializeLocalMemoryStorage.vcxproj">
+      <Project>{EA9E95EB-58DE-35E7-90A2-92144088BB9C}</Project>
+      <Name>InitializeLocalMemoryStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\LocalMemoryStorageTest.vcxproj">
+      <Project>{46972864-E75B-398A-9D5F-0EE887CAE98C}</Project>
+      <Name>LocalMemoryStorageTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\PaddingTest.vcxproj">
+      <Project>{12481C90-7C35-3DCE-ADD6-9FD0F797BB95}</Project>
+      <Name>PaddingTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\PathTest.vcxproj">
+      <Project>{6C452A3E-233E-3D3D-949D-49BE853C5016}</Project>
+      <Name>PathTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.Core\SMOKETEST_minimal.vcxproj">
+      <Project>{CBD69057-1089-3ADA-A9D0-36A40586B47C}</Project>
+      <Name>SMOKETEST_minimal</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.Core\SMOKETEST_minimal-tsl.vcxproj">
+      <Project>{4AC16B03-1F38-328A-BB58-52E5A7431DE5}</Project>
+      <Name>SMOKETEST_minimal-tsl</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.Core\SMOKETEST_net.vcxproj">
+      <Project>{6667F18E-C4A5-3ADA-80F1-5B2795DE3AF2}</Project>
+      <Name>SMOKETEST_net</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.Core\SMOKETEST_save_load_tsl.vcxproj">
+      <Project>{7157BAC5-63B0-3FA9-AA5D-6050BD6DFD5E}</Project>
+      <Name>SMOKETEST_save_load_tsl</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\SizeTest.vcxproj">
+      <Project>{0D7E5247-DFE1-3865-927F-657D3CDF2CF1}</Project>
+      <Name>SizeTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\StringTest.vcxproj">
+      <Project>{588E0FC9-533E-3B1E-A4C2-31B74C76BC31}</Project>
+      <Name>StringTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C\Trinity.vcxproj">
+      <Project>{90DB921F-A65A-3F46-A56A-DB6FF0F40874}</Project>
+      <Name>Trinity</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.TSL\Trinity.TSL.CodeGen\Trinity.TSL.CodeGen.vcxproj">
+      <Project>{80E09E92-5871-34B0-A89D-E685B2C29DAF}</Project>
+      <Name>Trinity.TSL.CodeGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.TSL\Trinity.TSL.Parser\Trinity.TSL.Parser.vcxproj">
+      <Project>{4B981630-10F6-3677-A778-9B475E3EEE59}</Project>
+      <Name>Trinity.TSL.Parser</Name>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.C.UnitTest\Utf8Test.vcxproj">
+      <Project>{5CEBC2BE-8EC8-389D-893A-8F4783B19F7E}</Project>
+      <Name>Utf8Test</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>
+    <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
+    <ServerGarbageCollection>True</ServerGarbageCollection>
+    <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+    <TargetLatestRuntimePatch>False</TargetLatestRuntimePatch>
+	  <Version>$(DOTNET_PACKAGE_VERSION)</Version>
+	  <FileVersion>$(DOTNET_PACKAGE_VERSION)</FileVersion>
+	  <AssemblyVersion>$(DOTNET_PACKAGE_VERSION)</AssemblyVersion>
+	  <PackageVersion>$(DOTNET_PACKAGE_VERSION)</PackageVersion>
+	  <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphEngine.LIKQ" Version="$(DOTNET_PACKAGE_VERSION)" />
+    <PackageReference Include="GraphEngine.Core" Version="$(DOTNET_PACKAGE_VERSION)" />
+    <PackageReference Include="GraphEngine.DynamicCluster" Version="$(DOTNET_PACKAGE_VERSION)" />
+    <PackageReference Include="GraphEngine.Azure.BlobStorage" Version="$(DOTNET_PACKAGE_VERSION)" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="4.1.458" />
+    <PackageReference Include="ReactiveProperty" Version="7.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Trinity.Client.TestProtocols\Trinity.Client.TestProtocols.csproj" />
+    <ProjectReference Include="..\Trinity.ServiceFabric.Infrastructure\Trinity.ServiceFabric.Infrastructure.csproj" />
+    <ProjectReference Include="..\Trinity.ServiceFabric.Remoting\Trinity.ServiceFabric.Remoting.csproj" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <Reference Include="Trinity.Azure.Storage">
+      <HintPath>..\..\..\..\build\Trinity.Azure.Storage\netstandard2.1\Trinity.Azure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Trinity.DynamicCluster">
+      <HintPath>..\..\..\..\build\Trinity.Azure.Storage\netstandard2.1\Trinity.DynamicCluster.dll</HintPath>
+    </Reference>
+  </ItemGroup>-->
+
+</Project>

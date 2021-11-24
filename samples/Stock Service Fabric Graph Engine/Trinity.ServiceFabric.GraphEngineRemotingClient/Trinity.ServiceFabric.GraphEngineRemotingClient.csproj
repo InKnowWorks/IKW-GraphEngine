@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+	  <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <Platforms>x64</Platforms>
+	<RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+    <IsPackable>false</IsPackable>
+    <Configurations>Debug;Release</Configurations>
+	<TargetLatestRuntimePatch>False</TargetLatestRuntimePatch>
+  </PropertyGroup>
+
+	<!--<PropertyGroup>
+		<AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
+	</PropertyGroup>-->
+
+	<ItemGroup>
+    <ProjectReference Include="..\Trinity.ServiceFabric.SampleProtocols\Trinity.ServiceFabric.SampleProtocols.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphEngine.Client" Version="2.0.10804" />
+    <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10804" />
+  </ItemGroup>
+
+</Project>

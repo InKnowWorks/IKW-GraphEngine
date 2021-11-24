@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.DynamicCluster": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

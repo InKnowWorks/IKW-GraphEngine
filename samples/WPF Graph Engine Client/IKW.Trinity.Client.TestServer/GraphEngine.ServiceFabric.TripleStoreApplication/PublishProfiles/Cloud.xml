@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
+  <!-- ClusterConnectionParameters allows you to specify the PowerShell parameters to use when connecting to the Service Fabric cluster.
+       Valid parameters are any that are accepted by the Connect-ServiceFabricCluster cmdlet.
+       
+       For a remote cluster, you would need to specify the appropriate parameters for that specific cluster.
+         For example: <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000" />
+
+       Example showing parameters for a cluster that uses certificate security:
+       <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000"
+                                    X509Credential="true"
+                                    ServerCertThumbprint="0123456789012345678901234567890123456789"
+                                    FindType="FindByThumbprint"
+                                    FindValue="9876543210987654321098765432109876543210"
+                                    StoreLocation="CurrentUser"
+                                    StoreName="My" />
+
+       Example showing parameters for a cluster that uses Azure Active Directory (AAD) security:
+       <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000"
+                                    AzureActiveDirectory="true"
+                                    ServerCertThumbprint="0123456789012345678901234567890123456789" />
+  -->
+  <ClusterConnectionParameters ConnectionEndpoint="TrueSparkDev.inknowworks.dev.net:19000" 
+                               X509Credential="true" 
+                               ServerCertThumbprint="72C8C7D85A64E32860674B5B6688B7AFE40947A9" 
+                               FindType="FindByThumbprint" 
+                               FindValue="72C8C7D85A64E32860674B5B6688B7AFE40947A9" 
+                               StoreLocation="CurrentUser" 
+                               StoreName="My" />
+  <!--<ClusterConnectionParameters ConnectionEndpoint="truesparksf01.inknowworks.dev.net:19000"
+                               X509Credential="true"
+                               ServerCertThumbprint="DA043D20EBF590664BF2F30A158EE1A32B32D8C2"
+                               FindType="FindByThumbprint"
+                               FindValue="DA043D20EBF590664BF2F30A158EE1A32B32D8C2"
+                               StoreLocation="CurrentUser"
+                               StoreName="My" />-->
+  <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
+  <CopyPackageParameters CompressPackage="true" />
+  <UpgradeDeployment Mode="Monitored" Enabled="false">
+      <Parameters FailureAction="Rollback" Force="True" />
+  </UpgradeDeployment>
+</PublishProfile>

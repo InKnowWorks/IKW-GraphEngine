@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.Azure.StorageX": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

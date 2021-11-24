@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.TripleStore.TestServer": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.ServiceFabric.NativeClient.Remoting": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

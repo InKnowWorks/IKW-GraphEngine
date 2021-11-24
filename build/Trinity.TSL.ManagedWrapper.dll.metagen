@@ -1,0 +1,79 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly Trinity.TSL.ManagedWrapper, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class Trinity.TSL.WrappedTokenInfo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(yytokentype, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Trinity.TSL.WrappedTokenType type : Public
+    Int32 FirstOffset : Public
+    Int32 SecondOffset : Public
+Class Trinity.TSL.WrappedTokenList: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.String, System.Collections.Generic.List`1[System.String], System.Collections.Generic.List`1[System.Int32]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Collections.Generic.List`1[Trinity.TSL.WrappedTokenInfo] tokens : Public
+Struct Trinity.TSL.WrappedTokenType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Trinity.TSL.WrappedTokenType T_INCLUDE = 258 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_TRINITY_SETTINGS = 259 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_STRUCT = 260 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_CELL = 261 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_PROTOCOL = 262 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_SERVER = 263 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_PROXY = 264 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_MODULE = 265 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_ENUM = 266 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_BYTETYPE = 267 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_SBYTETYPE = 268 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_BOOLTYPE = 269 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_CHARTYPE = 270 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_SHORTTYPE = 271 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_USHORTTYPE = 272 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_INTTYPE = 273 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_UINTTYPE = 274 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_LONGTYPE = 275 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_ULONGTYPE = 276 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_FLOATTYPE = 277 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_DOUBLETYPE = 278 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_DECIMALTYPE = 279 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_DATETIMETYPE = 280 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_GUIDTYPE = 281 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_U8STRINGTYPE = 282 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_STRINGTYPE = 283 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_LISTTYPE = 284 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_ARRAYTYPE = 285 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_LCURLY = 286 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_RCURLY = 287 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_LSQUARE = 288 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_RSQUARE = 289 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_SEMICOLON = 290 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_COMMA = 291 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_COLON = 292 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_EQUAL = 293 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_SHARP = 294 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_LANGLE = 295 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_RANGLE = 296 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_LPAREN = 297 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_RPAREN = 298 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_OPTIONALMODIFIER = 299 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_TYPE = 300 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_SYNCRPC = 301 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_ASYNCRPC = 302 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_HTTP = 303 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_REQUEST = 304 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_RESPONSE = 305 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_STREAM = 306 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_VOID = 307 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_INTEGER = 308 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_STRING = 309 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_STRING_UNCLOSED = 310 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_GUIDVALUE = 311 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_IDENTIFIER = 312 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_COMMENT_LINE = 313 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_COMMENT_BLOCK = 314 : Public, Static, Literal, HasDefault
+    Trinity.TSL.WrappedTokenType T_COMMENT_BLOCK_UNCLOSED = 315 : Public, Static, Literal, HasDefault

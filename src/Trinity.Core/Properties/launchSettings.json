@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.Core": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

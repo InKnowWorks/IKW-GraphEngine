@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="**/*.tsl" />
+    <TslCodegen Include="**/*.tsl" />
+    <PackageReference Include="GraphEngine.Core" Version="$graphengine_version$" />
+  </ItemGroup>
+  
+</Project>

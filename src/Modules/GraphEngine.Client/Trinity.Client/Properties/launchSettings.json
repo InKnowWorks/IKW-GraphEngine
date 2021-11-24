@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.Client": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

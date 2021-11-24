@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "GraphEngine.DataImporter": {
+      "commandName": "Project"
+    }
+  }
+}

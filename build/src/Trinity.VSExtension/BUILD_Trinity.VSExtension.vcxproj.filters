@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\af2b3ce942f9cce674518b7a2e87699d\GraphEngineVSExtension.vsix.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\72ed50cc6b7e6b55edc9f199e00e05ba\BUILD_Trinity.VSExtension.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="O:\IKW-GraphEngine\src\Trinity.VSExtension\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="O:\IKW-GraphEngine\build\src\Trinity.VSExtension\CMakeFiles\BUILD_Trinity.VSExtension" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{738EDABE-F8C7-361E-B8F3-2C44401D4F20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

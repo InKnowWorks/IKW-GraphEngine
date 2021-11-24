@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.ServiceFabric.Infrastructure": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

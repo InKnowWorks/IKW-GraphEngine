@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.TripleStore.TestSever.Client": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

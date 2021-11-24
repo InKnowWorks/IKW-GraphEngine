@@ -1,0 +1,121 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net472;net5.0;net6.0</TargetFrameworks>
+    <AssemblyName>Trinity.Core</AssemblyName>
+    <RootNamespace>Trinity</RootNamespace>
+    <OutputTypeEx>library</OutputTypeEx>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+    <ThreadPoolMinThreads>20</ThreadPoolMinThreads>
+    <ThreadPoolMaxThreads>300</ThreadPoolMaxThreads>
+  </PropertyGroup>
+
+  <!-- NuGet package metadata -->
+  <PropertyGroup>
+    <Authors>Microsoft Graph Engine Team</Authors>
+    <Description>GraphEngine runtime and compiler.</Description>
+    <Copyright>Copyright 2018</Copyright>
+    <Company>Microsoft Corporation</Company>
+
+    <Version>$(DOTNET_PACKAGE_VERSION)</Version>
+    <AssemblyVersion>$(DOTNET_PACKAGE_VERSION)</AssemblyVersion>
+    <FileVersion>$(DOTNET_PACKAGE_VERSION)</FileVersion>
+    <PackageVersion>$(DOTNET_PACKAGE_VERSION)</PackageVersion>
+
+    <PackageId>GraphEngine.Core</PackageId>
+    <PackageTags>Graph Engine Trinity Core Runtime TSL Compiler</PackageTags>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageIconUrl>https://www.graphengine.io/img/logo-64x64.png</PackageIconUrl>
+    <PackageProjectUrl>https://www.graphengine.io</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Microsoft/GraphEngine/blob/master/LICENSE.md</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/Microsoft/GraphEngine</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <!-- Conditional compilation flags -->
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
+    <DefineConstants>CORECLR</DefineConstants>
+  </PropertyGroup>
+
+  <!-- NetFx does not pick up runtimes\{rid}\native, use assembly release technique. -->
+  <ItemGroup>
+    <Compile Remove="BuildNuGetPkg\**" />
+    <EmbeddedResource Remove="BuildNuGetPkg\**" />
+    <EmbeddedResource Include="Network\Http\index.html" />
+  </ItemGroup>
+
+  <!-- Nuget package content -->
+  <ItemGroup>
+    <Content Include="NuGet\GraphEngine.Core.props">
+      <PackagePath>build</PackagePath>
+    </Content>
+    <Content Include="NuGet\GraphEngine.Core.targets">
+      <PackagePath>build</PackagePath>
+    </Content>
+    <Content Include="Trinity\Configuration\TrinityConfig.Schema.xsd">
+      <PackagePath>content</PackagePath>
+    </Content>
+    <Content Include="$(XPLAT_LIB_DIR)\Trinity.TSL.CodeGen.exe">
+      <PackagePath>tools</PackagePath>
+    </Content>
+    <Content Include="$(XPLAT_LIB_DIR)\Trinity.TSL.CodeGen">
+      <PackagePath>tools</PackagePath>
+    </Content>
+    <Content Include="$(XPLAT_LIB_DIR)\Trinity.dll">
+      <PackagePath>runtimes\win-x64\native</PackagePath>
+    </Content>
+    <Content Include="$(XPLAT_LIB_DIR)\libTrinity.so">
+      <PackagePath>runtimes\linux-x64\native</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <!-- Package dependencies -->
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'net451'">
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net451'">
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="System.Diagnostics.PerformanceCounter">
+      <Version>6.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <PackageReference Include="System.Diagnostics.PerformanceCounter">
+      <Version>6.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="System.Diagnostics.PerformanceCounter">
+      <Version>6.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="System.Diagnostics.PerformanceCounter">
+      <Version>6.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="System.Diagnostics.PerformanceCounter">
+      <Version>6.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

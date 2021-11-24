@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>
+    <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
+    <ServerGarbageCollection>True</ServerGarbageCollection>
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <TargetLatestRuntimePatch>False</TargetLatestRuntimePatch>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphEngine.Azure.BlobStorage" Version="2.0.10946" />
+    <PackageReference Include="GraphEngine.Client" Version="2.0.10946" />
+    <PackageReference Include="GraphEngine.LIKQ" Version="2.0.10946" />
+    <PackageReference Include="GraphEngine.ServiceFabric.Infrastructure" Version="2.0.10946" />
+    <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10946" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="4.2.445" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Trinity.Client.TestProtocols\Trinity.Client.TestProtocols.csproj" />
+  </ItemGroup>
+
+</Project>

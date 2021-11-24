@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telerik.Windows.Documents.FormatProviders.OpenXml</name>
+    </assembly>
+    <members>
+        <member name="P:Telerik.Windows.Documents.FormatProviders.OpenXml.Docx.Import.DrawingML.DrawingInlineInfo.Width">
+            <summary>
+            Gets or sets the width.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.FormatProviders.OpenXml.Docx.Import.DrawingML.DrawingInlineInfo.Height">
+            <summary>
+            Gets or sets the height.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.FormatProviders.OpenXml.Docx.Import.DrawingML.DrawingInlineInfo.RotateAngle">
+            <summary>
+            Gets or sets the angle at which the object should be rotated.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.FormatProviders.OpenXml.Docx.Import.DrawingML.DrawingInlineInfo.Size">
+            <summary>
+            Gets or sets the size.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.FormatProviders.OpenXml.DocxDataProvider.Docx">
+            <summary>
+            Gets or sets the current document as HTML
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.FormatProviders.OpenXml.Docx.DocxFormatProvider">
+            <summary>
+            Represents a format provider that can import and export DOCX documents from/to <see cref="T:Telerik.Windows.Documents.Model.RadDocument"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Stateful.TripleStore.GraphDataService": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

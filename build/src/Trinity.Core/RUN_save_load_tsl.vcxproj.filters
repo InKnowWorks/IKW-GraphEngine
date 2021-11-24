@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\64124c44a1a3b07e9d8ea5b2eecf6c37\save_load_tsl.runtimestamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\db864b517610073d935020e63ee5e866\RUN_save_load_tsl.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="O:\IKW-GraphEngine\src\Trinity.Core\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\RUN_save_load_tsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{738EDABE-F8C7-361E-B8F3-2C44401D4F20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

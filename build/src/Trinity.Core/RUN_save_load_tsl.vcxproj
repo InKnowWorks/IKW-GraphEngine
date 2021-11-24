@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5BCA6994-2B3D-3E14-9F7A-788C9D293E44}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>RUN_save_load_tsl</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\64124c44a1a3b07e9d8ea5b2eecf6c37\save_load_tsl.runtimestamp.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating save_load_tsl.runtimestamp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd O:\IKW-GraphEngine\build\save_load_tsl
+if %errorlevel% neq 0 goto :cmEnd
+O:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" clean O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj -c Debug /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props -f netcoreapp3.1
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/save_load_tsl/netcoreapp3.1/save_load_tsl.dll
+if %errorlevel% neq 0 goto :cmEnd
+K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.runtimestamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\src\Trinity.Core.SmokeTest\save-load-tsl\Program.cs;O:\IKW-GraphEngine\src\Trinity.Core.SmokeTest\save-load-tsl\save_load_tsl.csproj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\save_load_tsl.runtimestamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating save_load_tsl.runtimestamp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd O:\IKW-GraphEngine\build\save_load_tsl
+if %errorlevel% neq 0 goto :cmEnd
+O:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" clean O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props -f netcoreapp3.1
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/save_load_tsl/netcoreapp3.1/save_load_tsl.dll
+if %errorlevel% neq 0 goto :cmEnd
+K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.runtimestamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\src\Trinity.Core.SmokeTest\save-load-tsl\Program.cs;O:\IKW-GraphEngine\src\Trinity.Core.SmokeTest\save-load-tsl\save_load_tsl.csproj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\save_load_tsl.runtimestamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating save_load_tsl.runtimestamp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd O:\IKW-GraphEngine\build\save_load_tsl
+if %errorlevel% neq 0 goto :cmEnd
+O:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" clean O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props -f netcoreapp3.1
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/save_load_tsl/netcoreapp3.1/save_load_tsl.dll
+if %errorlevel% neq 0 goto :cmEnd
+K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.runtimestamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\src\Trinity.Core.SmokeTest\save-load-tsl\Program.cs;O:\IKW-GraphEngine\src\Trinity.Core.SmokeTest\save-load-tsl\save_load_tsl.csproj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\save_load_tsl.runtimestamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating save_load_tsl.runtimestamp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd O:\IKW-GraphEngine\build\save_load_tsl
+if %errorlevel% neq 0 goto :cmEnd
+O:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" clean O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/save-load-tsl/save_load_tsl.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.csproj.imports.props -f netcoreapp3.1
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/save_load_tsl/netcoreapp3.1/save_load_tsl.dll
+if %errorlevel% neq 0 goto :cmEnd
+K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/save_load_tsl.runtimestamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\src\Trinity.Core.SmokeTest\save-load-tsl\Program.cs;O:\IKW-GraphEngine\src\Trinity.Core.SmokeTest\save-load-tsl\save_load_tsl.csproj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\save_load_tsl.runtimestamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\db864b517610073d935020e63ee5e866\RUN_save_load_tsl.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\save_load_tsl.runtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\RUN_save_load_tsl</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\save_load_tsl.runtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\RUN_save_load_tsl</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\save_load_tsl.runtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\RUN_save_load_tsl</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\save_load_tsl.runtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\RUN_save_load_tsl</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="O:\IKW-GraphEngine\src\Trinity.Core\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\cmake\DotnetImports.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\cmake\DotnetImports.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\cmake\DotnetImports.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\cmake\DotnetImports.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="O:\IKW-GraphEngine\build\src\Trinity.Core\CMakeFiles\RUN_save_load_tsl">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\ZERO_CHECK.vcxproj">
+      <Project>{A2089474-717F-31B2-8778-F74E307038E5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\src\Trinity.Core\PKG_GraphEngine.Core.vcxproj">
+      <Project>{C3F62E4F-4AA3-39D4-B132-AC11BEED8D26}</Project>
+      <Name>PKG_GraphEngine.Core</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

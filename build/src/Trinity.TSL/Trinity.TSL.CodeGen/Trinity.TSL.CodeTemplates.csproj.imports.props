@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+        <OutputPath>O:/IKW-GraphEngine/build/Trinity.TSL.CodeTemplates/</OutputPath>
+        <XPLAT_LIB_DIR>O:/IKW-GraphEngine/build/</XPLAT_LIB_DIR>
+        <DOTNET_PACKAGE_VERSION>1.0.0</DOTNET_PACKAGE_VERSION>
+        
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,10 @@
+# CMake generation dependency list for this directory.
+K:/CMake/share/cmake-3.22/Modules/CMakeCInformation.cmake
+K:/CMake/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake
+K:/CMake/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake
+K:/CMake/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+K:/CMake/share/cmake-3.22/Modules/Compiler/MSVC-C.cmake
+K:/CMake/share/cmake-3.22/Modules/Platform/Windows-MSVC-C.cmake
+K:/CMake/share/cmake-3.22/Modules/Platform/Windows-MSVC.cmake
+O:/IKW-GraphEngine/build/CMakeFiles/3.22.0-rc2/CMakeCCompiler.cmake
+O:/IKW-GraphEngine/src/Trinity.TSL/CMakeLists.txt

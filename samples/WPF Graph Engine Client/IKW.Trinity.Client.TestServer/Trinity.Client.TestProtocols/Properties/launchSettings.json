@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Trinity.Client.TestProtocols": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

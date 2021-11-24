@@ -1,0 +1,39 @@
+﻿// streaming random triples from server->client
+
+struct Triple
+{
+	string Subject;
+	string Predicate;
+	string Object;
+
+	string Namespace;
+	//metadata etc.
+}
+
+struct TripleGetRequest
+{
+	long   GraphEngineClientId;	
+	long   TripleCellId;
+	string Subject;
+	string Predicate;
+	string Object;
+
+	string Namespace;
+	//metadata etc.
+}
+
+struct TripleStream
+{
+	long   GraphEngineClientId;		
+	List<Triple> triples;
+}
+
+struct ErrorCodeResponse
+{
+	int errno;
+}
+
+cell struct TripleStore
+{
+	Triple TripleCell;
+}
