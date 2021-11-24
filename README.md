@@ -105,7 +105,6 @@ Lost of new Samples
 - WinUI (current)
 - Reactive Design Patterns for Graph Engine Server and Client side implementations
 - RDF, RDFS, and Labled Property Graphs and HyperGraphs data models
-=======
 
 [LIKQ][likq-gh]
 is a versatile graph query language on top of Graph Engine that
