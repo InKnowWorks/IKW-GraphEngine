@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+	<TargetFrameworks>netstandard2.1</TargetFrameworks>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>$(DOTNET_PACKAGE_VERSION)</Version>
     <FileVersion>$(DOTNET_PACKAGE_VERSION)</FileVersion>
@@ -20,8 +20,8 @@
     <RootNamespace>GraphEngine.LIKQ</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1' OR '$(TargetFramework)'=='netcoreapp2.0'">
-    <DefineConstants>NETSTANDARD2_0</DefineConstants>
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1' OR '$(TargetFramework)'=='netcoreapp3.1'">
+    <DefineConstants>NETSTANDARD2_1</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,14 +33,14 @@
 
   <ItemGroup>
     <PackageReference Include="GraphEngine.Core" Version="$(DOTNET_PACKAGE_VERSION)" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.6.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.6.0" />
-    <PackageReference Include="Serialize.Linq" Version="1.8.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.0.1" />
+    <PackageReference Include="Serialize.Linq" Version="2.0.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.1' OR '$(TargetFramework)'=='netcoreapp2.0'">
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.6" />
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.1' OR '$(TargetFramework)'=='netcoreapp3.1'">
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net461'">

@@ -29,11 +29,12 @@
     <Copyright>Copyright 2018</Copyright>
     <Company>Microsoft Corporation</Company>
 
-	  <PackageId>GraphEngine.Client</PackageId>
+	 <PackageId>GraphEngine.Client</PackageId>
     <PackageTags>Graph Engine Trinity Client</PackageTags>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageIconUrl></PackageIconUrl>
     <PackageProjectUrl>https://www.graphengine.io</PackageProjectUrl>
+	<PackageIconUrl>https://www.graphengine.io/img/logo-64x64.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/Microsoft/GraphEngine/blob/master/LICENSE.md</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/Microsoft/GraphEngine</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
