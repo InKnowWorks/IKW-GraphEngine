@@ -18,7 +18,7 @@ using Trinity.Configuration;
 
 namespace Trinity
 {
-    public unsafe static partial class TrinityConfig
+    public static unsafe partial class TrinityConfig
     {
         /// <summary>
         /// Set the number of memory trunks in the Trinity memory storage.
