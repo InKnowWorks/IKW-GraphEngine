@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/build/net6.0
+/build/net5.0
+/build/net6.0-windows
+/build/netcoreapp3.1
