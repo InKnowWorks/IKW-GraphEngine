@@ -28,7 +28,7 @@
   <ItemGroup>
     <PackageReference Include="GraphEngine.Client" Version="$(DOTNET_PACKAGE_VERSION)" />
     <PackageReference Include="GraphEngine.Core" Version="$(DOTNET_PACKAGE_VERSION)" />
-    <PackageReference Include="telerik.ui.for.wpf.netcore.xaml" Version="2021.3.914" />
+    <PackageReference Include="telerik.ui.for.wpf.netcore.xaml" Version="2021.3.1109" />
   </ItemGroup>
 
   <ItemGroup>
