@@ -30,9 +30,8 @@ namespace FanoutSearch
             Expression new_expr = null;
             object eval_result  = null;
             Type   eval_type    = null;
-            var const_expr      = expr as ConstantExpression;
 
-            if (const_expr != null)
+            if (expr is ConstantExpression const_expr)
             {
                 eval_result = const_expr.Value;
                 eval_type   = const_expr.Type;

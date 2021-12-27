@@ -167,6 +167,57 @@ namespace Trinity.WPF.TestClient
 
             TripleClientSideModule.ClientPostedTripleStoreReadyInMemoryCloudHotAction.Connect();
 
+            TripleClientSideModule.ClientPostedTripleStoreReadyInMemoryCloudAction
+                .ObserveOn(TripleClientSideModule.ObserverOnNewThreadScheduler)
+                .Do(onNext: async subscriberSource =>
+                {
+                    var msg = "ClientPostedTripleStoreReadyInMemoryCloudAction-1";
+
+                    using var reactiveGraphEngineResponseTask = Task.Factory.StartNew(
+                        async () =>
+                        {
+                            await Task.Factory.StartNew(() =>
+                            {
+                                ResponseTextBlock.Items.Add($"Reactive Async - Server-Side Get Request on behalf of the Client.");
+                                ResponseTextBlock.Items.Add($"{msg} Subscription happened on this Thread: {Thread.CurrentThread.ManagedThreadId}");
+                            },
+                            token,
+                            TaskCreationOptions.None,
+                            uiSyncContext);
+                        });
+
+                    var upDateOnUITread = await reactiveGraphEngineResponseTask;
+                })
+                .SubscribeOn(TripleClientSideModule.SubscribeOnEventLoopScheduler)
+                .Synchronize()
+                .Subscribe(onNext: async tripleObjectFromGetRequest =>
+                {
+                    using var reactiveGraphEngineResponseTask = Task.Factory.StartNew(async () =>
+                    {
+                        await Task.Factory.StartNew(() =>
+                        {
+                            var myTripleStore = tripleObjectFromGetRequest.TripleCell;
+
+                            CellIdTb.Text          = tripleObjectFromGetRequest.CellId.ToString();
+                            NameSpaceTb.Text       = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                            SubjectTb.Text         = myTripleStore.Subject;
+                            PredicateTb.Text       = myTripleStore.Predicate;
+                            ObjectTb.Text          = myTripleStore.Object;
+
+                        },
+                        token,
+                        TaskCreationOptions.None,
+                        uiSyncContext);
+                    }).ContinueWith(_ =>
+                    {
+                        ResponseTextBlock.Items.Add("Task ServerStreamedTripleSavedToMemoryCloudAction Complete...");
+                    }, uiSyncContext);
+
+                    var upDateOnUITread = reactiveGraphEngineResponseTask;
+
+                    await upDateOnUITread;
+                });
+
             TripleClientSideModule.TripleByCellIdReceivedAction
                 .ObserveOn(TripleClientSideModule.ObserverOnNewThreadScheduler)
                 .Do(onNext: async subscriberSource =>
@@ -280,7 +331,7 @@ namespace Trinity.WPF.TestClient
                         {
                         //Global.CloudStorage.LoadStorage();
 
-                        var pid = Global.CloudStorage.MyPartitionId;
+                            var pid = Global.CloudStorage.MyPartitionId;
 
                             foreach (var tripleNode in Global.LocalStorage.TripleStore_Selector())
                             {

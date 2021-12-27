@@ -196,11 +196,11 @@ namespace Trinity.TripleStore.TestServer
 
                                 using var getRequest = new TripleGetRequestWriter()
                                 {
-                                    TripleCellId = tripleObject.CellId,
-                                    Subject = tripleObject.TripleCell.Subject,
-                                    Predicate = tripleObject.TripleCell.Predicate,
-                                    Namespace = tripleObject.TripleCell.Namespace,
-                                    Object = tripleObject.TripleCell.Object
+                                    TripleCellId   = tripleObject.CellId,
+                                    Subject        = tripleObject.TripleCell.Subject,
+                                    Predicate      = tripleObject.TripleCell.Predicate,
+                                    Namespace      = tripleObject.TripleCell.Namespace,
+                                    Object         = tripleObject.TripleCell.Object
                                 };
 
                                 Log.WriteLine($"Make Client-Side call from Server-side: GetTripleByCellId.");

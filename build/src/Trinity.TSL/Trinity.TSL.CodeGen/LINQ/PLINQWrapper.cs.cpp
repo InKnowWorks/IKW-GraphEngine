@@ -2148,8 +2148,7 @@ source->append(R"::(lections.Generic.IEqualityComparer{T}
         /// <summary>
         ///     Produces the set difference of two sequences by using the default equality
         ///     comparer to compare values.
-        /// </summary>
-)::");
+        /// </summary>)::");
 source->append(R"::(
         public IEnumerable<TSource> Except(IEnumerable<TSource> second)
         {

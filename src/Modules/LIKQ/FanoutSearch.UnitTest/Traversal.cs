@@ -44,6 +44,7 @@ namespace FanoutSearch.UnitTest
             Global.LocalStorage.SaveMyCell(2);
 
             var rsp = g.v(0).outV(Action.Continue).outV(Action.Return);
+
             Assert.Equal(2, rsp.Count());
             Assert.Contains(rsp, p => p[1].id == 11 && p[2].id == 1);
             Assert.Contains(rsp, p => p[1].id == 22 && p[2].id == 2);
@@ -59,6 +60,7 @@ namespace FanoutSearch.UnitTest
             Global.LocalStorage.SaveMyCell(2);
 
             var rsp = g.v(0).outE("edges").outV(Action.Continue).outV(Action.Return);
+
             Assert.Equal(2, rsp.Count());
             Assert.Contains(rsp, p => p[1].id == -11 && p[2].id == 1);
             Assert.Contains(rsp, p => p[1].id == -22 && p[2].id == 2);
@@ -74,6 +76,7 @@ namespace FanoutSearch.UnitTest
             Global.LocalStorage.SaveMyCell(2);
 
             var rsp = g.v(0).outV(Action.Continue).outV(Action.Return);
+
             Assert.Equal(2, rsp.Count());
             Assert.Contains(rsp, p => p[1].id == -11 && p[2].id == 1);
             Assert.Contains(rsp, p => p[1].id == -22 && p[2].id == 2);

@@ -40,8 +40,7 @@ namespace FanoutSearch
 
         public static bool type(this ICell cell, string type_name)
         {
-            IFanoutSearchCellAccessor accessor = cell as IFanoutSearchCellAccessor;
-            if (accessor == null)
+            if (cell is not IFanoutSearchCellAccessor accessor)
                 return cell.TypeName == type_name;
             return accessor.isOfType(type_name);
 
@@ -72,9 +71,8 @@ namespace FanoutSearch
                     return 0;
 
                 object field_obj = cell.GetField<object>(field);
-                IEnumerable enumerable = field_obj as IEnumerable;
 
-                if (enumerable != null)
+                if (field_obj is IEnumerable enumerable)
                 {
                     int cnt = 0;
                     var enumerator = enumerable.GetEnumerator();
@@ -188,9 +186,7 @@ namespace FanoutSearch
                     return (field_obj as string == value);
                 }
 
-                IEnumerable enumerable = field_obj as IEnumerable;
-
-                if (enumerable != null)
+                if (field_obj is IEnumerable enumerable)
                 {
                     foreach (object element in enumerable)
                     {

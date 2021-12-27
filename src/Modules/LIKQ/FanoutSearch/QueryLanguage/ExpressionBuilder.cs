@@ -255,22 +255,55 @@ namespace FanoutSearch
                     {
                         IEnumerable<KeyValuePair<string, JToken>> child_tokens = pred_obj as JObject;
 
-                        if (child_tokens == null || child_tokens.Count() == 0)
+                        if (child_tokens == null || !child_tokens.Any())
                         {
                             /* If no conditions are specified, return true */
                             return Expression.Constant(true);
                         }
 
                         Expression field_pred_exp = GenerateFieldOperatorExpression(pred_key, child_tokens.First().Key, child_tokens.First().Value, icell);
-                        foreach (var kvp in child_tokens.Skip(1))
-                        {
-                            field_pred_exp = Expression.AndAlso(field_pred_exp, GenerateFieldOperatorExpression(pred_key, kvp.Key, kvp.Value, icell));
-                        }
-                        return field_pred_exp;
+
+                        return child_tokens
+                            .Skip(1)
+                            .Aggregate(field_pred_exp, (current, kvp) => Expression.AndAlso(current, GenerateFieldOperatorExpression(pred_key, kvp.Key, kvp.Value, icell)));
                     }
+                case JTokenType.None:
+                    break;
+                case JTokenType.Array:
+                    break;
+                case JTokenType.Constructor:
+                    break;
+                case JTokenType.Property:
+                    break;
+                case JTokenType.Comment:
+                    break;
+                case JTokenType.Integer:
+                    break;
+                case JTokenType.Float:
+                    break;
+                case JTokenType.Boolean:
+                    break;
+                case JTokenType.Null:
+                    break;
+                case JTokenType.Undefined:
+                    break;
+                case JTokenType.Date:
+                    break;
+                case JTokenType.Raw:
+                    break;
+                case JTokenType.Bytes:
+                    break;
+                case JTokenType.Guid:
+                    break;
+                case JTokenType.Uri:
+                    break;
+                case JTokenType.TimeSpan:
+                    break;
                 default:
                     throw new FanoutSearchQueryException("Invalid property value");
             }
+
+            return null;
         }
 
         /// <summary>

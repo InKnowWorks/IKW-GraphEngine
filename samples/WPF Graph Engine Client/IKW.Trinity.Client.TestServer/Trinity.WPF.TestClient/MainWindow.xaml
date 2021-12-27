@@ -6,28 +6,33 @@
         xmlns:local="clr-namespace:Trinity.WPF.TestClient"
         xmlns:themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Royale" x:Class="Trinity.WPF.TestClient.MainWindow"
         mc:Ignorable="d"
-        Title="Reactive Trinity Graph Engine WPF Client" Height="348" Width="548">
-    <Grid>
-        <themes:ScrollChrome/>
-        <Button x:Name="TalkToGraphEngineClientBtn" Content="Make GE RPC Call" HorizontalAlignment="Left" Height="47" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Click="TalkToGraphEngineClientBtn_Click"/>
-        <Viewbox HorizontalAlignment="Left" Height="254" Margin="10,68,0,0" VerticalAlignment="Top" Width="264" Stretch="Fill" d:LayoutOverrides="HorizontalAlignment">
-            <ListBox x:Name="ResponseTextBlock" HorizontalAlignment="Left"/>
-        </Viewbox>
-        <Label x:Name="Label" Content="Triples Pushed by Test Server" HorizontalAlignment="Left" Height="26" Margin="334,55,0,0" VerticalAlignment="Top" Width="165"/>
-        <Grid HorizontalAlignment="Left" Height="168" Margin="293,99,0,0" VerticalAlignment="Top" Width="245">
+        Title="Reactive Trinity Graph Engine WPF Client" SizeToContent="Manual" Topmost="True" WindowStartupLocation="CenterScreen" Margin="2,2,2,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="2,2,2,2" ScrollViewer.CanContentScroll="True" UseLayoutRounding="True" WindowStyle="ThreeDBorderWindow" BorderThickness="1,1,1,1" Icon="/TslIcon.ico" Height="170">
+    <Grid x:Name="HostLayoutGrid" Margin="1,1,1,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="130*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="141*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <themes:ScrollChrome Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Button Grid.Row="0" Grid.Column="0" x:Name="TalkToGraphEngineClientBtn" Content="Make GE RPC Call" HorizontalAlignment="Left" Margin="2,2,2,2" VerticalAlignment="Center" Click="TalkToGraphEngineClientBtn_Click"/>
+        <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+            <ListBox x:Name="ResponseTextBlock" d:ItemsSource="{d:SampleData ItemCount=5}" Width="100" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        </DockPanel>
+        <Label x:Name="Label" Content="Triples Pushed by Test Server" Margin="40,0,0,0" Grid.Column="1" RenderTransformOrigin="0.482,-1.047" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Grid x:Name="DisplayGroup" Grid.Column="1" Grid.Row="1" Margin="2,2,2,2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="176*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Viewbox Grid.ColumnSpan="2" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Grid>
-                    <TextBox x:Name="NameSpaceTb" HorizontalAlignment="Center" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
-                    <TextBox x:Name="SubjectTb" HorizontalAlignment="Center" Height="25" Margin="0,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
-                    <TextBox x:Name="PredicateTb" HorizontalAlignment="Center" Height="25" Margin="0,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
-                    <TextBox x:Name="ObjectTb" HorizontalAlignment="Center" Height="25" Margin="0,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
-                    <TextBox x:Name="CellIdTb" HorizontalAlignment="Center" Height="25" Margin="0,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
-                </Grid>
-            </Viewbox>
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="1,1,1,1">
+                <TextBox x:Name="NameSpaceTb" TextWrapping="Wrap" Background="{x:Null}" Margin="2,2,2,2"/>
+                <TextBox x:Name="SubjectTb" TextWrapping="Wrap" Background="{x:Null}" Margin="2,2,2,2"/>
+                <TextBox x:Name="PredicateTb" TextWrapping="Wrap" Background="{x:Null}" Margin="2,2,2,2" Width="Auto" Height="Auto"/>
+                <TextBox x:Name="ObjectTb" TextWrapping="Wrap" Background="{x:Null}" Margin="2,2,2,2"/>
+                <TextBox x:Name="CellIdTb" TextWrapping="Wrap" Background="{x:Null}" Margin="2,2,2,2"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

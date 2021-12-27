@@ -2,7 +2,7 @@
     <PropertyGroup>
         <OutputPath>O:/IKW-GraphEngine/build/Trinity.Azure.Storage/</OutputPath>
         <XPLAT_LIB_DIR>O:/IKW-GraphEngine/build/</XPLAT_LIB_DIR>
-        <DOTNET_PACKAGE_VERSION>2.0.11128</DOTNET_PACKAGE_VERSION>
+        <DOTNET_PACKAGE_VERSION>2.0.11160</DOTNET_PACKAGE_VERSION>
         
     </PropertyGroup>
 </Project>
