@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Triple Store Server", "Triple Store Server", "{AEF0237A-E2FA-43C8-8525-01FC39DA682A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graph Engine Symetric Runtime", "Graph Engine Symetric Runtime", "{1B34E163-388E-4A3F-8152-FC79B46662AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKW.Advanced.GE.Server.SymmetricRuntime", "IKW.Advanced.GE.Server.SymmetricRuntime\IKW.Advanced.GE.Server.SymmetricRuntime.csproj", "{44573A02-A158-451A-9A80-C81B0B4E4334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKW.Advanced.GE.TripleStore.AppServer", "IKW.Advanced.GE.TripleStore.AppServer\IKW.Advanced.GE.TripleStore.AppServer.csproj", "{02F09DF6-7CE1-43FF-BC25-43CF9894AF12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44573A02-A158-451A-9A80-C81B0B4E4334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44573A02-A158-451A-9A80-C81B0B4E4334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44573A02-A158-451A-9A80-C81B0B4E4334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44573A02-A158-451A-9A80-C81B0B4E4334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02F09DF6-7CE1-43FF-BC25-43CF9894AF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02F09DF6-7CE1-43FF-BC25-43CF9894AF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02F09DF6-7CE1-43FF-BC25-43CF9894AF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02F09DF6-7CE1-43FF-BC25-43CF9894AF12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44573A02-A158-451A-9A80-C81B0B4E4334} = {1B34E163-388E-4A3F-8152-FC79B46662AE}
+		{02F09DF6-7CE1-43FF-BC25-43CF9894AF12} = {AEF0237A-E2FA-43C8-8525-01FC39DA682A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB7787D3-05AE-4B33-9796-E29D261F05AC}
+	EndGlobalSection
+EndGlobal

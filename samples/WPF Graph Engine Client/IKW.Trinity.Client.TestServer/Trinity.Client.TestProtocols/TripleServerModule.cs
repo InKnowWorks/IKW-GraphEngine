@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Concurrency;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
+using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Reactive.Bindings;
+using Trinity.Client.TestProtocols.TripleAppServerGateway;
+using Trinity.Client.TestProtocols.TripleServer;
 using Trinity.Core.Lib;
 using Trinity.Diagnostics;
 using Trinity.Extension;
 using Trinity.Network;
 using Trinity.Storage;
 using Trinity.TSL.Lib;
+
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Trinity.Client.TestProtocols
 {
@@ -29,6 +36,8 @@ namespace Trinity.Client.TestProtocols
         private TrinityClientModule.TrinityClientModule TrinityTripleModuleClient { get; set; }
         private TrinityServer TripleStoreServer { get; set; }
 
+        private TrinityClient TrinityTripleClient { get; set; }
+
         // Dynamically gain access to the client connection
         private Storage.IStorage TripleStoreClient { get; set; }
 
@@ -36,7 +45,7 @@ namespace Trinity.Client.TestProtocols
         private IObserver<(Storage.IStorage GraphEngineClient, TripleStreamReader TriplePayload)> TripleStreamPostedActionObserver { get; set; }
         private IObserver<(Storage.IStorage GraphEngineClient, TripleGetRequestReader TriplePayload)> GetTripleByCellIdRequestActionObserver { get; set; }
         private IObserver<(Storage.IStorage GraphEngineClient, TripleGetRequestReader TriplePayload)> GetTripleBySubjectRequestActionObserver { get; set; }
-        private IObserver<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)> SaveServerStreamedTripleToMemoryCloudActionObserver {get; set; }
+        private IObserver<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)> RequestServerSaveStreamedTripleToMemoryCloudActionObserver {get; set; }
         private IObserver<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)> SaveClientPostedTripleToMemoryCloudActionObserver { get; set; }
         private IObserver<Triple> TripleObjectProjectedActionObserver {get; set; }
         private IObserver<Triple> TriplePostedToServerProjectedActionObserver { get; set; }
@@ -44,6 +53,10 @@ namespace Trinity.Client.TestProtocols
         private IObserver<TripleStore> TripleBySubjectProjectedActionObserver { get; set; }
         private IObserver<TripleStore> ServerStreamedTripleStoreReadyInMemoryCloudActionObserver {get; set; }
         private IObserver<TripleStore> ClientPostedTripleStoreReadyInMemoryCloudActionObserver { get; set; }
+
+        private IObserver<TripleStreamReader> SaveTripleToMemoryActionObserver { get; set; }
+        private IObservable<TripleStore> SaveTripleToMemoryActionSubscriber { get; set; }
+        private IDisposable SaveTripleToMemoryActionSubscription { get; set; }
 
         private IObservable<(Storage.IStorage GraphEngineClient, TripleStreamReader TriplePayload)> TripleStreamReceivedActionSubscriber {get;set;}
         private IObservable<(Storage.IStorage GraphEngineClient, TripleStreamReader TriplePayload)> TripleStreamPostedActionSubscriber { get; set; }
@@ -451,7 +464,7 @@ namespace Trinity.Client.TestProtocols
                 .Synchronize()
                 .Select(selector: tripleObject => tripleObject)
                 .ObserveOn(ObserverOnNewThreadScheduler)
-                .Subscribe(SaveServerStreamedTripleToMemoryCloudActionObserver);
+                .Subscribe(RequestServerSaveStreamedTripleToMemoryCloudActionObserver);
 
             PostTripleToMemoryCloudActionSubscription = SaveClientPostedTripleToMemoryCloudActionSubscriber
                 .SubscribeOn(SubscribeOnEventLoopScheduler)
@@ -548,6 +561,99 @@ namespace Trinity.Client.TestProtocols
                 .Subscribe(TriplePostedToServerProjectedActionObserver);
         }
 
+        private enum QueryModeType
+        {
+            ByCellId = 0,
+            BySubject = 1
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="queryModeType"></param>
+        /// <param name="querySubject"></param>
+        /// <returns></returns>
+        private static IObservable<bool> QueryTripleStore(QueryModeType queryModeType, in TripleGetRequest querySubject)
+        {
+            var tripleQuerySubject = querySubject;
+
+            return Observable.Create<bool>(observer =>
+               {
+                   var newTriple = new TripleStore(new Triple());
+
+                   newTriple.TripleCell.Namespace = tripleQuerySubject.Namespace;
+                   newTriple.TripleCell.Object    = tripleQuerySubject.Object;
+                   newTriple.TripleCell.Predicate = tripleQuerySubject.Predicate;
+                   newTriple.TripleCell.Subject   = tripleQuerySubject.Subject;
+
+                   newTriple.CellId = tripleQuerySubject.TripleCellId;
+
+                   if (Global.CloudStorage.IsLocalCell(newTriple.CellId) && queryModeType == QueryModeType.ByCellId)
+                   {
+                       observer.OnNext(true);
+                       observer.OnCompleted();
+                   }
+                   else if (Global.CloudStorage.IsLocalCell(newTriple.CellId) && queryModeType == QueryModeType.BySubject)
+                   {
+                       using var tripleObject = Global.LocalStorage
+                                                      .TripleStore_Accessor_Selector()
+                                                      .AsParallel()
+                                                      .FirstOrDefault(tripleObjectAccessor => (tripleObjectAccessor.CellId == tripleQuerySubject.TripleCellId && 
+                                                                                               tripleObjectAccessor.TripleCell.Subject == tripleQuerySubject.Subject));
+                       if (tripleObject is not null)
+                       {
+                           observer.OnNext(true);
+                           observer.OnCompleted();
+                       }
+                       else
+                       {
+                           observer.OnNext(false);
+                           observer.OnCompleted();
+                       }
+                   }
+
+                   return Disposable.Empty;
+
+               });
+        }
+
+        /// <summary>
+        /// Server-side
+        /// </summary>
+        /// <param name="triple"></param>
+        /// <returns></returns>
+        private static IObservable<TripleSaveResponseWriter> SaveTripleToMemoryCloud(in TripleSaveRequestReader triple)
+        {
+            var reader = triple;
+
+            return Observable.Create<TripleSaveResponseWriter>(observer =>
+               {
+                   var newTriple = new TripleStore(new Triple());
+
+                   newTriple.TripleCell.Namespace = reader.Namespace;
+                   newTriple.TripleCell.Object    = reader.Object;
+                   newTriple.TripleCell.Predicate = reader.Predicate;
+                   newTriple.TripleCell.Subject   = reader.Subject;
+
+                    // Save Triple to local memory cloud and return the newly have triple to the calling client
+
+                    if (Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead, newTriple.CellId, newTriple))
+                    {
+                        var returnTripleStore = new TripleSaveResponseWriter()
+                        {
+                            TripleCellId = newTriple.CellId
+                        };
+
+                        observer.OnNext(returnTripleStore);
+                        observer.OnCompleted();
+                        return Disposable.Empty;
+                    }
+                    else
+                    {
+                        return Disposable.Empty;
+                    }
+               });
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -563,10 +669,9 @@ namespace Trinity.Client.TestProtocols
 
                         TriplePostedToServerProjectedActionObserver.OnNext(firstTripleObject);
 
-                        TripleStore myTripleStore = new()
+                        var myTripleStore = new TripleStore(new Triple());
                         {
-                            CellId = CellIdFactory.NewCellId(),
-                            TripleCell = firstTripleObject
+                            var newTriple = firstTripleObject;
                         };
 
                         (long CellIdOnTriple, TripleStore NewTripleStore) sourceTripleContext = (myTripleStore.CellId, myTripleStore);
@@ -575,7 +680,7 @@ namespace Trinity.Client.TestProtocols
 
                         SaveClientPostedTripleToMemoryCloudActionObserver.OnNext((tripleStreamReaderObject.GraphEngineClient, myTripleStore));
 
-                        Log.WriteLine($"Triple Received from Client via PostTriplesToServer: Subject node: {firstTripleObject.Subject}");
+                        //Log.WriteLine($"Triple Received from Client via PostTriplesToServer: Subject node: {firstTripleObject.Subject}");
 
                         // Let's save the TripleStore to the LocalStorage and let the Client know 
 
@@ -597,42 +702,34 @@ namespace Trinity.Client.TestProtocols
                         Log.WriteLine($"An Unexpected Error has been detected: {errorContext.Message}");
                     });
 
+            // Client-side code Reactive Event Processing
+            // Can't make any GE API Calls to save data locally; instead we make a local call back to GE App Server to save and or
+            // perform additional processing.
+
             TripleStreamReceivedActionObserver =
                 Observer.Create<(Storage.IStorage GraphEngineClient, TripleStreamReader TriplePayload)>(onNext: async tripleStreamReaderPayload =>
                     {
+                        await Task.Delay(0).ConfigureAwait(false);
+
                         Triple myTriple = tripleStreamReaderPayload.TriplePayload.triples[0];
 
-                        // TripleObjectStreamedFromServerReceivedAction
+                        // Let the client know we are in receipt of incoming data from the GE App Server
 
                         TripleObjectProjectedActionObserver.OnNext(myTriple);     
+
+                        // We need to create Prep and TripleStore for the GE App Server to save
+
                         var myTripleStore = new TripleStore()
-                                                                              
                         {
-                            CellId = CellIdFactory.NewCellId(),
+                            CellId = 0,
                             TripleCell = myTriple
                         };
 
                         (long CellIdOnTriple, TripleStore NewTripleStore) sourceTripleContext = (myTripleStore.CellId, myTripleStore);
 
-                        await Task.Delay(0).ConfigureAwait(false);
+                        RequestServerSaveStreamedTripleToMemoryCloudActionObserver.OnNext((tripleStreamReaderPayload.GraphEngineClient, myTripleStore));
 
-                        SaveServerStreamedTripleToMemoryCloudActionObserver.OnNext((tripleStreamReaderPayload.GraphEngineClient, myTripleStore));
-
-                        Log.WriteLine($"Triple Received from Server via StreamTriplesAsync: Subject node: {sourceTripleContext.CellIdOnTriple}");
-
-                        // Let's save the TripleStore to the MemoryCloud and let the Client know 
-
-                        //using var tripleStreamReceivedActionTask = Task.Factory.StartNew(function: async () =>
-                        //    {
-
-                        //    },
-                        //    cancellationToken: CancellationToken.None,
-                        //    creationOptions: TaskCreationOptions.HideScheduler,
-                        //    scheduler: TaskScheduler.Current).Unwrap();
-
-                        //var taskResult = tripleStreamReceivedActionTask.ConfigureAwait(false);
-
-                        //await taskResult;
+                        //Log.WriteLine($"Triple Received from Server via StreamTriplesAsync: Subject node: {sourceTripleContext.CellIdOnTriple}");
                     },
                     onCompleted: () => { },
                     onError: errorContext =>
@@ -640,222 +737,85 @@ namespace Trinity.Client.TestProtocols
                         Log.WriteLine($"An Unexpected Error has been detected: {errorContext.Message}");
                     });
 
-            SaveServerStreamedTripleToMemoryCloudActionObserver =
-                Observer.Create<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)>(
-                    onNext: async sourceTripleStore =>
-                            {
-                                //await Task.Yield();
-
-                                await Task.Delay(0).ConfigureAwait(false);
-
-                                Triple myTriple = sourceTripleStore.NewTripleStore.TripleCell;
-
-                                // Note sure if I really need to do this; post q question to GE Staff (07/12/2020)
-
-                                //if (Global.CloudStorage.IsLocalCell(newTripleStore.CellId)) return;
-
-                                //requestWriterlockAcquired = false;
-
-                                try
-                                {
-                                    //tripleGetRequestWriterSpinLock.Enter(ref requestWriterlockAcquired);
-
-                                    //requestWriterMutex.WaitOne();
-
-                                    if (Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead,
-                                        sourceTripleStore.NewTripleStore.CellId))
-                                    {
-                                        ServerStreamedTripleSavedToMemoryCloudAction.Value = (
-                                            sourceTripleStore.GraphEngineClient, sourceTripleStore.NewTripleStore);
-
-                                        // Let the Client know we have saved a New TripleStore to the MemoryCloud  
-
-                                        using (var tripleStore =
-                                            Global.LocalStorage.UseTripleStore(sourceTripleStore.NewTripleStore.CellId))
-                                        {
-                                            Log.WriteLine(
-                                                "Triple Object Streamed to Client has been saved to MemoryCloud.");
-                                            Log.WriteLine($"Triple Object: Cell-ID from server {tripleStore.CellId}");
-                                        }
-
-                                        ServerStreamedTripleStoreReadyInMemoryCloudActionObserver.OnNext(
-                                            sourceTripleStore.NewTripleStore);
-
-                                        List<Triple> collectionOfTriples = new List<Triple>
-                                            {sourceTripleStore.NewTripleStore.TripleCell};
-
-                                        using var tripleStoreStreamWriter = new TripleGetRequestWriter()
-                                        {
-                                            TripleCellId = sourceTripleStore.NewTripleStore.CellId,
-                                            Subject = sourceTripleStore.NewTripleStore.TripleCell.Subject,
-                                            Namespace = sourceTripleStore.NewTripleStore.TripleCell.Namespace,
-                                            Object = sourceTripleStore.NewTripleStore.TripleCell.Object
-                                        };
-
-                                        var c = Global.CloudStorage.MyInstanceId;
-
-
-
-                                        var rc = Global.CommunicationInstance.GetCommunicationModule<TripleModule>()
-                                                       .PushTripleToClient(0, tripleStoreStreamWriter);
-
-                                        var msg = "SaveServerStreamedTripleToMemoryCloudActionObserver-1";
-
-                                        Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg,
-                                            Thread.CurrentThread.ManagedThreadId);
-                                    }
-                                }
-                                catch (Exception e)
-                                {
-                                    Console.WriteLine(e);
-                                    throw;
-                                }
-                                finally
-                                {
-                                    //requestWriterMutex.ReleaseMutex();
-
-                                    //if (requestWriterlockAcquired)
-                                    //    tripleGetRequestWriterSpinLock.Exit(false);
-                                }
-                                //using var tripleStoreSavedToMemoryCloudTask = Task.Factory.StartNew(function: async () =>
-                                //    {
-
-                                //    },
-                                //    cancellationToken: CancellationToken.None,
-                                //    creationOptions: TaskCreationOptions.HideScheduler,
-                                //    scheduler: TaskScheduler.Current).Unwrap();
-
-                                //var taskResult = tripleStoreSavedToMemoryCloudTask.ConfigureAwait(false);
-
-                                //await taskResult;
-                            },
-                    onCompleted: () => { },
-                    onError: errorContext =>
-                             {
-                                 Log.WriteLine($"An Unexpected Error has been detected: {errorContext.Message}");
-                             });
-
-            // Server-side Reactive Properties the Server subscribes to
-
-            SaveClientPostedTripleToMemoryCloudActionObserver =
-                Observer.Create<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)>(onNext: async sourceTripleStore =>
+            RequestServerSaveStreamedTripleToMemoryCloudActionObserver = Observer.Create<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)>(onNext: async sourceTripleStore =>
                 {
-                    //var (cellIdOnTriple, newTripleStore) = sourceTripleStore;
+                    //await Task.Yield();
 
                     await Task.Delay(0).ConfigureAwait(false);
 
-                    //requestWriterMutex.WaitOne();
-
-                    var (idOnTriple, store) = sourceTripleStore;
-
-                    //var t = idOnTriple.GetCommunicationModule<TrinityClientModule.TrinityClientModule>().Clients
-                    //                  .ToImmutableList();
-
-                    //foreach (var storage in t)
-                    //{
-                    //    var id = (TrinityClient) storage;
-
-                    //    var clientId = id.CloudStorage.MyInstanceId;
-                    //}
-
-                    //if (Global.CloudStorage.IsLocalCell(newTripleStore.CellId)) return;
-
-                    if (Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead, store.CellId))
+                    switch (Global.CommunicationInstance)
                     {
-                        // Let the Client know we have saved a New TripleStore to the MemoryCloud  
-
-                        //Global.LocalStorage.SaveStorage();
-
-                        //if (Global.CloudStorage.IsLocalCell(store.CellId))
-                        //{
-                        var msg = "SaveClientPostedTripleToMemoryCloudActionObserver-1";
-
-                        Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg,
-                            Thread.CurrentThread.ManagedThreadId);
-
-                        //requestWriterlockAcquired = false;
-
-                        try
+                        case TrinityClient:
                         {
-                            //tripleGetRequestWriterSpinLock.Enter(ref requestWriterlockAcquired);
+                            //Log.WriteLine($"Processing: RequestServerSaveStreamedTripleToMemoryCloudActionObserver on the Client-side.");
 
-                            //using (var tripleStore = Global.LocalStorage.UseTripleStore(store.CellId,
-                            //    CellAccessOptions.StrongLogAhead))
-                            //{
-                            //    using var tripleStoreStreamWriter1 = new TripleGetRequestWriter()
-                            //    {
-                            //        TripleCellId = tripleStore.CellId,
-                            //        Subject = tripleStore.TripleCell.Subject,
-                            //        Namespace = tripleStore.TripleCell.Namespace,
-                            //        Object = tripleStore.TripleCell.Object
-                            //    };
-                            //}
+                            var (graphEngineClient, newTripleStore) = sourceTripleStore;
 
-                            //var queryResult = Global.LocalStorage.TripleStore_Selector()
-                            //    .Where(tripleNode =>
-                            //        tripleNode.TripleCell.Subject.Contains(store.TripleCell
-                            //            .Subject))
-                            //    .Select(tripleStore1 => tripleStore1.TripleCell).FirstOrDefault();
+                            Triple myTriple = newTripleStore.TripleCell;
 
-                            //var queryResult = Global.LocalStorage.TripleStore_Selector()
-                            //    .Where(tripleNode => tripleNode.CellId == tripleGetRequestReader.TriplePayload.TripleCellId)
-                            //    .Select(tripleStore => tripleStore.TripleCell).FirstOrDefault();
-
-                            Log.WriteLine($"Cell-ID from newly saved Triple Store Object: {store.CellId}");
-
-                            // Making Client-side Call
-
-                            Log.WriteLine($"Make Client Side RPC-Call, outbound to Client (PUSH): {store.CellId}");
-
-                            List<Triple> collectionOfTriples = new List<Triple> {sourceTripleStore.NewTripleStore.TripleCell};
-
-                            // var t = idOnTriple.GetCommunicationModule<>()
-
-                            using var storeStreamWriter = new TripleGetRequestWriter()
+                            try
                             {
-                                TripleCellId  = sourceTripleStore.NewTripleStore.CellId,
-                                Subject       = sourceTripleStore.NewTripleStore.TripleCell.Subject,
-                                Namespace     = sourceTripleStore.NewTripleStore.TripleCell.Namespace,
-                                Object        = sourceTripleStore.NewTripleStore.TripleCell.Object
-                            };
+                                List<Triple> collectionOfTriples = new List<Triple> {newTripleStore.TripleCell};
 
-                            ClientPostedTripleStoreReadyInMemoryCloudActionObserver.OnNext(store);
+                                using var saveRequestWriter = new TripleSaveRequestWriter()
+                                {
+                                    TripleCellId = 0,
+                                    Subject      = newTripleStore.TripleCell.Subject,
+                                    Namespace    = newTripleStore.TripleCell.Namespace,
+                                    Object       = newTripleStore.TripleCell.Object
+                                };
 
-                            ClientPostedTripleSavedToMemoryCloudAction.Value = (null, store);
+                                var c = Global.CloudStorage.MyInstanceId;
+
+                                string msg;
+
+                                //Log.WriteLine($"Response from SaveTripleToTripleStore: {Global.CloudStorage[0].SaveTripleToTripleStore(saveRequestWriter).TripleCellId}");
+
+                                //var geClientInstance = Global.CommunicationInstance.GetCommunicationModule<TrinityClientModule.TrinityClientModule>();
+
+                                //var responseData = Global.LocalStorage.SaveTripleToTripleStore(saveRequestWriter)
+                                //                         .TripleCellId;
+
+                                using (var tripleStoreCellId = Global.CloudStorage[0].SaveTripleToTripleStore(saveRequestWriter))
+                                {
+                                    msg = "RequestServerSaveStreamedTripleToMemoryCloudActionObserver-1";
+
+                                    // Let the Client know we have saved a New TripleStore to the MemoryCloud  
+
+                                    newTripleStore.CellId = tripleStoreCellId.TripleCellId;
+                                }
+
+                                ServerStreamedTripleSavedToMemoryCloudAction.Value = (GraphEngineClient: graphEngineClient, NewTripleStore: newTripleStore);
+
+                                ServerStreamedTripleStoreReadyInMemoryCloudActionObserver.OnNext(newTripleStore);
+
+                                //Log.WriteLine($"Triple Object: Cell-ID from server {tripleStoreCellId.TripleCellId}");
+
+                                //Log.WriteLine("Triple Object Streamed to Client has been saved to MemoryCloud.");
+
+                                //Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg, Thread.CurrentThread.ManagedThreadId);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                                throw;
+                            }
+                            finally
+                            {
+                                //requestWriterMutex.ReleaseMutex();
+
+                                //if (requestWriterlockAcquired)
+                                //    tripleGetRequestWriterSpinLock.Exit(false);
+                            }
+
+                            break;
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                            throw;
-                        }
-                        finally
-                        {
-                            //if (requestWriterlockAcquired)
-                            //    tripleGetRequestWriterSpinLock.Exit(false);
-                        }
-
-                        // Make Blocking call here!
-
-                        //var rcpResponseCode = sourceTripleStore.GraphEngineClient.PushTripleToClient(tripleStoreStreamWriter);
-
-                        // The Client will never see this Reactive Event -Stream because it takes place in the Server-side Process Address Space
-                        // 
-
-
-                        //Log.WriteLine(
-                        //    $"A New TripleStore from a Client has been Saved to the MemoryCloud");
-                        //Log.WriteLine(
-                        //    $"The WPF Client should be able to retrieve TripleStore Cell from the MemoryCloud: {newTripleStore.CellId}");
-                        //}
                     }
+
 
                     //using var tripleStoreSavedToMemoryCloudTask = Task.Factory.StartNew(function: async () =>
                     //    {
-                    //        //await Task.Yield();
 
-
-
-                    //        requestWriterMutex.ReleaseMutex();
                     //    },
                     //    cancellationToken: CancellationToken.None,
                     //    creationOptions: TaskCreationOptions.HideScheduler,
@@ -871,12 +831,71 @@ namespace Trinity.Client.TestProtocols
                      Log.WriteLine($"An Unexpected Error has been detected: {errorContext.Message}");
                  });
 
+            // Server-side Reactive Properties the Server subscribes to
+
+            SaveClientPostedTripleToMemoryCloudActionObserver =
+                Observer.Create<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)>(onNext: async sourceTripleStore =>
+                {
+                    await Task.Delay(0).ConfigureAwait(false);
+
+                    var (idOnTriple, store) = sourceTripleStore;
+
+                    if (Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead, store.CellId))
+                    {
+                        var msg = "SaveClientPostedTripleToMemoryCloudActionObserver-1";
+
+                        Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg,
+                            Thread.CurrentThread.ManagedThreadId);
+
+                        try
+                        {
+                            using var tripleStore = Global.LocalStorage.UseTripleStore(store.CellId, CellAccessOptions.StrongLogAhead);
+
+                            using var tripleStoreStreamWriter1 = new TripleGetRequestWriter()
+                            {
+                                TripleCellId  = tripleStore.CellId,
+                                Subject       = tripleStore.TripleCell.Subject,
+                                Namespace     = tripleStore.TripleCell.Namespace,
+                                Object        = tripleStore.TripleCell.Object
+                            };
+
+                            Log.WriteLine($"Cell-ID from newly saved Triple Store Object: {tripleStore.CellId}");
+
+                            //List<Triple> collectionOfTriples = new List<Triple> { sourceTripleStore.NewTripleStore.TripleCell };
+
+                            //using var storeStreamWriter = new TripleGetRequestWriter()
+                            //{
+                            //    TripleCellId = sourceTripleStore.NewTripleStore.CellId,
+                            //    Subject = sourceTripleStore.NewTripleStore.TripleCell.Subject,
+                            //    Namespace = sourceTripleStore.NewTripleStore.TripleCell.Namespace,
+                            //    Object = sourceTripleStore.NewTripleStore.TripleCell.Object
+                            //};
+
+                            ClientPostedTripleStoreReadyInMemoryCloudActionObserver.OnNext(store);
+
+                            ClientPostedTripleSavedToMemoryCloudAction.Value = (null, store);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                        }
+                        finally
+                        {
+                            //if (requestWriterlockAcquired)
+                            //    tripleGetRequestWriterSpinLock.Exit(false);
+                        }
+                    }
+                },
+        onCompleted: () => { },
+        onError: errorContext =>
+                 {
+                     Log.WriteLine($"An Unexpected Error has been detected: {errorContext.Message}");
+                 });
+
             GetTripleByCellIdRequestActionObserver =
                 Observer.Create<(Storage.IStorage GraphEngineClient, TripleGetRequestReader TriplePayload)>(onNext: async tripleGetRequestReader =>
                     {
                         await Task.Delay(0).ConfigureAwait(false);
-
-                        //requestReaderlockAcquired = false;
 
                         try
                         {
@@ -907,21 +926,6 @@ namespace Trinity.Client.TestProtocols
                             //if (requestReaderlockAcquired)
                             //    tripleGetRequestReaderSpinLock.Exit(false);
                         }
-
-                        //using var getTripleQueryTask = Task.Factory.StartNew(function: async () =>
-                        //    {
-                                
-
-
-                        //        return;
-                        //    },
-                        //    cancellationToken: CancellationToken.None,
-                        //    creationOptions: TaskCreationOptions.HideScheduler,
-                        //    scheduler: TaskScheduler.Current).Unwrap();
-
-                        //var taskResult = getTripleQueryTask.ConfigureAwait(false);
-
-                        //await taskResult;
                     },
                     onCompleted: () => { },
                     onError: errorContext =>
@@ -1072,27 +1076,44 @@ namespace Trinity.Client.TestProtocols
                 });
         }
 
-        public override string GetModuleName() => "TripleModule";
+        //public override string GetModuleName() => "TripleModule";
+        private static TripleModule TripleClientSideModule { get; set; } = null;
 
         // To be received on the server side
         /// <summary>
-        /// 
+        /// As this call originates from the Client side of the Symmetric TCP/RPC runtime; the GE App Server
+        /// will response to this handler.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
         public override void PostTriplesToServerHandler(TripleStreamReader request, ErrorCodeResponseWriter response)
         {
-            TripleStoreServer = Global.CommunicationInstance as TrinityServer;
+            // Setup Communications Guard so that this code will only execute on the GE App Server-side
 
-            if (TripleStoreServer != null)
-                TrinityTripleModuleClient =
-                    TripleStoreServer.GetCommunicationModule<TrinityClientModule.TrinityClientModule>();
+            switch (Global.CommunicationInstance)
+            {
+                case null:
+                    break;
+                case TrinityClient:
+                case TripleAppServerGatewayBase:
+                case TrinityProxy:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE App Server-side");
+                }
+                case TrinityServer:
+                {
+                    response.errno = 100;
+                    response.QueryResult = false;
 
-            TripleStoreClient = TrinityTripleModuleClient.Clients.ToList().LastOrDefault();
+                    //TripleStoreServer = Global.CommunicationInstance as TrinityServer;
 
-            (IStorage GraphEngineClient, TripleStreamReader TriplePayload) requestPayload = (TripleStoreClient, request);
+                    (IStorage GraphEngineClient, TripleStreamReader TriplePayload) requestPayload = (null, request);
 
-            TripleStreamPostedActionObserver.OnNext(requestPayload);
+                    TripleStreamPostedActionObserver.OnNext(requestPayload);
+
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -1102,19 +1123,44 @@ namespace Trinity.Client.TestProtocols
         /// <param name="response"></param>
         public override void GetTripleByCellIdHandler(TripleGetRequestReader request, ErrorCodeResponseWriter response)
         {
-            TripleStoreServer = Global.CommunicationInstance as TrinityServer;
+            response.errno = 0;
 
-            var geClient = Global.CommunicationInstance as TrinityClient;
+            switch (Global.CommunicationInstance)
+            {
+                case null:
+                    break;
+                case TrinityClient:
+                case TripleAppServerGatewayBase:
+                case TrinityProxy:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE App Server-side");
+                }
+                case TrinityServer:
+                {
+                    (IStorage GraphEngineClient, TripleGetRequestReader TriplePayload) requestPayload = (TripleStoreClient, request);
 
-            if (TripleStoreServer != null)
-                TrinityTripleModuleClient =
-                    TripleStoreServer.GetCommunicationModule<TrinityClientModule.TrinityClientModule>();
+                    GetTripleByCellIdRequestActionObserver.OnNext(requestPayload);
 
-            TripleStoreClient = TrinityTripleModuleClient.Clients.ToList().LastOrDefault();
+                    var getQueryRequestPayload = new TripleGetRequest()
+                    {
+                        Namespace = request.Namespace,
+                        Subject = request.Subject,
+                        Predicate = request.Predicate,
+                        Object = request.Object,
+                        TripleCellId = request.TripleCellId
+                    };
 
-            (IStorage GraphEngineClient, TripleGetRequestReader TriplePayload) requestPayload = (TripleStoreClient, request);
+                    QueryTripleStore(QueryModeType.ByCellId, getQueryRequestPayload)
+                    .Subscribe(queryResponse =>
+                       {
+                           response.QueryResult = queryResponse;
+                       });
 
-            GetTripleByCellIdRequestActionObserver.OnNext(requestPayload);
+                    break;
+                }
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         /// <summary>
@@ -1124,17 +1170,42 @@ namespace Trinity.Client.TestProtocols
         /// <param name="response"></param>
         public override void GetTripleSubjectHandler(TripleGetRequestReader request, ErrorCodeResponseWriter response)
         {
-            TripleStoreServer = Global.CommunicationInstance as TrinityServer;
+            response.errno = 0;
 
-            if (TripleStoreServer != null)
-                TrinityTripleModuleClient =
-                    TripleStoreServer.GetCommunicationModule<TrinityClientModule.TrinityClientModule>();
+            switch (Global.CommunicationInstance)
+            {
+                case null:
+                    break;
+                case TrinityClient:
+                case TripleAppServerGatewayBase:
+                case TrinityProxy:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE App Server-side");
+                }
+                case TrinityServer:
+                {
+                    (IStorage GraphEngineClient, TripleGetRequestReader TriplePayload) requestPayload = (TripleStoreClient, request);
 
-            TripleStoreClient = TrinityTripleModuleClient.Clients.ToList().LastOrDefault();
+                    GetTripleBySubjectRequestActionObserver.OnNext(requestPayload);
 
-            (IStorage GraphEngineClient, TripleGetRequestReader TriplePayload) requestPayload = (TripleStoreClient, request);
+                    var getQueryRequestPayload = new TripleGetRequest()
+                    {
+                        Namespace = request.Namespace,
+                        Subject = request.Subject,
+                        Predicate = request.Predicate,
+                        Object = request.Object,
+                        TripleCellId = request.TripleCellId
+                    };
 
-            GetTripleBySubjectRequestActionObserver.OnNext(requestPayload);
+                    QueryTripleStore(QueryModeType.BySubject, getQueryRequestPayload)
+                    .Subscribe(queryResponse =>
+                       {
+                           response.QueryResult = queryResponse;
+                       });
+
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -1144,44 +1215,76 @@ namespace Trinity.Client.TestProtocols
         /// <param name="response"></param>
         public override void PushTripleToClientHandler(TripleGetRequestReader request, ErrorCodeResponseWriter response)
         {
-            TripleStoreServer = Global.CommunicationInstance as TrinityServer;
+            //(IStorage GraphEngineClient, TripleGetRequestReader TriplePayload) requestPayload = (null, request);
 
-            if (TripleStoreServer != null)
-                TrinityTripleModuleClient =
-                    TripleStoreServer.GetCommunicationModule<TrinityClientModule.TrinityClientModule>();
-
-            foreach (var geClientInstance in TrinityTripleModuleClient.Clients)
-            {
-                ;
-            }
-
-            (IStorage GraphEngineClient, TripleGetRequestReader TriplePayload) requestPayload = (null, request);
-
-            GetTripleBySubjectRequestActionObserver.OnNext(requestPayload);
+            //GetTripleBySubjectRequestActionObserver.OnNext(requestPayload);
 
             response.errno = 400;
+        }
 
+        /// <summary>
+        /// Server-side Symmetric TPC/RPC Handler
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
+        public override void SaveTripleToTripleStoreHandler(TripleSaveRequestReader request, TripleSaveResponseWriter response)
+        {
+            switch (Global.CommunicationInstance)
+            {
+                case null:
+                    break;
+                case TrinityClient:
+                case TripleAppServerGatewayBase:
+                case TrinityProxy:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE App Server-side");
+                }
+                case TrinityServer:
+                {
+                    SaveTripleToMemoryCloud(request)
+                        .Subscribe(saveTripleResponse => response.TripleCellId = saveTripleResponse.TripleCellId);
+
+                    break;
+                }
+            }
         }
 
         // To be received on the client side
         /// <summary>
-        /// 
+        /// Called from the server side so the GE Client will execute this handler.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
         public override void StreamTriplesAsyncHandler(TripleStreamReader request, ErrorCodeResponseWriter response)
         {
-            //TripleStoreServer = Global.CommunicationInstance as TrinityServer;
+            switch (Global.CommunicationInstance)
+            {
+                case null:
+                    break;
+                case TripleAppServerGatewayBase appServerGatewayBase:
+                case TrinityProxy trinityProxy:
+                case TrinityServer trinityServer:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE Client-side");
+                }
+                case TrinityClient:
+                {
+                    if (Global.CommunicationInstance is TrinityClient trinityTripleClientModule)
+                    {
+                        (IStorage GraphEngineClient, TripleStreamReader TriplePayload) requestPayload = (TripleStoreClient, request);
 
-            //if (TripleStoreServer != null)
-            //    TrinityTripleModuleClient =
-            //        TripleStoreServer.GetCommunicationModule<TrinityClientModule.TrinityClientModule>();
+                        TripleStreamReceivedActionObserver.OnNext(requestPayload);
 
-            //TripleStoreClient = TrinityTripleModuleClient.Clients.ToList().LastOrDefault();
+                        response.errno = 0;
+                    }
 
-            (IStorage GraphEngineClient, TripleStreamReader TriplePayload) requestPayload = (null, request);
-
-            TripleStreamReceivedActionObserver.OnNext(requestPayload);
+                    break;
+                }
+                default:
+                    throw new InvalidOperationException("This code can only be executed on the GE Client-side");
+            }
         }
+
+        public override string GetModuleName() => "TripleModule";
     }
 }

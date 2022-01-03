@@ -64,7 +64,7 @@ namespace Trinity.DynamicCluster.Storage
 
         /// <summary>
         /// It is guaranteed that OnStorageLeave will only be called
-        /// on those storages that has been previously sent to
+        /// on those storage that has been previously sent to
         /// <see cref="OnStorageJoin"/>. However, OnStorageLeave may
         /// be called multiple times (disconnected, then reconnected,
         /// or remote <see cref="Close"/> is called).

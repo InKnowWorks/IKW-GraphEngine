@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphEngine.Core" Version="2.0.11113" />
+    <PackageReference Include="GraphEngine.Core" Version="2.0.11160" />
   </ItemGroup>
 
 </Project>

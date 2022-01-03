@@ -10,6 +10,8 @@
 	  <FileVersion>$(DOTNET_PACKAGE_VERSION)</FileVersion>
 	  <PackageVersion>$(DOTNET_PACKAGE_VERSION)</PackageVersion>
 	  <ApplicationIcon>TslIcon.ico</ApplicationIcon>
+	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	  <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -20,7 +22,7 @@
     <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <ProjectReference Include="..\Trinity.Client.TestProtocols\Trinity.Client.TestProtocols.csproj" />
   </ItemGroup>
 

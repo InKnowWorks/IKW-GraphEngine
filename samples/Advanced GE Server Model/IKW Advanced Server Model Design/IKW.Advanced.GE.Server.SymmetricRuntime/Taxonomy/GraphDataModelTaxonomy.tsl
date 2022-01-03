@@ -1,6 +1,4 @@
 ﻿// streaming random triples from server->client
-// Non-production - NOT NOT USE for PRODUCTION!
-// For Testing, Learning and Demo purposes ONLY
 
 struct Triple
 {
@@ -12,7 +10,8 @@ struct Triple
 
 struct TripleGetRequest
 {
-	long   TripleCellId;
+	long   GraphEngineClientId;	
+	CellId TripleCellId;
 	string Subject;
 	string Predicate;
 	string Object;
@@ -28,21 +27,15 @@ struct TripleSaveRequest
 	string Namespace;
 }
 
-struct TripleSaveResponse
-{
-	CellId TripleCellId;
-}
-
 struct TripleStream
 {
-	long GraphEngineClientId;		
+	long   GraphEngineClientId;		
 	List<Triple> triples;
 }
 
 struct ErrorCodeResponse
 {
 	int errno;
-	bool QueryResult;
 }
 
 cell struct TripleStore

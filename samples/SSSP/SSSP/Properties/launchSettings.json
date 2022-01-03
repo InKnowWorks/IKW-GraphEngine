@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SSSP": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -11,6 +11,7 @@
 	  <FileVersion>$(DOTNET_PACKAGE_VERSION)</FileVersion>
 	  <PackageVersion>$(DOTNET_PACKAGE_VERSION)</PackageVersion>
 	  <ApplicationIcon>TslIcon.ico</ApplicationIcon>
+	  <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -21,7 +22,15 @@
     <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|x64'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+	<ItemGroup>
     <Compile Remove="Program.cs" />
   </ItemGroup>
 

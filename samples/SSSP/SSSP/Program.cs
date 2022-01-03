@@ -18,25 +18,25 @@ namespace SSSP
         public override void DistanceUpdatingHandler(DistanceUpdatingMessageReader request)
         {
             List<DistanceUpdatingMessage> DistanceUpdatingMessageList = new List<DistanceUpdatingMessage>();
+
             request.recipients.ForEach((cellId) =>
             {
-                using (var cell = Global.LocalStorage.UseSSSPCell(cellId))
+                using var cell = Global.LocalStorage.UseSSSPCell(cellId);
+
+                if (cell.distance > request.distance + 1)
                 {
-                    if (cell.distance > request.distance + 1)
+                    cell.distance = request.distance + 1;
+                    cell.parent = request.senderId;
+                    Console.Write(cell.distance + " ");
+                    MessageSorter sorter = new MessageSorter(cell.neighbors);
+
+                    for (int i = 0; i < Global.ServerCount; i++)
                     {
-                        cell.distance = request.distance + 1;
-                        cell.parent = request.senderId;
-                        Console.Write(cell.distance + " ");
-                        MessageSorter sorter = new MessageSorter(cell.neighbors);
-
-                        for (int i = 0; i < Global.ServerCount; i++)
-                        {
-                            DistanceUpdatingMessageWriter msg = new DistanceUpdatingMessageWriter(cell.CellId,
-                                cell.distance, sorter.GetCellRecipientList(i));
-                            Global.CloudStorage.DistanceUpdatingToSSSPServer(i, msg);
-                        }
-
+                        DistanceUpdatingMessageWriter msg = new DistanceUpdatingMessageWriter(cell.CellId,
+                            cell.distance, sorter.GetCellRecipientList(i));
+                        Global.CloudStorage.DistanceUpdatingToSSSPServer(i, msg);
                     }
+
                 }
             });
         }
@@ -45,17 +45,15 @@ namespace SSSP
         {
             if (Global.CloudStorage.IsLocalCell(request.root))
             {
-                using (var rootCell = Global.LocalStorage.UseSSSPCell(request.root))
-                {
-                    rootCell.distance = 0;
-                    rootCell.parent = -1;
-                    MessageSorter sorter = new MessageSorter(rootCell.neighbors);
+                using var rootCell = Global.LocalStorage.UseSSSPCell(request.root);
+                rootCell.distance = 0;
+                rootCell.parent = -1;
+                MessageSorter sorter = new MessageSorter(rootCell.neighbors);
 
-                    for (int i = 0; i < Global.ServerCount; i++)
-                    {
-                        DistanceUpdatingMessageWriter msg = new DistanceUpdatingMessageWriter(rootCell.CellId, 0, sorter.GetCellRecipientList(i));
-                        Global.CloudStorage.DistanceUpdatingToSSSPServer(i, msg);
-                    }
+                for (int i = 0; i < Global.ServerCount; i++)
+                {
+                    DistanceUpdatingMessageWriter msg = new DistanceUpdatingMessageWriter(rootCell.CellId, 0, sorter.GetCellRecipientList(i));
+                    Global.CloudStorage.DistanceUpdatingToSSSPServer(i, msg);
                 }
             }
         }
@@ -65,7 +63,13 @@ namespace SSSP
     {
         static void Main(string[] args)
         {
-            TrinityConfig.AddServer(new Trinity.Network.ServerInfo("127.0.0.1", 5304, Global.MyAssemblyPath, Trinity.Diagnostics.LogLevel.Error));
+            TrinityConfig.AddServer(new Trinity.Network.ServerInfo("GenNexusPrime.inknowworksdev.net", 5304, Global.MyAssemblyPath, Trinity.Diagnostics.LogLevel.Error));
+
+            //args = new[]
+            //{
+            //    "-s",
+            //    "1000"
+            //};
 
             if (args.Length >= 1 && args[0].StartsWith("-s"))
             {
@@ -77,12 +81,11 @@ namespace SSSP
             if (args.Length >= 2 && args[0].StartsWith("-c"))
             {
                 TrinityConfig.CurrentRunningMode = RunningMode.Client;
+
                 for (int i = 0; i < Global.ServerCount; i++)
                 {
-                    using (var msg = new StartSSSPMessageWriter(long.Parse(args[1].Trim())))
-                    {
-                        Global.CloudStorage.StartSSSPToSSSPServer(i, msg);
-                    }
+                    using var msg = new StartSSSPMessageWriter(long.Parse(args[1].Trim()));
+                    Global.CloudStorage.StartSSSPToSSSPServer(i, msg);
                 }
             }
 
@@ -90,12 +93,16 @@ namespace SSSP
             if (args.Length >= 2 && args[0].StartsWith("-q"))
             {
                 TrinityConfig.CurrentRunningMode = RunningMode.Client;
+
                 var cell = Global.CloudStorage.LoadSSSPCell(int.Parse(args[1]));
+                
                 Console.WriteLine("Current vertex is {0}, the distance to the source vertex is {1}.",
                     cell.CellId, cell.distance);
+
                 while (cell.distance > 0)
                 {
                     cell = Global.CloudStorage.LoadSSSPCell(cell.parent);
+
                     Console.WriteLine("Current vertex is {0}, the distance to the source vertex is {1}.",
                         cell.CellId, cell.distance);
                 }
@@ -108,10 +115,13 @@ namespace SSSP
                 TrinityConfig.CurrentRunningMode = RunningMode.Client;
 
                 Random rand = new Random();
+
                 int nodeCount = int.Parse(args[1].Trim());
+
                 for (int i = 0; i < nodeCount; i++)
                 {
                     HashSet<long> neighbors = new HashSet<long>();
+
                     for (int j = 0; j < 10; j++)
                     {
                         long neighhor = rand.Next(0, nodeCount);
@@ -120,6 +130,7 @@ namespace SSSP
                             neighbors.Add(neighhor);
                         }
                     }
+
                     Global.CloudStorage.SaveSSSPCell(i, distance: int.MaxValue, parent: -1, neighbors: neighbors.ToList());
                 }
             }

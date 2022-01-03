@@ -1,0 +1,106 @@
+﻿// Server-side push to the cleint
+
+protocol StreamTriplesAsync
+{
+	Type: Asyn;
+	Request: TripleStream;
+	Response: ErrorCodeResponse;
+}
+
+// Client-side call that pushes a Triple to the server
+
+protocol PostTriplesToServer
+{
+	Type: Asyn;
+	Request: TripleStream;
+	Response: ErrorCodeResponse;
+}
+
+// Client-side RPC call
+
+protocol GetTripleByCellId
+{
+	Type: Asyn;
+	Request: TripleGetRequest;
+	Response: ErrorCodeResponse;
+}
+
+// Client-side RPC call
+protocol GetTripleSubject
+{
+	Type: Asyn;
+	Request: TripleGetRequest;
+	Response: ErrorCodeResponse;
+}
+
+// Server-side Push to Client
+
+protocol PushTripleToClient
+{
+	Type: Asyn;
+	Request: TripleGetRequest;
+	Response: ErrorCodeResponse;
+}
+
+// Client-Side Request to Save Triple to MemoryCloud
+protocol SaveTripleToMemoryCloud
+{
+	Type: Syn;
+	Request: TripleGetRequest;
+	Response: TripleSaveRequest;
+}
+
+struct RPCRequestCall
+{
+	int AppServerId;
+	string RPC_Method_Call;
+}
+
+protocol RouteRPC_Call
+{
+	Type: Asyn;
+	Request: RPCRequestCall;
+	Response: void;
+}
+
+// Declare Second Server Module
+
+protocol WriteTripleAsync
+{
+	Type: Asyn;
+	Request: Triple;
+	Response: void;
+}
+
+protocol FetchTripleAsync
+{
+	Type: Asyn;
+	Request: Triple;
+	Response: void;
+}
+
+server TripleServer
+{
+	protocol StreamTriplesAsync;
+	protocol PushTripleToClient;
+}
+
+module ClientTripleStoreFetchWriteModule
+{
+  protocol FetchTripleAsync;
+  protocol WriteTripleAsync;
+}
+
+module ClientTripleStoreModule
+{
+	protocol PostTriplesToServer;
+	protocol GetTripleByCellId;
+	protocol GetTripleSubject;
+	protocol PushTripleToClient;
+	protocol SaveTripleToMemoryCloud;
+}
+
+proxy TripleAppServerGateway
+{
+	protocol RouteRPC_Call;
+}

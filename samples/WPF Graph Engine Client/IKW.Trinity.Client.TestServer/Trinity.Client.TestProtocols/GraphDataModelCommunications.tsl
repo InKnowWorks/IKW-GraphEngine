@@ -1,10 +1,15 @@
-﻿protocol StreamTriplesAsync
+﻿// Server-side Asemetric Push to all connected GE Client Apps
+// Reactive Event processing via ReactivePropety and Native HOT Observables
+protocol StreamTriplesAsync
 {
 	  Type: Asyn;
 	  Request: TripleStream;
 	  Response: ErrorCodeResponse;
 }
 
+// Client-side Post of Triple to GE TripleStore App Server
+// Graph Enginer generates a TCP/RPC Handler that is executed on the Server-side
+// of the Symmetric Server-side library! 
 protocol PostTriplesToServer
 {
 	  Type: Asyn;
@@ -12,6 +17,7 @@ protocol PostTriplesToServer
 	  Response: ErrorCodeResponse;
 }
 
+// Client-side Query of Triples stored on GE App TripleStore App Server
 protocol GetTripleByCellId
 {
 		Type: Asyn;
@@ -19,6 +25,7 @@ protocol GetTripleByCellId
 		Response: ErrorCodeResponse;
 }
 
+// Client-side Query of Triples stored on GE App TripleStore App Server
 protocol GetTripleSubject
 {
 		Type: Asyn;
@@ -34,6 +41,14 @@ protocol PushTripleToClient
 		Response: ErrorCodeResponse;
 }
 
+// Client-Side Request to Save Triple to MemoryCloud
+protocol SaveTripleToTripleStore
+{
+	Type: Syn;
+	Request: TripleSaveRequest;
+	Response: TripleSaveResponse;
+}
+
 module TripleServer
 {
 	protocol StreamTriplesAsync;
@@ -41,6 +56,25 @@ module TripleServer
 	protocol GetTripleByCellId;
 	protocol GetTripleSubject;
 	protocol PushTripleToClient;
+	protocol SaveTripleToTripleStore;
+}
+
+struct RPCRequestCall
+{
+	int AppServerId;
+	string RPC_Method_Call;
+}
+
+protocol RouteRPC_Call
+{
+	Type: Asyn;
+	Request: RPCRequestCall;
+	Response: void;
+}
+
+proxy TripleAppServerGateway
+{
+	protocol RouteRPC_Call;
 }
 
 // Declare Second Server Module
