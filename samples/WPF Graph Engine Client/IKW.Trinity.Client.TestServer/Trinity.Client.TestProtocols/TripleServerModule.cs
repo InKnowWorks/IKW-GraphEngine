@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using System.Reflection.PortableExecutable;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Reflection;
+
 using Reactive.Bindings;
-using Trinity.Client.TestProtocols.TripleAppServerGateway;
 using Trinity.Client.TestProtocols.TripleServer;
-using Trinity.Core.Lib;
 using Trinity.Diagnostics;
 using Trinity.Extension;
 using Trinity.Network;
 using Trinity.Storage;
 using Trinity.TSL.Lib;
-
-using static System.Formats.Asn1.AsnWriter;
 
 namespace Trinity.Client.TestProtocols
 {
@@ -30,6 +24,9 @@ namespace Trinity.Client.TestProtocols
         // Let's use RX to setup Subscription based processing of object with the intention of
         // the UI viewModel and WPF code-behind to hook-up to presenting to the UI; our Test Server
         // is pushing triples to our WPF client
+
+        private ImmutableDictionary<int, (Guid ClientRegId, IStorage ClientModule)?>.Builder _pushRegistrationRepositoryBuilder;
+        private ImmutableDictionary<int, (Guid ClientRegId, IStorage ClientModule)?> _pushRegistrationRepository;
 
         private static TripleModule GraphEngineTripleModuleImpl { get; set; }
         //private static TripleStoreDemoServerModule GraphEngineTripleStoreDemoServerImpl { get; set; }
@@ -112,6 +109,24 @@ namespace Trinity.Client.TestProtocols
         private readonly TripleStoreEqualityCompare _tripleStoreEqualityCompare = null;
         private readonly TripleTupleEqualityCompare _tripleTupleEqualityCompare = null;
 
+        private PushRegistrationRepositoryKeyEqualityCompare ClientRegIdKeyEqualityCompare { get; set; }
+        private PushRegistrationValueEqualityCompare ClientModuleValueEqualityCompare { get; set; }
+
+        //public override string GetModuleName() => "TripleModule";
+        public static TripleModule TripleClientSideModule { get; set; } = null;
+
+        private ImmutableDictionary<int, (Guid ClientRegId, IStorage ClientModule)?>.Builder PushRegistrationRepositoryBuilder
+        {
+            get => _pushRegistrationRepositoryBuilder;
+            set => _pushRegistrationRepositoryBuilder = value;
+        }
+
+        private ImmutableDictionary<int, (Guid ClientRegId, IStorage ClientModule)?> PushRegistrationRepository
+        {
+            get => _pushRegistrationRepository;
+            set => _pushRegistrationRepository = value;
+        }
+
         // We modify the default class constructor 
         public TripleModule()
         {
@@ -126,7 +141,157 @@ namespace Trinity.Client.TestProtocols
             SetupObservers();
             SetUpObservables();
             SetupExternalReactiveProperties();
+
+            ClientRegIdKeyEqualityCompare    = new PushRegistrationRepositoryKeyEqualityCompare();
+            ClientModuleValueEqualityCompare = new PushRegistrationValueEqualityCompare();
+
+            // Okay let new-up the repository for Server-side GE Client Push Automation support
+
+            _pushRegistrationRepositoryBuilder = ImmutableDictionary.CreateBuilder(ClientRegIdKeyEqualityCompare, ClientModuleValueEqualityCompare);
+            _pushRegistrationRepository        = ImmutableDictionary.Create(ClientRegIdKeyEqualityCompare, ClientModuleValueEqualityCompare);
         }
+
+        /// <summary>
+        /// Register GE Client for Server Push Automation Service
+        /// </summary>
+        /// <param name="geClient"></param>
+        /// <param name="geClientInstanceId"></param>
+        /// <returns></returns>
+        public async Task<Guid?> RegisterClientForPushAutomationAsync(IStorage geClient, int geClientInstanceId)
+        {
+            var registrationId = Guid.Empty;
+
+            switch (Global.CommunicationInstance)
+            {
+                case TrinityClient:
+                case TripleAppServerGatewayBase:
+                case TrinityProxy:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE App Server-side");
+                }
+                case TrinityServer:
+                {
+                    using var registerClientForPushAutomationTask = Task.Factory.StartNew(async () =>
+                        {
+                            await Task.Delay(0).ConfigureAwait(false);
+
+                            var (sourceClientId, clientReg) = _pushRegistrationRepositoryBuilder.FirstOrDefault(entry => entry.Key == geClientInstanceId);
+
+                            if (clientReg.HasValue)
+                            {
+                                registrationId = clientReg.Value.ClientRegId;
+
+                                return registrationId;
+                            }
+
+                            var newClientPushRegId = Guid.NewGuid();
+
+                            (Guid ClientRegId, IStorage ClientModule) newEntry = (ClientRegId: newClientPushRegId, geClient);
+
+                            PushRegistrationRepositoryBuilder.Add(geClientInstanceId, newEntry);
+                            PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
+
+                            registrationId = newClientPushRegId;
+
+                            return newClientPushRegId;
+                        }, cancellationToken: CancellationToken.None,
+                        creationOptions: TaskCreationOptions.HideScheduler,
+                        scheduler: TaskScheduler.Current).Unwrap();
+
+                    var forPushAutomationTask = registerClientForPushAutomationTask;
+
+                    return await forPushAutomationTask;
+                }
+            }
+
+            return registrationId;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private class PushRegistrationRepositoryKeyEqualityCompare : IEqualityComparer<int>
+        {
+            public bool Equals(int x, int y)
+            {
+                return x.Equals(obj: y);
+            }
+
+            public int GetHashCode(int obj)
+            {
+                return obj.GetHashCode();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private class PushRegistrationValueEqualityCompare: IEqualityComparer<(Guid ClientRegId, IStorage ClientModule)?>
+        {
+            public bool Equals((Guid ClientRegId, IStorage ClientModule)? x,
+                               (Guid ClientRegId, IStorage ClientModule)? y)
+            {
+                if (!x.HasValue || !y.HasValue) return false;
+
+                var clientRegId_X_PushAutomationConfig  = x.Value.ClientRegId;
+                var clientModule_X_PushAutomationConfig = x.Value.ClientModule;
+
+                var clientRegId_Y_PushAutomationConfig  = y.Value.ClientRegId;
+                var clientModule_Y_PushAutomationConfig = y.Value.ClientModule;
+
+                return clientRegId_X_PushAutomationConfig == clientRegId_Y_PushAutomationConfig;
+            }
+
+            public int GetHashCode((Guid ClientRegId, IStorage ClientModule)? obj)
+            {
+                return obj != null ? obj.Value.ClientRegId.GetHashCode() : 0;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientRegId"></param>
+        /// <param name="sourceClientModule"></param>
+        /// <returns></returns>
+        public async Task<Guid?> RegisterGEClientForPushAutomation(Guid clientRegId, TrinityClientModule.TrinityClientModule sourceClientModule)
+        {
+            switch (Global.CommunicationInstance)
+            {
+                case null:
+                    break;
+                case TrinityClient:
+                case TripleAppServerGatewayBase:
+                case TrinityProxy:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE App Server-side");
+                }
+                case TrinityServer serverSideCommunicationInstance:
+                {
+                    using var registerClientForServerSidePushAutomationTask = Task.Factory.StartNew(async () =>
+                        {
+                            await Task.Delay(0).ConfigureAwait(false);
+
+
+
+                        }, cancellationToken: CancellationToken.None,
+                           creationOptions: TaskCreationOptions.HideScheduler,
+                           scheduler: TaskScheduler.Current).Unwrap().ContinueWith(async _ =>
+                            {
+                                await Task.Delay(0).ConfigureAwait(false);
+
+                                Log.WriteLine("Task TripleByCellIdReceivedAction Complete...");
+                            }, cancellationToken: CancellationToken.None);
+
+                    var clientForServerSidePushAutomationTask = registerClientForServerSidePushAutomationTask;
+
+                    await clientForServerSidePushAutomationTask;
+                    break;
+                }
+            }
+
+            return null;
+        }
+
 
         /// <summary>
         ///  
@@ -634,7 +799,7 @@ namespace Trinity.Client.TestProtocols
                    newTriple.TripleCell.Predicate = reader.Predicate;
                    newTriple.TripleCell.Subject   = reader.Subject;
 
-                    // Save Triple to local memory cloud and return the newly have triple to the calling client
+                    // Save Triple to local memory cloud and return the newly have clientRequest to the calling client
 
                     if (Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead, newTriple.CellId, newTriple))
                     {
@@ -652,6 +817,93 @@ namespace Trinity.Client.TestProtocols
                         return Disposable.Empty;
                     }
                });
+        }
+
+        /// <summary>
+        /// Server-side
+        /// </summary>
+        /// <param name="clientRequest"></param>
+        /// <returns></returns>
+        private IObservable<ClientRegistrationResponseWriter> RegisterClientForServerSidePushAutomation(ClientRegistrationRequest_Accessor clientRequest)
+        {
+
+            return Observable.Create<ClientRegistrationResponseWriter>(responseObserver =>
+            {
+                switch (Global.CommunicationInstance)
+                {
+                    case TrinityClient:
+                    case TripleAppServerGatewayBase:
+                    case TrinityProxy:
+                    {
+                        throw new InvalidOperationException(
+                            "This code can only be executed on the GE App Server-side");
+                    }
+                    case TrinityServer:
+                    {
+                        PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
+
+                        var (sourceClientId, clientReg) =
+                            PushRegistrationRepository.FirstOrDefault(
+                                entry => entry.Key == clientRequest.ClientInstanceId);
+
+                        if (clientReg.HasValue)
+                        {
+                            using (var response = new ClientRegistrationResponseWriter(clientReg.Value.ClientRegId))
+                            {
+                                responseObserver.OnNext(response);
+                            }
+
+                            responseObserver.OnCompleted();
+                        }
+                        else
+                        {
+                            TrinityTripleModuleClient = Global.CommunicationInstance
+                                                              .GetCommunicationModule<
+                                                                  TrinityClientModule.TrinityClientModule>();
+
+                            var connectedClient = TrinityTripleModuleClient?
+                                                            .Clients
+                                                            .ToList()
+                                                            .FirstOrDefault(geClient => clientRequest.ClientInstanceId == geClient.GetPrivatePropertyValue<int>("InstanceId"));
+
+                            if (connectedClient is not null)
+                            {
+                                var newClientPushRegId = Guid.NewGuid();
+
+                                var geClientInstanceId =
+                                    connectedClient.GetPrivatePropertyValue<int>("InstanceId");
+
+                                var newEntry = (ClientRegID: newClientPushRegId, ClientModule: connectedClient);
+
+                                PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
+
+                                if (PushRegistrationRepository.TryGetKey(geClientInstanceId,
+                                        out var actualClientInstanceId))
+                                {
+                                    if (actualClientInstanceId != 0)
+                                    {
+                                        PushRegistrationRepositoryBuilder.Add(
+                                            connectedClient.GetPrivatePropertyValue<int>("InstanceId"), newEntry);
+                                        PushRegistrationRepository =
+                                            PushRegistrationRepositoryBuilder.ToImmutable();
+                                    }
+                                }
+
+                                using (var response = new ClientRegistrationResponseWriter(newClientPushRegId))
+                                {
+                                    responseObserver.OnNext(response);
+                                }
+
+                                responseObserver.OnCompleted();
+                            }
+                        }
+
+                        break;
+                    }
+                }
+
+                return Disposable.Empty;
+            });
         }
 
         /// <summary>
@@ -825,8 +1077,8 @@ namespace Trinity.Client.TestProtocols
 
                     //await taskResult;
                 },
-        onCompleted: () => { },
-        onError: errorContext =>
+                onCompleted: () => { },
+                onError: errorContext =>
                  {
                      Log.WriteLine($"An Unexpected Error has been detected: {errorContext.Message}");
                  });
@@ -834,63 +1086,47 @@ namespace Trinity.Client.TestProtocols
             // Server-side Reactive Properties the Server subscribes to
 
             SaveClientPostedTripleToMemoryCloudActionObserver =
-                Observer.Create<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)>(onNext: async sourceTripleStore =>
+                Observer.Create<(Storage.IStorage GraphEngineClient, TripleStore NewTripleStore)>(onNext: sourceTripleStore =>
                 {
-                    await Task.Delay(0).ConfigureAwait(false);
-
                     var (idOnTriple, store) = sourceTripleStore;
 
-                    if (Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead, store.CellId))
+                    if (!Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead, store.CellId)) return;
+
+                    var msg = "SaveClientPostedTripleToMemoryCloudActionObserver-1";
+
+                    Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg,
+                        Thread.CurrentThread.ManagedThreadId);
+
+                    try
                     {
-                        var msg = "SaveClientPostedTripleToMemoryCloudActionObserver-1";
+                        using var tripleStore = Global.LocalStorage.UseTripleStore(store.CellId, CellAccessOptions.StrongLogAhead);
 
-                        Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg,
-                            Thread.CurrentThread.ManagedThreadId);
-
-                        try
+                        using var tripleStoreStreamWriter1 = new TripleGetRequestWriter()
                         {
-                            using var tripleStore = Global.LocalStorage.UseTripleStore(store.CellId, CellAccessOptions.StrongLogAhead);
+                            TripleCellId  = tripleStore.CellId,
+                            Subject       = tripleStore.TripleCell.Subject,
+                            Namespace     = tripleStore.TripleCell.Namespace,
+                            Object        = tripleStore.TripleCell.Object
+                        };
 
-                            using var tripleStoreStreamWriter1 = new TripleGetRequestWriter()
-                            {
-                                TripleCellId  = tripleStore.CellId,
-                                Subject       = tripleStore.TripleCell.Subject,
-                                Namespace     = tripleStore.TripleCell.Namespace,
-                                Object        = tripleStore.TripleCell.Object
-                            };
+                        Log.WriteLine($"Cell-ID from newly saved Triple Store Object: {tripleStore.CellId}");
 
-                            Log.WriteLine($"Cell-ID from newly saved Triple Store Object: {tripleStore.CellId}");
+                        ClientPostedTripleStoreReadyInMemoryCloudActionObserver.OnNext(store);
 
-                            //List<Triple> collectionOfTriples = new List<Triple> { sourceTripleStore.NewTripleStore.TripleCell };
-
-                            //using var storeStreamWriter = new TripleGetRequestWriter()
-                            //{
-                            //    TripleCellId = sourceTripleStore.NewTripleStore.CellId,
-                            //    Subject = sourceTripleStore.NewTripleStore.TripleCell.Subject,
-                            //    Namespace = sourceTripleStore.NewTripleStore.TripleCell.Namespace,
-                            //    Object = sourceTripleStore.NewTripleStore.TripleCell.Object
-                            //};
-
-                            ClientPostedTripleStoreReadyInMemoryCloudActionObserver.OnNext(store);
-
-                            ClientPostedTripleSavedToMemoryCloudAction.Value = (null, store);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                        }
-                        finally
-                        {
-                            //if (requestWriterlockAcquired)
-                            //    tripleGetRequestWriterSpinLock.Exit(false);
-                        }
+                        ClientPostedTripleSavedToMemoryCloudAction.Value = (null, store);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                    finally
+                    {
+                        //if (requestWriterlockAcquired)
+                        //    tripleGetRequestWriterSpinLock.Exit(false);
                     }
                 },
-        onCompleted: () => { },
-        onError: errorContext =>
-                 {
-                     Log.WriteLine($"An Unexpected Error has been detected: {errorContext.Message}");
-                 });
+                onCompleted: () => { },
+                onError: errorContext => Log.WriteLine($"An Unexpected Error has been detected: {errorContext.Message}"));
 
             GetTripleByCellIdRequestActionObserver =
                 Observer.Create<(Storage.IStorage GraphEngineClient, TripleGetRequestReader TriplePayload)>(onNext: async tripleGetRequestReader =>
@@ -1076,9 +1312,6 @@ namespace Trinity.Client.TestProtocols
                 });
         }
 
-        //public override string GetModuleName() => "TripleModule";
-        private static TripleModule TripleClientSideModule { get; set; } = null;
-
         // To be received on the server side
         /// <summary>
         /// As this call originates from the Client side of the Symmetric TCP/RPC runtime; the GE App Server
@@ -1209,17 +1442,28 @@ namespace Trinity.Client.TestProtocols
         }
 
         /// <summary>
-        /// Client-side RPC Call
+        /// Client-Side Event Handler
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
-        public override void PushTripleToClientHandler(TripleGetRequestReader request, ErrorCodeResponseWriter response)
+        /// <exception cref="NotImplementedException"></exception>
+        public override void PushTripleToClientAsyncHandler(TriplePushDemandReader request, ErrorCodeResponseWriter response)
         {
-            //(IStorage GraphEngineClient, TripleGetRequestReader TriplePayload) requestPayload = (null, request);
+            switch (Global.CommunicationInstance)
+            {
+                case null:
+                case TripleAppServerGatewayBase:
+                case TrinityProxy:
+                case TrinityServer:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE Client-side");
+                }
+                case TrinityClient:
+                {
 
-            //GetTripleBySubjectRequestActionObserver.OnNext(requestPayload);
-
-            response.errno = 400;
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -1244,6 +1488,34 @@ namespace Trinity.Client.TestProtocols
                     SaveTripleToMemoryCloud(request)
                         .Subscribe(saveTripleResponse => response.TripleCellId = saveTripleResponse.TripleCellId);
 
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Server-side Handler
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void RegisterForPushAutomationHandler(ClientRegistrationRequestReader request,
+                                                              ClientRegistrationResponseWriter response)
+        {
+            switch (Global.CommunicationInstance)
+            {
+                case null:
+                    break;
+                case TrinityClient:
+                case TripleAppServerGatewayBase:
+                case TrinityProxy:
+                {
+                    throw new InvalidOperationException("This code can only be executed on the GE App Server-side");
+                }
+                case TrinityServer:
+                {
+                    RegisterClientForServerSidePushAutomation(request)
+                        .Subscribe(clientPushRegID => response.PushAutomationRegId = clientPushRegID.PushAutomationRegId);
                     break;
                 }
             }
@@ -1287,4 +1559,104 @@ namespace Trinity.Client.TestProtocols
 
         public override string GetModuleName() => "TripleModule";
     }
+
+    public static class PropertyHelper
+        {
+            /// <summary>
+            /// Returns a _private_ Property Value from a given Object. Uses Reflection.
+            /// Throws a ArgumentOutOfRangeException if the Property is not found.
+            /// </summary>
+            /// <typeparam name="T">Type of the Property</typeparam>
+            /// <param name="obj">Object from where the Property Value is returned</param>
+            /// <param name="propName">Propertyname as string.</param>
+            /// <returns>PropertyValue</returns>
+            public static T GetPrivatePropertyValue<T>(this object obj, string propName)
+            {
+                if (obj == null) throw new ArgumentNullException("obj");
+                PropertyInfo pi = obj.GetType().GetProperty(propName,
+                    BindingFlags.Public | BindingFlags.NonPublic |
+                    BindingFlags.Instance);
+                if (pi == null)
+                    throw new ArgumentOutOfRangeException($"propName",
+                        $"Property {propName} was not found in Type {obj.GetType().FullName}");
+                return (T) pi.GetValue(obj, null);
+            }
+
+            /// <summary>
+            /// Returns a private Field Value from a given Object. Uses Reflection.
+            /// Throws a ArgumentOutOfRangeException if the Property is not found.
+            /// </summary>
+            /// <typeparam name="T">Type of the Field</typeparam>
+            /// <param name="obj">Object from where the Field Value is returned</param>
+            /// <param name="propName">Field Name as string.</param>
+            /// <returns>FieldValue</returns>
+            public static T GetPrivateFieldValue<T>(this object obj, string propName)
+            {
+                if (obj == null) throw new ArgumentNullException("obj");
+                Type      t  = obj.GetType();
+                FieldInfo fi = null;
+                while (fi == null && t != null)
+                {
+                    fi = t.GetField(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    t = t.BaseType;
+                }
+
+                if (fi == null)
+                    throw new ArgumentOutOfRangeException("propName",
+                        string.Format("Field {0} was not found in Type {1}", propName,
+                            obj.GetType().FullName));
+                return (T) fi.GetValue(obj);
+            }
+
+            /// <summary>
+            /// Sets a _private_ Property Value from a given Object. Uses Reflection.
+            /// Throws a ArgumentOutOfRangeException if the Property is not found.
+            /// </summary>
+            /// <typeparam name="T">Type of the Property</typeparam>
+            /// <param name="obj">Object from where the Property Value is set</param>
+            /// <param name="propName">Propertyname as string.</param>
+            /// <param name="val">Value to set.</param>
+            /// <returns>PropertyValue</returns>
+            public static void SetPrivatePropertyValue<T>(this object obj, string propName, T val)
+            {
+                Type t = obj.GetType();
+                if (t.GetProperty(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance) ==
+                    null)
+                    throw new ArgumentOutOfRangeException("propName",
+                        string.Format("Property {0} was not found in Type {1}", propName,
+                            obj.GetType().FullName));
+                t.InvokeMember(propName,
+                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.SetProperty |
+                    BindingFlags.Instance, null, obj, new object[] {val});
+            }
+
+
+            /// <summary>
+            /// Set a private Field Value on a given Object. Uses Reflection.
+            /// </summary>
+            /// <typeparam name="T">Type of the Field</typeparam>
+            /// <param name="obj">Object from where the Property Value is returned</param>
+            /// <param name="propName">Field name as string.</param>
+            /// <param name="val">the value to set</param>
+            /// <exception cref="ArgumentOutOfRangeException">if the Property is not found</exception>
+            public static void SetPrivateFieldValue<T>(this object obj, string propName, T val)
+            {
+                if (obj == null) throw new ArgumentNullException("obj");
+                Type      t  = obj.GetType();
+                FieldInfo fi = null;
+                while (fi == null && t != null)
+                {
+                    fi = t.GetField(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    t = t.BaseType;
+                }
+
+                if (fi == null)
+                    throw new ArgumentOutOfRangeException("propName",
+                        string.Format("Field {0} was not found in Type {1}", propName,
+                            obj.GetType().FullName));
+                fi.SetValue(obj, val);
+            }
+        }
 }
+
+

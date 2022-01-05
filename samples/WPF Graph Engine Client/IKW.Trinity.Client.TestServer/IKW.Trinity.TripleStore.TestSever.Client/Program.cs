@@ -8,6 +8,7 @@ namespace Trinity.TripleStore.TestSever.Client
     using System.Collections.Generic;
     using System.Globalization;
 using System.Net;
+using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
     using Diagnostics;
@@ -54,53 +55,53 @@ using System.Net;
             TripleClientSideModule.TripleBySubjectReceivedAction
               .ObserveOn(TripleClientSideModule.ObserverOnNewThreadScheduler)
               .Do(onNext: subscriberSource =>
-                  {
-                      var msg = "TripleBySubjectReceivedAction-1";
-                      Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg, Thread.CurrentThread.ManagedThreadId);
-                  })
+                          {
+                              var msg = "TripleBySubjectReceivedAction-1";
+                              Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg, Thread.CurrentThread.ManagedThreadId);
+                          })
               .SubscribeOn(TripleClientSideModule.SubscribeOnEventLoopScheduler)
               .Subscribe(onNext: async tripleStore =>
-                 {
-                     using var reactiveGetTripleBySubjectTask = Task.Factory.StartNew(async () =>
-                         {
-                             //await Task.Yield();
+                                 {
+                                     using var reactiveGetTripleBySubjectTask = Task.Factory.StartNew(async () =>
+                                         {
+                                             //await Task.Yield();
 
-                             await Task.Delay(0).ConfigureAwait(false);
+                                             await Task.Delay(0).ConfigureAwait(false);
 
-                             Log.WriteLine("Reactive Async - Parallel-Tasking return from Server-Side Get Request on behalf of the Client.");
+                                             Log.WriteLine("Reactive Async - Parallel-Tasking return from Server-Side Get Request on behalf of the Client.");
 
-                             Log.WriteLine($"Processing Timestamp: {DateTime.Now.ToString(CultureInfo.InvariantCulture)}");
+                                             Log.WriteLine($"Processing Timestamp: {DateTime.Now.ToString(CultureInfo.InvariantCulture)}");
 
-                             Log.WriteLine($"Triple Object CellID   : {tripleStore.CellId}.");
-                             Log.WriteLine($"Triple Subject Node    : {tripleStore.TripleCell.Subject}");
-                             Log.WriteLine($"Triple Predicate Node  : {tripleStore.TripleCell.Predicate}");
-                             Log.WriteLine($"Triple Object Node     : {tripleStore.TripleCell.Object}.");
+                                             Log.WriteLine($"Triple Object CellID   : {tripleStore.CellId}.");
+                                             Log.WriteLine($"Triple Subject Node    : {tripleStore.TripleCell.Subject}");
+                                             Log.WriteLine($"Triple Predicate Node  : {tripleStore.TripleCell.Predicate}");
+                                             Log.WriteLine($"Triple Object Node     : {tripleStore.TripleCell.Object}.");
 
-                             var getTripleByCellRequestWriter = new TripleGetRequestWriter()
-                             {
-                                 TripleCellId   = tripleStore.CellId,
-                                 Subject        = tripleStore.TripleCell.Subject,
-                                 Predicate      = tripleStore.TripleCell.Predicate,
-                                 Object         = tripleStore.TripleCell.Object,
-                                 Namespace      = tripleStore.TripleCell.Namespace
-                             };
+                                             var getTripleByCellRequestWriter = new TripleGetRequestWriter()
+                                             {
+                                                 TripleCellId   = tripleStore.CellId,
+                                                 Subject        = tripleStore.TripleCell.Subject,
+                                                 Predicate      = tripleStore.TripleCell.Predicate,
+                                                 Object         = tripleStore.TripleCell.Object,
+                                                 Namespace      = tripleStore.TripleCell.Namespace
+                                             };
 
-                             using var queryResponseA = TrinityTripleModuleClient.GetTripleByCellId(getTripleByCellRequestWriter);
-                             using var queryResponseB = TripleClientSideModule.GetTripleByCellId(Global.CloudStorage.MyPartitionId, getTripleByCellRequestWriter);
-                             using var queryResponseC = TrinityTripleModuleClient.GetTripleSubject(getTripleByCellRequestWriter);
-                         }, cancellationToken: CancellationToken.None,
-                            creationOptions: TaskCreationOptions.HideScheduler,
-                            scheduler: TaskScheduler.Current).Unwrap().ContinueWith(async _ =>
-                     {
-                         await Task.Delay(0);
+                                             using var queryResponseA = TrinityTripleModuleClient.GetTripleByCellId(getTripleByCellRequestWriter);
+                                             using var queryResponseB = TripleClientSideModule.GetTripleByCellId(Global.CloudStorage.MyPartitionId, getTripleByCellRequestWriter);
+                                             using var queryResponseC = TrinityTripleModuleClient.GetTripleSubject(getTripleByCellRequestWriter);
+                                         }, cancellationToken: CancellationToken.None,
+                                         creationOptions: TaskCreationOptions.HideScheduler,
+                                         scheduler: TaskScheduler.Current).Unwrap().ContinueWith(async _ =>
+                                     {
+                                         await Task.Delay(0);
 
-                         Log.WriteLine("Task TripleObjectStreamedFromServerReceivedAction Complete...");
-                     }, cancellationToken: CancellationToken.None);
+                                         Log.WriteLine("Task TripleObjectStreamedFromServerReceivedAction Complete...");
+                                     }, cancellationToken: CancellationToken.None);
 
-                     var writeToConsoleTask = reactiveGetTripleBySubjectTask;
+                                     var writeToConsoleTask = reactiveGetTripleBySubjectTask;
 
-                     await writeToConsoleTask;
-                 });
+                                     await writeToConsoleTask;
+                                 });
 
             // TripleObjectStreamedFromServerReceivedAction
 
@@ -266,40 +267,42 @@ using System.Net;
 
             // Main Processing Loop!
 
+            ClientRegistrationResponseReader forPushAutomation = null;
+
+            forPushAutomation = TrinityTripleModuleClient.RegisterForPushAutomation(new ClientRegistrationRequestWriter(TrinityTripleModuleClient.ClientMessageId));
+
             using var trinityClientProcessingLoopTask = Task.Factory.StartNew(async () =>
-                {
-                    while (true)
-                    {
-                        try
-                        {
-                            //await Task.Yield();
+              {
+                  while (true)
+                  {
+                      try
+                      {
+                          var clientId = Global.CloudStorage.MyInstanceId;
 
-                            var clientId = Global.CloudStorage.MyInstanceId;
+                          var sampleTriple = new List<Triple>
+                              {new Triple {Subject = $"Test-GraphEngineClient-{clientId} @ {DateTime.Now.Ticks.ToString()}", Predicate = "is", Object = $"Running @ {DateTime.Now}"}};
 
-                            var sampleTriple = new List<Triple>
-                                {new Triple {Subject = $"Test-GraphEngineClient-{clientId} @ {DateTime.Now.Ticks.ToString()}", Predicate = "is", Object = $"Running @ {DateTime.Now}"}};
+                          if (forPushAutomation != null)
+                          {
+                              using var tripleStreamWriter = new TripleStreamWriter(forPushAutomation.PushAutomationRegId, sampleTriple);
 
-                            using var tripleStreamWriter = new TripleStreamWriter(Global.CloudStorage.MyInstanceId, sampleTriple);
+                              await TrinityTripleModuleClient.PostTriplesToServer(tripleStreamWriter).ConfigureAwait(false);
+                          }
+                      }
+                      catch (Exception ex)
+                      {
+                          Log.WriteLine(ex.ToString());
+                      }
 
-                            await TrinityTripleModuleClient.PostTriplesToServer(tripleStreamWriter).ConfigureAwait(false);
+                      await Task.Delay(10000).ConfigureAwait(false);
 
-                        }
-                        catch (Exception ex)
-                        {
-                            Log.WriteLine(ex.ToString());
-                        }
-
-                        await Task.Delay(10000).ConfigureAwait(false);
-
-                    }
-
-/*
-                    return;
-*/
-
-                }, cancellationToken: CancellationToken.None,
-                creationOptions: TaskCreationOptions.HideScheduler,
-                scheduler: TaskScheduler.Current).Unwrap();
+                      forPushAutomation ??=
+                          TrinityTripleModuleClient.RegisterForPushAutomation(
+                              new ClientRegistrationRequestWriter(TrinityTripleModuleClient.ClientMessageId));
+                  }
+              }, cancellationToken: CancellationToken.None,
+                 creationOptions: TaskCreationOptions.HideScheduler,
+                 scheduler: TaskScheduler.Current).Unwrap();
 
             var mainLoopTask = trinityClientProcessingLoopTask;
 
@@ -376,6 +379,104 @@ using System.Net;
             var taskAwaitable = trinityLogIOTask;
 
             await taskAwaitable;
+        }
+    }
+
+     public static class PropertyHelper
+    {
+        /// <summary>
+        /// Returns a _private_ Property Value from a given Object. Uses Reflection.
+        /// Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Property</typeparam>
+        /// <param name="obj">Object from where the Property Value is returned</param>
+        /// <param name="propName">Propertyname as string.</param>
+        /// <returns>PropertyValue</returns>
+        public static T GetPrivatePropertyValue<T>(this object obj, string propName)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            PropertyInfo pi = obj.GetType().GetProperty(propName,
+                BindingFlags.Public | BindingFlags.NonPublic |
+                BindingFlags.Instance);
+            if (pi == null)
+                throw new ArgumentOutOfRangeException("propName",
+                    string.Format("Property {0} was not found in Type {1}", propName,
+                        obj.GetType().FullName));
+            return (T) pi.GetValue(obj, null);
+        }
+
+        /// <summary>
+        /// Returns a private Field Value from a given Object. Uses Reflection.
+        /// Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Field</typeparam>
+        /// <param name="obj">Object from where the Field Value is returned</param>
+        /// <param name="propName">Field Name as string.</param>
+        /// <returns>FieldValue</returns>
+        public static T GetPrivateFieldValue<T>(this object obj, string propName)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            Type      t  = obj.GetType();
+            FieldInfo fi = null;
+            while (fi == null && t != null)
+            {
+                fi = t.GetField(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                t = t.BaseType;
+            }
+
+            if (fi == null)
+                throw new ArgumentOutOfRangeException("propName",
+                    string.Format("Field {0} was not found in Type {1}", propName,
+                        obj.GetType().FullName));
+            return (T) fi.GetValue(obj);
+        }
+
+        /// <summary>
+        /// Sets a _private_ Property Value from a given Object. Uses Reflection.
+        /// Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Property</typeparam>
+        /// <param name="obj">Object from where the Property Value is set</param>
+        /// <param name="propName">Propertyname as string.</param>
+        /// <param name="val">Value to set.</param>
+        /// <returns>PropertyValue</returns>
+        public static void SetPrivatePropertyValue<T>(this object obj, string propName, T val)
+        {
+            Type t = obj.GetType();
+            if (t.GetProperty(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance) == null)
+                throw new ArgumentOutOfRangeException("propName",
+                    string.Format("Property {0} was not found in Type {1}", propName,
+                        obj.GetType().FullName));
+            t.InvokeMember(propName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.SetProperty |
+                BindingFlags.Instance, null, obj, new object[] {val});
+        }
+
+
+        /// <summary>
+        /// Set a private Field Value on a given Object. Uses Reflection.
+        /// </summary>
+        /// <typeparam name="T">Type of the Field</typeparam>
+        /// <param name="obj">Object from where the Property Value is returned</param>
+        /// <param name="propName">Field name as string.</param>
+        /// <param name="val">the value to set</param>
+        /// <exception cref="ArgumentOutOfRangeException">if the Property is not found</exception>
+        public static void SetPrivateFieldValue<T>(this object obj, string propName, T val)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            Type      t  = obj.GetType();
+            FieldInfo fi = null;
+            while (fi == null && t != null)
+            {
+                fi = t.GetField(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                t = t.BaseType;
+            }
+
+            if (fi == null)
+                throw new ArgumentOutOfRangeException("propName",
+                    string.Format("Field {0} was not found in Type {1}", propName,
+                        obj.GetType().FullName));
+            fi.SetValue(obj, val);
         }
     }
 }

@@ -12,6 +12,9 @@ using Trinity.Client.TestProtocols;
 using Trinity.Client.TestProtocols.TripleServer;
 using Trinity.Diagnostics;
 using Trinity.Network;
+using Trinity.Storage;
+using System.Reflection;
+using System.Security.Cryptography;
 
 namespace Trinity.TripleStore.TestServer
 {
@@ -47,7 +50,7 @@ namespace Trinity.TripleStore.TestServer
             //    }
             //};
 
-            TrinityConfig.LoggingLevel = LogLevel.Info;
+            TrinityConfig.LoggingLevel = LogLevel.Debug;
             //TrinityConfig.Servers.Add(graphEngineCluster);
             //TrinityConfig.CurrentRunningMode = RunningMode.Server;
             //TrinityConfig.AddServer(TripleStoreServerInfo);
@@ -56,7 +59,15 @@ namespace Trinity.TripleStore.TestServer
 
             //Log.LogsWritten += Log_LogsWritten;
 
+
+
             TripleStoreServer = new TrinityServer();
+
+            if (Global.CloudStorage is { } cloudStorage) cloudStorage.ServerConnected += CloudStorage_ServerConnected;
+
+
+            if (TripleStoreServer.CloudStorage != null)
+                TripleStoreServer.CloudStorage.ServerConnected += CloudStorage_ServerConnected;
 
             var registeredModuleTypes = TripleStoreServer.GetRegisteredCommunicationModuleTypes();
 
@@ -404,29 +415,45 @@ namespace Trinity.TripleStore.TestServer
 
                         foreach (var connectedTripleStoreClient in geStorageClient.Where(connectedTripleStoreClient => connectedTripleStoreClient != null))
                         {
+                            if (serverSideRuntime is null) continue;
+
+                            var geClientPushRegId =
+                                await serverSideRuntime.RegisterClientForPushAutomationAsync(connectedTripleStoreClient,
+                                                           connectedTripleStoreClient.GetPrivatePropertyValue<int>("InstanceId")).ConfigureAwait(false);
+
                             try
                             {
-                                var triples = new List<Triple> { new Triple { Subject = $"GraphEngineServer + Id: {DateTime.Now.Ticks.ToString()}", Predicate = "is", Object = $"Running @ {DateTime.Now}" } };
+                                var triples = new List<Triple>
+                                {
+                                    new Triple
+                                    {
+                                        Subject = $"GraphEngineServer + Id: {DateTime.Now.Ticks.ToString()}",
+                                        Predicate = "is", Object = $"Running @ {DateTime.Now}"
+                                    }
+                                };
 
                                 // New-up the Request Message!
 
-                                using var tripleStreamPayload = new TripleStreamWriter(Global.CloudStorage.MyInstanceId, triples);
+                                if (geClientPushRegId.HasValue)
+                                {
+                                    using var tripleStreamPayload =
+                                        new TripleStreamWriter(geClientPushRegId.Value, triples);
 
-                                //  a triple to the Client
+                                    //  a triple to the Client
 
-                                _ = connectedTripleStoreClient.StreamTriplesAsync(tripleStreamPayload).ContinueWith(rpcCallTask =>
-                                  {
-                                      using var rsp = rpcCallTask.Result;
+                                    var rpcResult =
+                                        await connectedTripleStoreClient.StreamTriplesAsync(tripleStreamPayload);
 
-                                      Console.WriteLine($@"Client responded: {rsp.errno}");
+                                    Console.WriteLine($@"Client responded: {rpcResult.errno}");
 
-                                  }, TaskContinuationOptions.RunContinuationsAsynchronously);
-
+                                }
                             }
                             catch (Exception ex)
                             {
                                 Log.WriteLine(ex.ToString());
                             }
+
+
                         }
                     }
 
@@ -440,6 +467,17 @@ namespace Trinity.TripleStore.TestServer
 
                 await mainLoopTask;
             }
+        }
+
+        private static void Mc_ServerConnected(object sender, RemoteStorageEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void CloudStorage_ServerConnected(object sender, RemoteStorageEventArgs e)
+        {
+            var geclient = sender as IStorage;
+            // e.RemoteStorage.
         }
 
         /// <summary>
@@ -478,6 +516,103 @@ namespace Trinity.TripleStore.TestServer
         }
     }
 
+    public static class PropertyHelper
+    {
+        /// <summary>
+        /// Returns a _private_ Property Value from a given Object. Uses Reflection.
+        /// Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Property</typeparam>
+        /// <param name="obj">Object from where the Property Value is returned</param>
+        /// <param name="propName">Propertyname as string.</param>
+        /// <returns>PropertyValue</returns>
+        public static T GetPrivatePropertyValue<T>(this object obj, string propName)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            PropertyInfo pi = obj.GetType().GetProperty(propName,
+                BindingFlags.Public | BindingFlags.NonPublic |
+                BindingFlags.Instance);
+            if (pi == null)
+                throw new ArgumentOutOfRangeException("propName",
+                    string.Format("Property {0} was not found in Type {1}", propName,
+                        obj.GetType().FullName));
+            return (T) pi.GetValue(obj, null);
+        }
+
+        /// <summary>
+        /// Returns a private Field Value from a given Object. Uses Reflection.
+        /// Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Field</typeparam>
+        /// <param name="obj">Object from where the Field Value is returned</param>
+        /// <param name="propName">Field Name as string.</param>
+        /// <returns>FieldValue</returns>
+        public static T GetPrivateFieldValue<T>(this object obj, string propName)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            Type      t  = obj.GetType();
+            FieldInfo fi = null;
+            while (fi == null && t != null)
+            {
+                fi = t.GetField(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                t = t.BaseType;
+            }
+
+            if (fi == null)
+                throw new ArgumentOutOfRangeException("propName",
+                    string.Format("Field {0} was not found in Type {1}", propName,
+                        obj.GetType().FullName));
+            return (T) fi.GetValue(obj);
+        }
+
+        /// <summary>
+        /// Sets a _private_ Property Value from a given Object. Uses Reflection.
+        /// Throws a ArgumentOutOfRangeException if the Property is not found.
+        /// </summary>
+        /// <typeparam name="T">Type of the Property</typeparam>
+        /// <param name="obj">Object from where the Property Value is set</param>
+        /// <param name="propName">Propertyname as string.</param>
+        /// <param name="val">Value to set.</param>
+        /// <returns>PropertyValue</returns>
+        public static void SetPrivatePropertyValue<T>(this object obj, string propName, T val)
+        {
+            Type t = obj.GetType();
+            if (t.GetProperty(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance) == null)
+                throw new ArgumentOutOfRangeException("propName",
+                    string.Format("Property {0} was not found in Type {1}", propName,
+                        obj.GetType().FullName));
+            t.InvokeMember(propName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.SetProperty |
+                BindingFlags.Instance, null, obj, new object[] {val});
+        }
+
+
+        /// <summary>
+        /// Set a private Field Value on a given Object. Uses Reflection.
+        /// </summary>
+        /// <typeparam name="T">Type of the Field</typeparam>
+        /// <param name="obj">Object from where the Property Value is returned</param>
+        /// <param name="propName">Field name as string.</param>
+        /// <param name="val">the value to set</param>
+        /// <exception cref="ArgumentOutOfRangeException">if the Property is not found</exception>
+        public static void SetPrivateFieldValue<T>(this object obj, string propName, T val)
+        {
+            if (obj == null) throw new ArgumentNullException("obj");
+            Type      t  = obj.GetType();
+            FieldInfo fi = null;
+            while (fi == null && t != null)
+            {
+                fi = t.GetField(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                t = t.BaseType;
+            }
+
+            if (fi == null)
+                throw new ArgumentOutOfRangeException("propName",
+                    string.Format("Field {0} was not found in Type {1}", propName,
+                        obj.GetType().FullName));
+            fi.SetValue(obj, val);
+        }
+    }
 
 }
 

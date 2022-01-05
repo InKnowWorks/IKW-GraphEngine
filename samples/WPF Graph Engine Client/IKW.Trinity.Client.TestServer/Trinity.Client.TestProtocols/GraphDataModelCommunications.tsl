@@ -2,9 +2,9 @@
 // Reactive Event processing via ReactivePropety and Native HOT Observables
 protocol StreamTriplesAsync
 {
-	  Type: Asyn;
-	  Request: TripleStream;
-	  Response: ErrorCodeResponse;
+	Type: Asyn;
+	Request: TripleStream;
+	Response: ErrorCodeResponse;
 }
 
 // Client-side Post of Triple to GE TripleStore App Server
@@ -12,33 +12,40 @@ protocol StreamTriplesAsync
 // of the Symmetric Server-side library! 
 protocol PostTriplesToServer
 {
-	  Type: Asyn;
-	  Request: TripleStream;
-	  Response: ErrorCodeResponse;
+	Type: Asyn;
+	Request: TripleStream;
+	Response: ErrorCodeResponse;
 }
 
 // Client-side Query of Triples stored on GE App TripleStore App Server
 protocol GetTripleByCellId
 {
-		Type: Asyn;
-		Request: TripleGetRequest;
-		Response: ErrorCodeResponse;
+	Type: Asyn;
+	Request: TripleGetRequest;
+	Response: ErrorCodeResponse;
 }
 
 // Client-side Query of Triples stored on GE App TripleStore App Server
 protocol GetTripleSubject
 {
-		Type: Asyn;
-		Request: TripleGetRequest;
-		Response: ErrorCodeResponse;
+	Type: Asyn;
+	Request: TripleGetRequest;
+	Response: ErrorCodeResponse;
 }
 
 // Server-side Publish to Client
-protocol PushTripleToClient
+protocol PushTripleToClientAsync
 {
-		Type: Syn;
-		Request: TripleGetRequest;
-		Response: ErrorCodeResponse;
+	Type: Asyn;
+	Request: TriplePushDemand;
+	Response: ErrorCodeResponse;
+}
+
+protocol RegisterForPushAutomation
+{
+	Type: Syn;
+	Request: ClientRegistrationRequest;
+	Response: ClientRegistrationResponse;
 }
 
 // Client-Side Request to Save Triple to MemoryCloud
@@ -55,8 +62,9 @@ module TripleServer
 	protocol PostTriplesToServer;
 	protocol GetTripleByCellId;
 	protocol GetTripleSubject;
-	protocol PushTripleToClient;
+	protocol PushTripleToClientAsync;
 	protocol SaveTripleToTripleStore;
+	protocol RegisterForPushAutomation;
 }
 
 struct RPCRequestCall

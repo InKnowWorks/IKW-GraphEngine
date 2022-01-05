@@ -10,6 +10,16 @@ struct Triple
 	string Namespace;
 }
 
+struct ClientRegistrationRequest
+{
+	int ClientInstanceId;
+}
+
+struct ClientRegistrationResponse
+{
+	Guid PushAutomationRegId;
+}
+
 struct TripleGetRequest
 {
 	long   TripleCellId;
@@ -28,6 +38,16 @@ struct TripleSaveRequest
 	string Namespace;
 }
 
+struct TriplePushDemand
+{
+	Guid ClientId;
+	CellId TripleCellId;
+	string Subject;
+	string Predicate;
+	string Object;
+	string Namespace;
+}
+
 struct TripleSaveResponse
 {
 	CellId TripleCellId;
@@ -35,7 +55,7 @@ struct TripleSaveResponse
 
 struct TripleStream
 {
-	long GraphEngineClientId;		
+	Guid ClientPushRegId;		
 	List<Triple> triples;
 }
 
@@ -43,6 +63,13 @@ struct ErrorCodeResponse
 {
 	int errno;
 	bool QueryResult;
+	Guid ClientPushRegId;
+}
+
+cell struct ClientPushAutomationStore
+{
+	int ClientInstanceID;
+	Guid ServerSideClientRegId;
 }
 
 cell struct TripleStore
