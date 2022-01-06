@@ -22,6 +22,8 @@ struct ClientRegistrationResponse
 
 struct TripleGetRequest
 {
+	Guid   ClientPushRegId;
+	long   ClientInstanceId;
 	long   TripleCellId;
 	string Subject;
 	string Predicate;
@@ -31,6 +33,8 @@ struct TripleGetRequest
 
 struct TripleSaveRequest
 {
+	Guid   ClientPushRegId;
+	long   ClientInstanceId;
 	CellId TripleCellId;
 	string Subject;
 	string Predicate;
@@ -40,7 +44,8 @@ struct TripleSaveRequest
 
 struct TriplePushDemand
 {
-	Guid ClientId;
+	Guid   ClientPushRegId;
+	long   ClientInstanceId;
 	CellId TripleCellId;
 	string Subject;
 	string Predicate;

@@ -15,6 +15,7 @@ using Trinity.Network;
 using Trinity.Storage;
 using System.Reflection;
 using System.Security.Cryptography;
+using Trinity.Client;
 
 namespace Trinity.TripleStore.TestServer
 {
@@ -239,72 +240,38 @@ namespace Trinity.TripleStore.TestServer
 
                 // Reactive: ClientPostedTripleStoreReadyInMemoryCloudHotAction
 
+                async Task ServerMakeClientSideGetTripleByCellID()
+                {
+                    // await Task.Yield();
+                    await Task.Delay(0).ConfigureAwait(false);
+                }
+
                 serverSideRuntime.ClientPostedTripleStoreReadyInMemoryCloudHotAction
-                    .ObserveOn(serverSideRuntime.HotObservableSchedulerContext)
-                    .Do(onNext: subscriberSource =>
+                 .ObserveOn(serverSideRuntime.HotObservableSchedulerContext)
+                 .Do(onNext: subscriberSource =>
+                     {
+                         var msg = "ClientPostedTripleStoreReadyInMemoryCloudHotAction-1";
+                         Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg,
+                             Thread.CurrentThread.ManagedThreadId);
+                     })
+                 .SubscribeOn(serverSideRuntime.HotObservableSchedulerContext)
+                 .Synchronize()
+                 .Subscribe(onNext: async tripleObject =>
                     {
-                        var msg = "ClientPostedTripleStoreReadyInMemoryCloudHotAction-1";
-                        Log.WriteLine("{0} Subscription happened on this Thread: {1}", msg,
-                            Thread.CurrentThread.ManagedThreadId);
-                    })
-                    .SubscribeOn(serverSideRuntime.HotObservableSchedulerContext)
-                    .Synchronize()
-                    .Subscribe(onNext: async tripleObject =>
-                       {
-                           async Task ServerMakeClientSideGetTripleByCellID()
-                           {
-                               // await Task.Yield();
-                               await Task.Delay(0).ConfigureAwait(false);
+                        using var getTripleByCellIdTask = Task.Factory.StartNew(ServerMakeClientSideGetTripleByCellID,
+                            cancellationToken: CancellationToken.None,
+                            creationOptions: TaskCreationOptions.HideScheduler,
+                            scheduler: TaskScheduler.Current).Unwrap().ContinueWith(async _ =>
+                                                                        {
+                                                                            await Task.Delay(0).ConfigureAwait(false);
 
-                               //using var getRequest = new TripleGetRequestWriter()
-                               //{
-                               //    TripleCellId = tripleObject.CellId,
-                               //    Subject = tripleObject.TripleCell.Subject,
-                               //    Predicate = tripleObject.TripleCell.Predicate,
-                               //    Namespace = tripleObject.TripleCell.Namespace,
-                               //    Object = tripleObject.TripleCell.Object
-                               //};
+                                                                            Log.WriteLine("Task ClientPostedTripleStoreReadyInMemoryCloudHotAction Complete...");
+                                                                        }, cancellationToken: CancellationToken.None);
 
-                               //await GraphEngineTripleServerAPI.GetTripleByCellId(0, getRequest).ConfigureAwait(false);
+                        var writeToConsoleTask = getTripleByCellIdTask;
 
-                               var isLocalCell = Global.CloudStorage.IsLocalCell(tripleObject.CellId);
-
-                               if (isLocalCell)
-                               {
-                                   Log.WriteLine($"Found TripleStore Object: {tripleObject.CellId} in Local MemoryCloud!");
-
-                                   //using var getRequest = new TripleGetRequestWriter()
-                                   //{
-                                   //    TripleCellId = tripleObject.CellId,
-                                   //    Subject      = tripleObject.TripleCell.Subject,
-                                   //    Predicate    = tripleObject.TripleCell.Predicate,
-                                   //    Namespace    = tripleObject.TripleCell.Namespace,
-                                   //    Object       = tripleObject.TripleCell.Object
-                                   //};
-
-                                   //Log.WriteLine($"Make Client-Side call from Server-side: GetTripleByCellId.");
-
-                                   //await GraphEngineTripleClientAPI.Clients.LastOrDefault().GetTripleByCellId(getRequest)
-                                   //                                .ConfigureAwait(false);
-
-                                   //await serverSideRuntime.GetTripleByCellId(Global.CloudStorage.MyPartitionId, getRequest).ConfigureAwait(false);
-                               }
-                           }
-
-                           using var getTripleByCellIdTask = Task.Factory.StartNew(ServerMakeClientSideGetTripleByCellID, 
-                               cancellationToken: CancellationToken.None,
-                               creationOptions: TaskCreationOptions.HideScheduler,
-                               scheduler: TaskScheduler.Current).Unwrap().ContinueWith(async _ =>
-                               {
-                                   await Task.Delay(0).ConfigureAwait(false);
-
-                                   Log.WriteLine("Task ClientPostedTripleStoreReadyInMemoryCloudHotAction Complete...");
-                               }, cancellationToken: CancellationToken.None);
-
-                           var writeToConsoleTask = getTripleByCellIdTask;
-
-                           await writeToConsoleTask;
-                       });
+                        await writeToConsoleTask;
+                    });
 
                 serverSideRuntime.ClientPostedTripleStoreReadyInMemoryCloudHotAction.Connect();
 
@@ -361,21 +328,41 @@ namespace Trinity.TripleStore.TestServer
                     {
                         using var reactToTriplePostedSavedToMemoryCloudTask = Task.Factory.StartNew(async () =>
                         {
-                            //await Task.Yield();
-
                             await Task.Delay(0).ConfigureAwait(false);
 
-                            //Log.WriteLine("Success! Found the Triple in the TripleStore MemoryCloud");
+                            var isLocalCell = Global.CloudStorage.IsLocalCell(tripleStoreMemoryContext.NewTripleStore.CellId);
 
-                            //var tripleStore   = tripleStoreMemoryContext.NewTripleStore;
-                            //var subjectNode   = tripleStore.TripleCell.Subject;
-                            //var predicateNode = tripleStore.TripleCell.Predicate;
-                            //var objectNode    = tripleStore.TripleCell.Object;
+                            if (isLocalCell)
+                            {
+                                Log.WriteLine($"Found TripleStore Object: {tripleStoreMemoryContext.NewTripleStore.CellId} in Local MemoryCloud!");
 
-                            //Log.WriteLine($"Triple CellId in MemoryCloud: {tripleStoreMemoryContext.NewTripleStore.CellId}");
-                            //Log.WriteLine($"Subject Node: {subjectNode}");
-                            //Log.WriteLine($"Predicate Node: {predicateNode}");
-                            //Log.WriteLine($"Object Node: {objectNode}");
+                                using var getRequest = new TripleGetRequestWriter()
+                                {
+                                    TripleCellId = tripleStoreMemoryContext.NewTripleStore.CellId,
+                                    Subject      = tripleStoreMemoryContext.NewTripleStore.TripleCell.Subject,
+                                    Predicate    = tripleStoreMemoryContext.NewTripleStore.TripleCell.Predicate,
+                                    Namespace    = tripleStoreMemoryContext.NewTripleStore.TripleCell.Namespace,
+                                    Object       = tripleStoreMemoryContext.NewTripleStore.TripleCell.Object
+                                };
+
+                                Log.WriteLine($"Make Client-Side call from Server-side: GetTripleByCellId.");
+
+                                foreach (var storage in clientConnection.Clients.ToList().Where(storage => storage.GetPrivatePropertyValue<int>("InstanceId") ==
+                                             tripleStoreMemoryContext.GraphEngineClient.GetPrivatePropertyValue<int>(
+                                                 "InstanceId")).Where(storage => tripleStoreMemoryContext.GraphEngineClient != null))
+                                {
+                                    await tripleStoreMemoryContext.GraphEngineClient.GetTripleByCellId(getRequest)
+                                                                  .ConfigureAwait(false);
+                                }
+
+                                //clientConnection.ClientInitialize(RunningMode.Client, Global.CloudStorage);
+
+                                //await serverSideRuntime.GetTripleByCellId(Global.MyPartitionId, getRequest).ConfigureAwait(false);
+
+                                //if (tripleStoreMemoryContext.GraphEngineClient != null)
+                                //    await tripleStoreMemoryContext.GraphEngineClient.GetTripleByCellId(getRequest)
+                                //                                  .ConfigureAwait(false);
+                            }
 
                         }, cancellationToken: CancellationToken.None,
                            creationOptions: TaskCreationOptions.HideScheduler,

@@ -111,12 +111,12 @@ namespace Trinity.Client
                 {
                     _PollImpl(poll_req);
 
-                    await Task.Delay(100);
+                    await Task.Delay(100, token).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
-                    Log.WriteLine(LogLevel.Error, $"{nameof(TrinityClient)}: error occured during polling: {{0}}", ex.ToString());
-                    await Task.Delay(100);
+                    Log.WriteLine(LogLevel.Error, $"{nameof(TrinityClient)}: error occurred during polling: {{0}}", ex.ToString());
+                    await Task.Delay(100, token).ConfigureAwait(false);
                 }
             }
             poll_req.Dispose();

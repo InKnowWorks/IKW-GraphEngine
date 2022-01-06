@@ -286,7 +286,7 @@ using System.Reflection;
                           {
                               using var tripleStreamWriter = new TripleStreamWriter(forPushAutomation.PushAutomationRegId, sampleTriple);
 
-                              await TrinityTripleModuleClient.PostTriplesToServer(tripleStreamWriter).ConfigureAwait(false);
+                              var rcpResult = await TrinityTripleModuleClient.PostTriplesToServer(tripleStreamWriter).ConfigureAwait(false);
                           }
                       }
                       catch (Exception ex)

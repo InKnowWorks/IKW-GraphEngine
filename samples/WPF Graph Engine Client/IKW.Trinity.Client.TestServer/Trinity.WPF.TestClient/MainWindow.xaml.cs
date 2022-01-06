@@ -447,10 +447,14 @@ namespace Trinity.WPF.TestClient
 
             Task taskResult;
 
+            ClientRegistrationResponseReader forPushAutomation = null;
+
+            forPushAutomation = TrinityTripleModuleClient.RegisterForPushAutomation(new ClientRegistrationRequestWriter(TrinityTripleModuleClient.ClientMessageId));
+
             using var graphEngineRPCTask = Task.Factory.StartNew(async () =>
              {
                  using var message =
-                     new TripleStreamWriter(Global.CloudStorage.MyInstanceId, triples);
+                     new TripleStreamWriter(forPushAutomation.PushAutomationRegId, triples);
 
                  var rsp = await TrinityTripleModuleClient.PostTriplesToServer(message);
 
@@ -459,8 +463,7 @@ namespace Trinity.WPF.TestClient
                  await Task.Factory.StartNew(
                      () =>
                      {
-                         this.ResponseTextBlock.Items.Add(
-                             $"GE Server Response: {rsp.errno}");
+                         this.ResponseTextBlock.Items.Add($"GE Server Response: {rsp.errno}");
                      }, token, TaskCreationOptions.None,
                      uiSyncContext);
              })
