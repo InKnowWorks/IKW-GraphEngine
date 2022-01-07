@@ -56,6 +56,22 @@ protocol SaveTripleToTripleStore
 	Response: TripleSaveResponse;
 }
 
+// Support for Trinity Graph Engine Cluster-aware for Server-side Push Automation
+
+protocol DistributePushAutomationAsync
+{
+	Type: Asyn;
+	Request: PushAutomationRequest;
+	Response: void;
+}
+
+protocol QueryPushAutomationRequestAsync
+{
+	Type: Asyn;
+	Request: PushAutomationRequest;
+	Response: PushAutomationRequest;
+}
+
 module TripleServer
 {
 	protocol StreamTriplesAsync;

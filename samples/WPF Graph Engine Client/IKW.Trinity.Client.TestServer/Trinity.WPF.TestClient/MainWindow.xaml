@@ -34,7 +34,7 @@
         <ListBox x:Name="ResponseTextBlock" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" Grid.Column="0" FontSize="10" Margin="0,0,0,0"/>
         <Label x:Name="Label" Content="Triples Pushed by Test Server" Margin="0,8,0,5" RenderTransformOrigin="0.482,-1.047" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="9" Padding="2,2,2,2" Width="238"/>
-        <Grid x:Name="DisplayGroupGrid" Grid.Row="1" Grid.Column="1" Height="Auto" Width="220" HorizontalAlignment="Left" Margin="29,0,0,0">
+        <Grid x:Name="DisplayGroupGrid" Grid.Row="1" Grid.Column="1" Height="Auto" Margin="11,0,0,0">
             <Grid.Background>
                 <RadialGradientBrush MappingMode="Absolute" SpreadMethod="Reflect">
                     <GradientStop Color="Black" Offset="0"/>
@@ -56,6 +56,6 @@
                 <TextBox x:Name="CellIdTb" TextWrapping="Wrap" Background="{x:Null}" Margin="2,2,2,2" FontSize="10"/>
             </StackPanel>
         </Grid>
-        <GridSplitter x:Name="gridSplitter" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="5,2,0,2" Height="Auto" Width="8" />
+        <GridSplitter x:Name="gridSplitter" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="2,2,0,2" Height="Auto" Width="4" />
     </Grid>
 </Window>

@@ -60,7 +60,8 @@ struct TripleSaveResponse
 
 struct TripleStream
 {
-	Guid ClientPushRegId;		
+	Guid   ClientPushRegId;
+	long   ClientInstanceId;	
 	List<Triple> triples;
 }
 
@@ -71,10 +72,28 @@ struct ErrorCodeResponse
 	Guid ClientPushRegId;
 }
 
-cell struct ClientPushAutomationStore
+enum RequestOperationStatus
 {
-	int ClientInstanceID;
-	Guid ServerSideClientRegId;
+	Sucess,
+	Failure
+}
+
+struct PushAutomationRequest
+{
+	Guid ClientPushRegId;
+	long ClientInstanceId;
+}
+
+struct PushAutomationResponse
+{
+	int ClusterAvailablityCount;
+    List<RequestOperationStatus> RequestOpStatus;
+}
+
+cell struct ServerSidePushAutomationStore
+{
+	Guid ClientPushRegId;
+	long ClientInstanceId;
 }
 
 cell struct TripleStore
