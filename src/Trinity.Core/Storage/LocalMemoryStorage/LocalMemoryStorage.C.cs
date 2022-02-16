@@ -197,12 +197,12 @@ namespace Trinity.Storage
 
         [DllImport(TrinityC.AssemblyName)]
         [SuppressUnmanagedCodeSecurity]
-        internal unsafe static extern void CWriteAheadLog(long cellId, byte* cellPtr, int cellSize, ushort cellType, CellAccessOptions options);
+        internal static extern unsafe void CWriteAheadLog(long cellId, byte* cellPtr, int cellSize, ushort cellType, CellAccessOptions options);
 
 
         [DllImport(TrinityC.AssemblyName)]
         [SuppressUnmanagedCodeSecurity]
-        internal unsafe static extern void CSetWriteAheadLogFile(void* fp);
+        internal static extern unsafe void CSetWriteAheadLogFile(void* fp);
 
 
         [DllImport(TrinityC.AssemblyName)]

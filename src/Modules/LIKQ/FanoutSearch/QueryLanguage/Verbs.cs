@@ -181,27 +181,20 @@ namespace FanoutSearch
 
                 object field_obj = cell.GetField<object>(field);
 
-                if(field_obj is string)
+                switch (field_obj)
                 {
-                    return (field_obj as string == value);
-                }
-
-                if (field_obj is IEnumerable enumerable)
-                {
-                    foreach (object element in enumerable)
+                    case string obj:
+                        return (obj == value);
+                    case IEnumerable enumerable:
                     {
-                        if (element.ToString() == value)
-                            return true;
+                        return enumerable.Cast<object>().Any(element => element.ToString() == value);
                     }
-
-                    return false;
-                }
-                else
-                {
-                    return (field_obj.ToString() == value);
+                    default:
+                        return (field_obj.ToString() == value);
                 }
             }
-            catch { }
+            catch
+            { }
             return false;
 
         }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\bb505b3a3d596f5ac19d2dcf59f1b595\GraphEngine.Core.2.0.11160.nupkg.rule">
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\bb505b3a3d596f5ac19d2dcf59f1b595\GraphEngine.Core.2.0.11335.nupkg.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
     <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\db864b517610073d935020e63ee5e866\BUILD_Trinity.Core.rule">

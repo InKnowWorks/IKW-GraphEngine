@@ -23,46 +23,35 @@ namespace FanoutSearch
 
         private IEnumerable<string> _GetEdgeType(ICellAccessor cell, long to)
         {
-            foreach (var field in cell.SelectFields<List<long>>("GraphEdge"))
-            {
-                if (field.Value.Contains(to))
-                {
-                    yield return field.Key;
-                }
-            }
+            return cell.SelectFields<List<long>>("GraphEdge")
+                .Where(field => field.Value.Contains(to))
+                .Select(field => field.Key);
         }
 
         public override void GetEdgeTypeHandler(EdgeStructReader request, StringStructWriter response)
         {
-            using (var cell = s_useICellFunc(request.from))
-            {
-                response.queryString = ToJsonArray(_GetEdgeType(cell, request.to));
-            }
+            using var cell = s_useICellFunc(request.@from);
+            response.queryString = ToJsonArray(_GetEdgeType(cell, request.to));
         }
 
         private NodeInfo _GetNodeInfo(long id, List<string> fields, long secondary_id)
         {
             try
             {
-                using (var cell = s_useICellFunc(id))
+                using var cell = s_useICellFunc(id);
+                return new NodeInfo
                 {
-                    return new NodeInfo
+                    id    = id,
+                    values = fields.Select(f =>
                     {
-                        id    = id,
-                        values = fields.Select(f =>
+                        return f switch
                         {
-                            switch (f)
-                            {
-                                case JsonDSL.graph_outlinks:
-                                return ToJsonArray(_GetEdgeType(cell, secondary_id));
-                                case "*":
-                                return cell.ToString();
-                                default:
-                                return cell.get(f);
-                            }
-                        }).ToList(),
-                    };
-                }
+                            JsonDSL.graph_outlinks => ToJsonArray(_GetEdgeType(cell, secondary_id)),
+                            "*" => cell.ToString(),
+                            _ => cell.get(f)
+                        };
+                    }).ToList(),
+                };
             }
             catch // use cell failed. populate the list with an empty NodeInfo.
             {

@@ -17,7 +17,7 @@ namespace Trinity.Core.Lib
     /// <summary>
     /// A helper class for various hash functions.
     /// </summary>
-    public unsafe static class HashHelper
+    public static unsafe class HashHelper
     {
         // Fields
         internal static readonly int[] primes = new int[] { 
@@ -100,7 +100,7 @@ namespace Trinity.Core.Lib
             return true;
         }
 
-        internal unsafe static long HashString2Int64Strong(string s)
+        internal static unsafe long HashString2Int64Strong(string s)
         {
             if (s != null && s.Length != 0)
             {
@@ -121,7 +121,7 @@ namespace Trinity.Core.Lib
         /// </summary>
         /// <param name="value">The string value.</param>
         /// <returns>A 64-bit signed integer hash code.</returns>
-        public unsafe static long HashString2Int64(string value)
+        public static unsafe long HashString2Int64(string value)
         {
             byte[] bytes = BitHelper.GetBytes(value);
             long hash;
@@ -131,7 +131,7 @@ namespace Trinity.Core.Lib
             return hash;
         }
 
-        internal unsafe static long HashAsciiString2Int64(string value)
+        internal static unsafe long HashAsciiString2Int64(string value)
         {
             byte[] bytes = BitHelper.GetAsciiCharArray(value);
             long hash;
@@ -162,7 +162,7 @@ namespace Trinity.Core.Lib
             return (int)HashBytesA(buffer, count);
         }
 
-        internal unsafe static uint HashBytesA(byte[] key)
+        internal static unsafe uint HashBytesA(byte[] key)
         {
             byte* e;
             byte* k;
@@ -184,7 +184,7 @@ namespace Trinity.Core.Lib
 
         // FNV-1
         // see https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
-        internal unsafe static uint HashBytesA(byte* kp, int count)
+        internal static unsafe uint HashBytesA(byte* kp, int count)
         {
             uint h;
 
@@ -200,7 +200,7 @@ namespace Trinity.Core.Lib
 
         // Phong's linear congruential hash
         // see https://en.wikipedia.org/wiki/Linear_congruential_generator
-        internal unsafe static uint HashBytesB(byte[] key)
+        internal static unsafe uint HashBytesB(byte[] key)
         {
             byte* e;
             byte* k;
@@ -222,7 +222,7 @@ namespace Trinity.Core.Lib
             return h;
         }
 
-        internal unsafe static uint HashBytesB(byte* kp, int count)
+        internal static unsafe uint HashBytesB(byte* kp, int count)
         {
             byte c;
             uint h;

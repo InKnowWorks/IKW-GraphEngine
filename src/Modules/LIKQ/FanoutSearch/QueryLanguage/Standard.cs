@@ -20,8 +20,7 @@ namespace FanoutSearch.Standard
         public static FanoutSearchDescriptor v(IEnumerable<long> cellId, IEnumerable<string> select = null)
         {
             var ret = new FanoutSearchDescriptor(cellId);
-            if (select == null)
-                select = new List<string>();
+            @select ??= new List<string>();
             ret.m_selectFields.Add(select.ToList());
             return ret;
         }

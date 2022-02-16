@@ -105,8 +105,8 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\836901100957a60d857e9aa378286cb8\GraphEngine.LIKQ.2.0.11160.nupkg.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg, ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg, FanoutSearch.buildtimestamp</Message>
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\836901100957a60d857e9aa378286cb8\GraphEngine.LIKQ.2.0.11335.nupkg.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg, ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg, FanoutSearch.buildtimestamp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 K:\CMake\bin\cmake.exe -E echo "======= Building .NET project FanoutSearch [Debug ]"
 if %errorlevel% neq 0 goto :cmEnd
@@ -116,13 +116,13 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Modules/LIKQ/FanoutSearch/FanoutSearch.csproj -c Debug /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg
+K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg
+K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" pack --no-build --no-restore O:/IKW-GraphEngine/src/Modules/LIKQ/FanoutSearch/FanoutSearch.csproj -c Debug /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.csproj.imports.props --include-symbols
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg O:/IKW-GraphEngine/build
+K:\CMake\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg O:/IKW-GraphEngine/build
 if %errorlevel% neq 0 goto :cmEnd
 K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.buildtimestamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -133,9 +133,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\AggregationObject.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchErrorCode.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Core.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Metadata.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Web.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchQueryException.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchQueryTimeoutException.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\IFanoutSearchCellAccessor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\MessageDispatcher.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\QueryPredicateCompiler.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\QueryResultCache.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\EdgeTypeDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\FanoutSearchDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\NodeDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\PathDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\FanoutSearch.csproj;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Properties\AssemblyInfo.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Properties\GraphEngine.AssemblyInfo.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\ExpressionBuilder.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\ExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\IExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\JsonDSL.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\JsonExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\LIKQ.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\LambdaDSL.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\Standard.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\TraverseActionRewriter.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\TraverseActionSecurityChecker.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\Verbs.cs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg, ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg, FanoutSearch.buildtimestamp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg, ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg, FanoutSearch.buildtimestamp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 K:\CMake\bin\cmake.exe -E echo "======= Building .NET project FanoutSearch [Release ]"
 if %errorlevel% neq 0 goto :cmEnd
@@ -145,13 +145,13 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Modules/LIKQ/FanoutSearch/FanoutSearch.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg
+K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg
+K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" pack --no-build --no-restore O:/IKW-GraphEngine/src/Modules/LIKQ/FanoutSearch/FanoutSearch.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.csproj.imports.props --include-symbols
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg O:/IKW-GraphEngine/build
+K:\CMake\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg O:/IKW-GraphEngine/build
 if %errorlevel% neq 0 goto :cmEnd
 K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.buildtimestamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -162,9 +162,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\AggregationObject.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchErrorCode.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Core.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Metadata.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Web.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchQueryException.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchQueryTimeoutException.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\IFanoutSearchCellAccessor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\MessageDispatcher.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\QueryPredicateCompiler.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\QueryResultCache.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\EdgeTypeDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\FanoutSearchDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\NodeDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\PathDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\FanoutSearch.csproj;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Properties\AssemblyInfo.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Properties\GraphEngine.AssemblyInfo.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\ExpressionBuilder.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\ExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\IExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\JsonDSL.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\JsonExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\LIKQ.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\LambdaDSL.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\Standard.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\TraverseActionRewriter.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\TraverseActionSecurityChecker.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\Verbs.cs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg, ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg, FanoutSearch.buildtimestamp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg, ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg, FanoutSearch.buildtimestamp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 K:\CMake\bin\cmake.exe -E echo "======= Building .NET project FanoutSearch [Release ]"
 if %errorlevel% neq 0 goto :cmEnd
@@ -174,13 +174,13 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Modules/LIKQ/FanoutSearch/FanoutSearch.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg
+K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg
+K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" pack --no-build --no-restore O:/IKW-GraphEngine/src/Modules/LIKQ/FanoutSearch/FanoutSearch.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.csproj.imports.props --include-symbols
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg O:/IKW-GraphEngine/build
+K:\CMake\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg O:/IKW-GraphEngine/build
 if %errorlevel% neq 0 goto :cmEnd
 K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.buildtimestamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -191,9 +191,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\AggregationObject.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchErrorCode.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Core.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Metadata.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Web.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchQueryException.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchQueryTimeoutException.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\IFanoutSearchCellAccessor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\MessageDispatcher.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\QueryPredicateCompiler.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\QueryResultCache.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\EdgeTypeDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\FanoutSearchDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\NodeDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\PathDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\FanoutSearch.csproj;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Properties\AssemblyInfo.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Properties\GraphEngine.AssemblyInfo.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\ExpressionBuilder.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\ExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\IExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\JsonDSL.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\JsonExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\LIKQ.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\LambdaDSL.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\Standard.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\TraverseActionRewriter.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\TraverseActionSecurityChecker.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\Verbs.cs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg, ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg, FanoutSearch.buildtimestamp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg, ../../../FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg, FanoutSearch.buildtimestamp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
 K:\CMake\bin\cmake.exe -E echo "======= Building .NET project FanoutSearch [Release ]"
 if %errorlevel% neq 0 goto :cmEnd
@@ -203,13 +203,13 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Modules/LIKQ/FanoutSearch/FanoutSearch.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg
+K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg
+K:\CMake\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" pack --no-build --no-restore O:/IKW-GraphEngine/src/Modules/LIKQ/FanoutSearch/FanoutSearch.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.csproj.imports.props --include-symbols
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.nupkg O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11160.symbols.nupkg O:/IKW-GraphEngine/build
+K:\CMake\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.nupkg O:/IKW-GraphEngine/build/FanoutSearch/GraphEngine.LIKQ.2.0.11335.symbols.nupkg O:/IKW-GraphEngine/build
 if %errorlevel% neq 0 goto :cmEnd
 K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Modules/LIKQ/FanoutSearch.buildtimestamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -220,7 +220,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\AggregationObject.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchErrorCode.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Core.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Metadata.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.Web.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchModule.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchQueryException.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\FanoutSearchQueryTimeoutException.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\IFanoutSearchCellAccessor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\MessageDispatcher.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\QueryPredicateCompiler.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Core\QueryResultCache.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\EdgeTypeDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\FanoutSearchDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\NodeDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Descriptors\PathDescriptor.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\FanoutSearch.csproj;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Properties\AssemblyInfo.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\Properties\GraphEngine.AssemblyInfo.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\ExpressionBuilder.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\ExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\IExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\JsonDSL.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\JsonExpressionSerializer.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\LIKQ.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\LambdaDSL.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\Standard.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\TraverseActionRewriter.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\TraverseActionSecurityChecker.cs;O:\IKW-GraphEngine\src\Modules\LIKQ\FanoutSearch\QueryLanguage\Verbs.cs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
@@ -234,7 +234,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\src\Modules\LIKQ\CMakeFiles\BUILD_FanoutSearch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
@@ -246,7 +246,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\src\Modules\LIKQ\CMakeFiles\BUILD_FanoutSearch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
@@ -258,7 +258,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\src\Modules\LIKQ\CMakeFiles\BUILD_FanoutSearch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
@@ -270,7 +270,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11160.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.nupkg;O:\IKW-GraphEngine\build\FanoutSearch\GraphEngine.LIKQ.2.0.11335.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\LIKQ\FanoutSearch.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\src\Modules\LIKQ\CMakeFiles\BUILD_FanoutSearch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>

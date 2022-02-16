@@ -10,11 +10,11 @@ namespace VSExtension
 #endif
 class ProductInfo
     {
-        public const string VERSION_PLACEHOLDER = "3.0.0";
-        public const string FILEVERSION_PLACEHOLDER = "3.0.0";
-        public const string PRODUCTNAME_PLACEHOLDER = "IKW Graph Engine";
-        public const string COMPANY_PLACEHOLDER = "InKnowWorks Corporation";
-        public const string COPYRIGHT_PLACEHOLDER = "© InKnowWorks Corporation.  All rights reserved.";
+        public const string VERSION_PLACEHOLDER = "2.0.0";
+        public const string FILEVERSION_PLACEHOLDER = "2.0.0";
+        public const string PRODUCTNAME_PLACEHOLDER = "Graph Engine";
+        public const string COMPANY_PLACEHOLDER = "Microsoft Corporation";
+        public const string COPYRIGHT_PLACEHOLDER = "© Microsoft Corporation.  All rights reserved.";
         public const string TRADEMARK_PLACEHOLDER = "";
         public const string CULTURE_PLACEHOLDER = "";
     }

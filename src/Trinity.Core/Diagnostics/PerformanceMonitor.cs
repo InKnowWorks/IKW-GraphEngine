@@ -150,7 +150,7 @@ namespace Trinity.Diagnostics
         }
 
         public delegate void MeasureFunction();
-        static public void Measure(MeasureFunction mf, string name, bool echo = true)
+        public static void Measure(MeasureFunction mf, string name, bool echo = true)
         {
             if (echo)
             {

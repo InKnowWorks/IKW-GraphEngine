@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.1": {},
     ".NETStandard,Version=v2.1/": {
-      "Trinity.Core/2.0.11160": {
+      "Trinity.Core/2.0.11335": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -44,7 +44,7 @@
     }
   },
   "libraries": {
-    "Trinity.Core/2.0.11160": {
+    "Trinity.Core/2.0.11335": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

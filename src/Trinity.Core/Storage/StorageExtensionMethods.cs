@@ -7,7 +7,7 @@ using Trinity.Configuration;
 
 namespace Trinity.Storage
 {
-    public unsafe static class StorageExtensionMethods
+    public static unsafe class StorageExtensionMethods
     {
         public static TrinityErrorCode LoadCell(this IKeyValueStore storage, long cell_id, out byte[] buff)
         {

@@ -188,7 +188,7 @@ namespace Trinity.Core.Lib
         /// </summary>
         /// <param name="ipe">An IPEndPoint instance.</param>
         /// <param name="buffer">The buffer to write the ipe in.</param>
-        public unsafe static void WriteIPEndPoint(IPEndPoint ipe, byte* buffer)
+        public static unsafe void WriteIPEndPoint(IPEndPoint ipe, byte* buffer)
         {
             *(int*)buffer = BitHelper.ToInt32(ipe.Address.GetAddressBytes(), 0);
             *(int*)(buffer + 4) = ipe.Port;
@@ -215,7 +215,7 @@ namespace Trinity.Core.Lib
         /// </summary>
         /// <param name="buffer">The buffer.</param>
         /// <returns>An IPEndPoint instance.</returns>
-        public unsafe static IPEndPoint ToIPEndPoint(byte* buffer)
+        public static unsafe IPEndPoint ToIPEndPoint(byte* buffer)
         {
             Int64 m_address = ((((*(buffer + 3) << 0x18) | (*(buffer + 2) << 0x10)) | (*(buffer + 1) << 8)) | *buffer) & ((long)0xffffffffL);
             return new IPEndPoint(m_address, *((int*)(buffer + 4)));

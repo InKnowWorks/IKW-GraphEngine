@@ -80,6 +80,8 @@ namespace Trinity.WPF.TestClient
                                PredicateTb.Text = tripleStore.TripleCell.Predicate;
                                ObjectTb.Text    = tripleStore.TripleCell.Object;
 
+                               var cell = Trinity.Global.CloudStorage.LoadGenericCell(tripleStore.CellId);
+
                            },token,
                              TaskCreationOptions.None,
                              uiSyncContext);
@@ -205,6 +207,12 @@ namespace Trinity.WPF.TestClient
                                    ResponseTextBlock.Items.Add($"Subject  : {myTripleStore.TripleCell.Subject}");
                                    ResponseTextBlock.Items.Add($"Predicate: {myTripleStore.TripleCell.Predicate}");
                                    ResponseTextBlock.Items.Add($"Object   : {myTripleStore.TripleCell.Object}");
+
+                                   var cell = Trinity.Global.CloudStorage.LoadGenericCell(tripleObjectFromMC.NewTripleStore.CellId);
+
+                                   Trinity.Global.CloudStorage.SaveGenericCell(cell);
+
+                                   var fieldNames = cell.GetFieldNames();
 
                                    var rpcResponseCodeB = await TrinityTripleModuleClient.GetTripleSubject(new TripleGetRequestWriter()
                                    {

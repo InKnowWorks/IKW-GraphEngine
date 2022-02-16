@@ -270,7 +270,7 @@ namespace Trinity.Utilities
             return LoadReflectionOnly(fullname, out notUsed);
         }
 
-        static internal List<FileStream> LockDependencyFiles(List<string> depList)
+        internal static List<FileStream> LockDependencyFiles(List<string> depList)
         {
             List<FileStream> lockList = new List<FileStream>();
             try
@@ -300,7 +300,7 @@ namespace Trinity.Utilities
             }
             return lockList;
         }
-        static internal void UnlockDependencyFiles(List<FileStream> locked_files)
+        internal static void UnlockDependencyFiles(List<FileStream> locked_files)
         {
             foreach (FileStream fs in locked_files)
             {

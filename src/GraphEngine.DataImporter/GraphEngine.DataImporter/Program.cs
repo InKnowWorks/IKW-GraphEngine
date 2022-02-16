@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CommandLine;
+
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -18,44 +20,47 @@ namespace GraphEngine.DataImporter
     {
         static void Main(string[] args)
         {
-            CmdOptions opts = new CmdOptions();
-            if (CommandLine.Parser.Default.ParseArguments(args, opts))
-            {
-                List<string> files = new List<string>(opts.ExplicitFiles.Select(_ => _.Trim()));
-                if (opts.InputDirectory != null)
+            Parser.Default.ParseArguments<CmdOptions>(args)
+                .WithParsed(opts =>
                 {
-                  //  Log.WriteLine("Including files from directory {0}", Path.GetFullPath(opts.InputDirectory));
-                    files.AddRange(Directory.GetFiles(opts.InputDirectory).Select(_ => _.Trim()));
-                }
+                    var files = new List<string>(opts.ExplicitFiles.Select(_ => _.Trim()));
 
-                Stopwatch timer = Stopwatch.StartNew();
+                    if (opts.InputDirectory != null)
+                    {
+                        //  Log.WriteLine("Including files from directory {0}", Path.GetFullPath(opts.InputDirectory));
+                        files.AddRange(Directory.GetFiles(opts.InputDirectory).Select(_ => _.Trim()));
+                    }
 
-                if (opts.TSL != null)
-                {
-                    var tslCompiler = new TSLCompiler();
-                    opts.TSLAssembly = tslCompiler.Compile(opts.TSL);
-                    if (opts.TSLAssembly != null)
+                    var timer = Stopwatch.StartNew();
+
+                    if (opts.TSL != null)
+                    {
+                        var tslCompiler = new TSLCompiler();
+
+                        opts.TSLAssembly = tslCompiler.Compile(opts.TSL);
+
+                        if (opts.TSLAssembly != null)
+                        {
+                            Importer.Import(opts.TSLAssembly, files, opts);
+                        }
+                        else
+                        {
+                            Log.WriteLine("TSL File Compile Error.");
+                        }
+                    }
+                    else if (opts.TSLAssembly != null)
                     {
                         Importer.Import(opts.TSLAssembly, files, opts);
                     }
-                    else
+                    else if (opts.GenerateTSL)
                     {
-                        Log.WriteLine("TSL File Compile Error."); 
+                        TSLGenerator.Generate(files, opts);
                     }
-                }
-                else if (opts.TSLAssembly != null)
-                {
-                    Importer.Import(opts.TSLAssembly, files, opts);
-                }
-                else if (opts.GenerateTSL)
-                {
-                    TSLGenerator.Generate(files, opts);
-                }
 
-                timer.Stop();
-                Log.WriteLine("Time: {0} seconds.", timer.ElapsedMilliseconds / 1000);
-                
-            }
+                    timer.Stop();
+
+                    Log.WriteLine("Time: {0} seconds.", timer.ElapsedMilliseconds / 1000);
+                });
         }
     }
 }

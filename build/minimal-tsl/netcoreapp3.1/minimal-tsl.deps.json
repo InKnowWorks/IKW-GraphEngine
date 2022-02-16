@@ -8,13 +8,13 @@
     ".NETCoreApp,Version=v3.1": {
       "minimal-tsl/1.0.0": {
         "dependencies": {
-          "GraphEngine.Core": "2.0.11160"
+          "GraphEngine.Core": "2.0.11335"
         },
         "runtime": {
           "minimal-tsl.dll": {}
         }
       },
-      "GraphEngine.Core/2.0.11160": {
+      "GraphEngine.Core/2.0.11335": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -22,8 +22,8 @@
         },
         "runtime": {
           "lib/netstandard2.1/Trinity.Core.dll": {
-            "assemblyVersion": "2.0.11160.0",
-            "fileVersion": "2.0.11160.0"
+            "assemblyVersion": "2.0.11335.0",
+            "fileVersion": "2.0.11335.0"
           }
         },
         "runtimeTargets": {
@@ -249,12 +249,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "GraphEngine.Core/2.0.11160": {
+    "GraphEngine.Core/2.0.11335": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-NomWxBpZII2kC9vo4srlrLBGNncG8y53GTQOWSPf+xVUShVtXyvIi2QzSsA8QD1h4rWc30dmfNQJEuRoC/j+lg==",
-      "path": "graphengine.core/2.0.11160",
-      "hashPath": "graphengine.core.2.0.11160.nupkg.sha512"
+      "sha512": "sha512-37meJNC9PT5BlVT3495ZdnlDCFeB4cQaUks3qyC4zqxyZYRy2S0FZpEbgumHD3qhVf5de8YBNMQ9kutjo8UwFw==",
+      "path": "graphengine.core/2.0.11335",
+      "hashPath": "graphengine.core.2.0.11335.nupkg.sha512"
     },
     "Microsoft.Extensions.ObjectPool/6.0.0": {
       "type": "package",

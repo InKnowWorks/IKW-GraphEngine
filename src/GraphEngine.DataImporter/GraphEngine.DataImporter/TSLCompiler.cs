@@ -12,6 +12,7 @@ namespace GraphEngine.DataImporter
         public string Compile(string tslFilePath)
         {
             var targetFrameWork = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(TargetFrameworkAttribute), false);
+
             string frameWork = ((TargetFrameworkAttribute)(targetFrameWork[0])).FrameworkName;
             string exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string frameVersion = Regex.Match(frameWork, @"(\d+\.)+\d+").Value;
@@ -26,12 +27,15 @@ namespace GraphEngine.DataImporter
                 UpdateNugetVersion(importerProjectPath, tslProjectPath, "Newtonsoft.Json");
 
                 Process process = new Process();
+
                 // Need to add the path of Msbuild.exe to PATH environment variable first.
                 process.StartInfo = new ProcessStartInfo("MSBuild.exe", Path.Combine(exePath, "TSLCompiler.csproj") + " /p:TSLPath=" + tslFilePath + " /flp:logfile=" + Path.Combine(exePath, "errors.log") + ";errorsonly");
+
                 process.Start();
                 process.WaitForExit();
 
                 string errorMessage = File.ReadAllText(Path.Combine(exePath, "errors.log"));
+
                 if (errorMessage=="")
                 {
                     File.Delete(Path.Combine(exePath, "errors.log"));
@@ -60,12 +64,14 @@ namespace GraphEngine.DataImporter
                 }
 
                 Process restoreProcess = new Process();
+
                 // Need to add the path of dotnet.exe to PATH environment variable first.
                 restoreProcess.StartInfo = new ProcessStartInfo("dotnet", " restore " + Path.Combine(exePath, "TSLcompiler.Clr.csproj"));
                 restoreProcess.Start();
                 restoreProcess.WaitForExit();
 
                 Process buildProcess = new Process();
+
                 buildProcess.StartInfo = new ProcessStartInfo("dotnet", @" build " + Path.Combine(exePath, "TSLcompiler.Clr.csproj") + @" -c Release /p:TSLPath=" + tslFilePath);
                 buildProcess.Start();
                 buildProcess.WaitForExit();

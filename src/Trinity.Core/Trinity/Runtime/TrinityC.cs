@@ -22,7 +22,7 @@ namespace Trinity
         private static bool   s_initialized = false;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal unsafe static void Init()
+        internal static unsafe void Init()
         {
             lock (s_initlock)
             {

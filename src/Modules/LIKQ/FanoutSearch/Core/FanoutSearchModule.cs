@@ -107,8 +107,7 @@ namespace FanoutSearch
 
         private void OnStart()
         {
-            if (s_useICellFunc == null)
-                s_useICellFunc = Global.LocalStorage.UseGenericCell;
+            s_useICellFunc ??= Global.LocalStorage.UseGenericCell;
 
             if (s_metadataUpdateFunc == null)
                 s_metadataUpdateFunc = (_, __) => { };
@@ -213,27 +212,25 @@ namespace FanoutSearch
         private unsafe FanoutPathDescriptor GetPathDescriptor(long* ptr, int hop)
         {
             FanoutPathDescriptor path = new FanoutPathDescriptor();
+
             if (hop > 3) { path.hop_n = new List<long>(Enumerable.Repeat(0L, hop - 3)); }
+
             for (int i = 0; i <= hop; ++i)
                 SetCellIdInPath(ref path, i, ptr[i]);
+
             return path;
         }
 
         private long GetCellIdInPath(FanoutPathDescriptor path, int hop)
         {
-            switch (hop)
+            return hop switch
             {
-                case 0:
-                    return path.hop_0;
-                case 1:
-                    return path.hop_1.Value;
-                case 2:
-                    return path.hop_2.Value;
-                case 3:
-                    return path.hop_3.Value;
-                default:
-                    return path.hop_n[hop - 4];
-            }
+                0 => path.hop_0,
+                1 => path.hop_1.Value,
+                2 => path.hop_2.Value,
+                3 => path.hop_3.Value,
+                _ => path.hop_n[hop - 4],
+            };
         }
 
         /// <summary>

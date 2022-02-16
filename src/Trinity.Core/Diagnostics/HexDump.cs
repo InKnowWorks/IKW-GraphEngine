@@ -14,7 +14,7 @@ namespace Trinity.Diagnostics
     /// <summary>
     /// A utility class for dumping binary data in hexadecimal format.
     /// </summary>
-    public unsafe static class HexDump
+    public static unsafe class HexDump
     {
         /// <summary>
         /// Dumps a byte array to the standard output in hexadecimal format.

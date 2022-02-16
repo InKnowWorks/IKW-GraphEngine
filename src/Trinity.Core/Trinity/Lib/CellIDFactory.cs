@@ -82,7 +82,7 @@ namespace Trinity.Core.Lib
     /// <summary>
     /// A utility class for generating 64-bit cell ids.
     /// </summary>
-    public unsafe static class CellIdFactory
+    public static unsafe class CellIdFactory
     {
         static CellIdFactory()
         {

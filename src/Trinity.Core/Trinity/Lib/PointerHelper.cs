@@ -10,25 +10,25 @@ namespace Trinity
     [System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
     public unsafe struct PointerHelper
     {
-        static public unsafe PointerHelper New(byte* ptr)
+        public static unsafe PointerHelper New(byte* ptr)
         {
             PointerHelper ret = new PointerHelper();
             ret.bp = ptr;
             return ret;
         }
-        static public unsafe PointerHelper New(short* ptr)
+        public static unsafe PointerHelper New(short* ptr)
         {
             PointerHelper ret = new PointerHelper();
             ret.sp = ptr;
             return ret;
         }
-        static public unsafe PointerHelper New(int* ptr)
+        public static unsafe PointerHelper New(int* ptr)
         {
             PointerHelper ret = new PointerHelper();
             ret.ip = ptr;
             return ret;
         }
-        static public unsafe PointerHelper New(long* ptr)
+        public static unsafe PointerHelper New(long* ptr)
         {
             PointerHelper ret = new PointerHelper();
             ret.lp = ptr;

@@ -19,7 +19,8 @@ namespace GraphEngine.DataImporter
         Rar,
         Tar,
     }
-    class FileReader
+
+    internal class FileReader
     {
         internal static IEnumerable<string> ReadFile(string path)
         {

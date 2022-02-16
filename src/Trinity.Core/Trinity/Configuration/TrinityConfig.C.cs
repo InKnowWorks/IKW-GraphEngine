@@ -14,7 +14,7 @@ using Trinity.Diagnostics;
 
 namespace Trinity
 {
-    internal unsafe static class CTrinityConfig
+    internal static unsafe class CTrinityConfig
     {
         static CTrinityConfig()
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
@@ -165,22 +166,26 @@ public class TripleStoreRuntimeModule : TripleServerBase
                         await Task.Delay(0).ConfigureAwait(false);
 
                         var geStorageClient = Global.CommunicationInstance
-                                                    .GetCommunicationModule<TrinityClientModule.TrinityClientModule>().Clients
+                                                    .GetCommunicationModule<TrinityClientModule.TrinityClientModule>()
+                                                    .Clients
                                                     .ToImmutableHashSet()
                                                     .AsParallel()
-                                                    .Where(connectedClient => geClient.GetPrivatePropertyValue<int>("InstanceId") == connectedClient.GetPrivatePropertyValue<int>("InstanceId"))
+                                                    .Where(connectedClient =>
+                                                               geClient.GetPrivatePropertyValue<int>("InstanceId") == connectedClient.GetPrivatePropertyValue<int>("InstanceId"))
                                                     .Select(sourcedStorageClient => new
                                                     {
                                                         iStorageClient = sourcedStorageClient,
                                                         iStorageClientInstanceId = geClientInstanceId,
                                                         iStorageClientPushRegId = Guid.NewGuid()
 
-                                                    }).FirstOrDefault();
+                                                    }).Distinct()
+                                                    .FirstOrDefault();
 
                         PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
 
                         var (_, clientReg) = PushRegistrationRepository
-                            .FirstOrDefault(entry => geStorageClient != null && entry.Key == geStorageClient.iStorageClientInstanceId);
+                            .FirstOrDefault(entry => geStorageClient != null && 
+                                            entry.Key == geStorageClient.iStorageClientInstanceId);
 
                         if (clientReg.HasValue)
                         {
@@ -206,8 +211,8 @@ public class TripleStoreRuntimeModule : TripleServerBase
 
                         return registrationId;
                     }, cancellationToken: CancellationToken.None,
-                    creationOptions: TaskCreationOptions.HideScheduler,
-                    scheduler: TaskScheduler.Current).Unwrap();
+                       creationOptions: TaskCreationOptions.HideScheduler,
+                       scheduler: TaskScheduler.Current).Unwrap();
 
                 using var forPushAutomationTask = registerClientForPushAutomationTask;
 
@@ -242,8 +247,8 @@ public class TripleStoreRuntimeModule : TripleServerBase
     /// </summary>
     private class PushRegistrationValueEqualityCompare: IEqualityComparer<(Guid? ClientRegId, IStorage ClientModule)?>
     {
-        public bool Equals((Guid ClientRegId, IStorage ClientModule)? x,
-            (Guid ClientRegId, IStorage ClientModule)? y)
+        public static bool Equals((Guid ClientRegId, IStorage ClientModule)? x,
+                                  (Guid ClientRegId, IStorage ClientModule)? y)
         {
             if (!x.HasValue || !y.HasValue) return false;
 
@@ -256,7 +261,7 @@ public class TripleStoreRuntimeModule : TripleServerBase
             return clientRegId_X_PushAutomationConfig == clientRegId_Y_PushAutomationConfig;
         }
 
-        public int GetHashCode((Guid ClientRegId, IStorage ClientModule)? obj)
+        public static int GetHashCode((Guid ClientRegId, IStorage ClientModule)? obj)
         {
             return obj != null ? obj.Value.ClientRegId.GetHashCode() : 0;
         }
@@ -368,7 +373,7 @@ public class TripleStoreRuntimeModule : TripleServerBase
     /// </summary>
     private class TripleStoreEqualityCompare : IEqualityComparer<TripleStore>
     {
-        private readonly TripleStore EmptyTripleStore = new TripleStore
+        private readonly TripleStore EmptyTripleStore = new()
         {
             CellId = 0,
             TripleCell = new Triple(null)
@@ -774,43 +779,43 @@ public class TripleStoreRuntimeModule : TripleServerBase
         var tripleQuerySubject = querySubject;
 
         return Observable.Create<bool>(observer =>
-                                       {
-                                           var newTriple = new TripleStore(new Triple());
+        {
+           var newTriple = new TripleStore(new Triple());
 
-                                           newTriple.TripleCell.Namespace = tripleQuerySubject.Namespace;
-                                           newTriple.TripleCell.Object    = tripleQuerySubject.Object;
-                                           newTriple.TripleCell.Predicate = tripleQuerySubject.Predicate;
-                                           newTriple.TripleCell.Subject   = tripleQuerySubject.Subject;
+           newTriple.TripleCell.Namespace = tripleQuerySubject.Namespace;
+           newTriple.TripleCell.Object    = tripleQuerySubject.Object;
+           newTriple.TripleCell.Predicate = tripleQuerySubject.Predicate;
+           newTriple.TripleCell.Subject   = tripleQuerySubject.Subject;
 
-                                           newTriple.CellId = tripleQuerySubject.TripleCellId;
+           newTriple.CellId = tripleQuerySubject.TripleCellId;
 
-                                           if (Global.CloudStorage.IsLocalCell(newTriple.CellId) && queryModeType == QueryModeType.ByCellId)
-                                           {
-                                               observer.OnNext(true);
-                                               observer.OnCompleted();
-                                           }
-                                           else if (Global.CloudStorage.IsLocalCell(newTriple.CellId) && queryModeType == QueryModeType.BySubject)
-                                           {
-                                               using var tripleObject = Global.LocalStorage
-                                                                              .TripleStore_Accessor_Selector()
-                                                                              .AsParallel()
-                                                                              .FirstOrDefault(tripleObjectAccessor => (tripleObjectAccessor.CellId == tripleQuerySubject.TripleCellId && 
-                                                                                  tripleObjectAccessor.TripleCell.Subject == tripleQuerySubject.Subject));
-                                               if (tripleObject is not null)
-                                               {
-                                                   observer.OnNext(true);
-                                                   observer.OnCompleted();
-                                               }
-                                               else
-                                               {
-                                                   observer.OnNext(false);
-                                                   observer.OnCompleted();
-                                               }
-                                           }
+           if (Global.CloudStorage.IsLocalCell(newTriple.CellId) && queryModeType == QueryModeType.ByCellId)
+           {
+               observer.OnNext(true);
+               observer.OnCompleted();
+           }
+           else if (Global.CloudStorage.IsLocalCell(newTriple.CellId) && queryModeType == QueryModeType.BySubject)
+           {
+               using var tripleObject = Global.LocalStorage
+                                              .TripleStore_Accessor_Selector()
+                                              .AsParallel()
+                                              .FirstOrDefault(tripleObjectAccessor => (tripleObjectAccessor.CellId == tripleQuerySubject.TripleCellId && 
+                                                  tripleObjectAccessor.TripleCell.Subject == tripleQuerySubject.Subject));
+               if (tripleObject is not null)
+               {
+                   observer.OnNext(true);
+                   observer.OnCompleted();
+               }
+               else
+               {
+                   observer.OnNext(false);
+                   observer.OnCompleted();
+               }
+           }
 
-                                           return Disposable.Empty;
+           return Disposable.Empty;
 
-                                       });
+        });
     }
 
     /// <summary>
@@ -823,30 +828,30 @@ public class TripleStoreRuntimeModule : TripleServerBase
         var reader = triple;
 
         return Observable.Create<TripleSaveResponseWriter>(observer =>
-                                                           {
-                                                               var newTriple = new TripleStore(new Triple());
+           {
+               var newTriple = new TripleStore(new Triple());
 
-                                                               newTriple.TripleCell.Namespace = reader.Namespace;
-                                                               newTriple.TripleCell.Object    = reader.Object;
-                                                               newTriple.TripleCell.Predicate = reader.Predicate;
-                                                               newTriple.TripleCell.Subject   = reader.Subject;
+               newTriple.TripleCell.Namespace = reader.Namespace;
+               newTriple.TripleCell.Object    = reader.Object;
+               newTriple.TripleCell.Predicate = reader.Predicate;
+               newTriple.TripleCell.Subject   = reader.Subject;
 
-                                                               // Save Triple to local memory cloud and return the newly have clientRequest to the calling client
+               // Save Triple to local memory cloud and return the newly have clientRequest to the calling client
 
-                                                               if (Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead, newTriple.CellId, newTriple))
-                                                               {
-                                                                   var returnTripleStore = new TripleSaveResponseWriter
-                                                                   {
-                                                                       TripleCellId = newTriple.CellId
-                                                                   };
+               if (Global.LocalStorage.SaveTripleStore(CellAccessOptions.StrongLogAhead, newTriple.CellId, newTriple))
+               {
+                   var returnTripleStore = new TripleSaveResponseWriter
+                   {
+                       TripleCellId = newTriple.CellId
+                   };
 
-                                                                   observer.OnNext(returnTripleStore);
-                                                                   observer.OnCompleted();
-                                                                   return Disposable.Empty;
-                                                               }
+                   observer.OnNext(returnTripleStore);
+                   observer.OnCompleted();
+                   return Disposable.Empty;
+               }
 
-                                                               return Disposable.Empty;
-                                                           });
+               return Disposable.Empty;
+           });
     }
 
     /// <summary>
@@ -858,89 +863,89 @@ public class TripleStoreRuntimeModule : TripleServerBase
     {
 
         return Observable.Create<ClientRegistrationResponseWriter>(async responseObserver =>
-                                                                   {
-                                                                       switch (Global.CommunicationInstance)
-                                                                       {
-                                                                           case TrinityClient:
-                                                                           case TripleAppServerGatewayBase:
-                                                                           case TrinityProxy:
-                                                                           {
-                                                                               throw new InvalidOperationException(
-                                                                                   "This code can only be executed on the GE App Server-side");
-                                                                           }
-                                                                           case TrinityServer:
-                                                                           {
-                                                                               RequestReaderMutex.WaitOne();
+           {
+               switch (Global.CommunicationInstance)
+               {
+                   case TrinityClient:
+                   case TripleAppServerGatewayBase:
+                   case TrinityProxy:
+                   {
+                       throw new InvalidOperationException(
+                           "This code can only be executed on the GE App Server-side");
+                   }
+                   case TrinityServer:
+                   {
+                       RequestReaderMutex.WaitOne();
 
-                                                                               MainWorkProcessGroup:
-                                                                               {
-                                                                                   PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
+                       MainWorkProcessGroup:
+                       {
+                           PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
 
-                                                                                   var (sourceClientId, pushAutoRegId) =
-                                                                                       PushRegistrationRepository.FirstOrDefault(entry => entry.Key == clientRequest.ClientInstanceId);
+                           var (sourceClientId, pushAutoRegId) =
+                               PushRegistrationRepository.FirstOrDefault(entry => entry.Key == clientRequest.ClientInstanceId);
 
-                                                                                   if (pushAutoRegId.HasValue)
-                                                                                   {
-                                                                                       if (pushAutoRegId?.ClientRegId is not null)
-                                                                                       {
-                                                                                           using var clientPushAutomationResponse = new ClientRegistrationResponseWriter((Guid) pushAutoRegId?.ClientRegId.Value);
+                           if (pushAutoRegId.HasValue)
+                           {
+                               if (pushAutoRegId?.ClientRegId is not null)
+                               {
+                                   using var clientPushAutomationResponse = new ClientRegistrationResponseWriter((Guid) pushAutoRegId?.ClientRegId.Value);
 
-                                                                                           responseObserver.OnNext(clientPushAutomationResponse);
-                                                                                       }
+                                   responseObserver.OnNext(clientPushAutomationResponse);
+                               }
 
-                                                                                       responseObserver.OnCompleted();
-                                                                                   }
-                                                                                   else
-                                                                                   {
-                                                                                       TrinityTripleModuleClient = Global.CommunicationInstance
-                                                                                           .GetCommunicationModule<TrinityClientModule.TrinityClientModule>();
+                               responseObserver.OnCompleted();
+                           }
+                           else
+                           {
+                               TrinityTripleModuleClient = Global.CommunicationInstance
+                                   .GetCommunicationModule<TrinityClientModule.TrinityClientModule>();
 
-                                                                                       var connectedClient = TrinityTripleModuleClient?
-                                                                                           .Clients
-                                                                                           .AsParallel()
-                                                                                           .ToList()
-                                                                                           .FirstOrDefault(geClient => clientRequest.ClientInstanceId == geClient.GetPrivatePropertyValue<int>("InstanceId"));
+                               var connectedClient = TrinityTripleModuleClient?
+                                   .Clients
+                                   .AsParallel()
+                                   .ToList()
+                                   .FirstOrDefault(geClient => clientRequest.ClientInstanceId == geClient.GetPrivatePropertyValue<int>("InstanceId"));
 
 
-                                                                                       if (connectedClient is not null)
-                                                                                       {
-                                                                                           var newClientPushRegId = Guid.NewGuid();
+                               if (connectedClient is not null)
+                               {
+                                   var newClientPushRegId = Guid.NewGuid();
 
-                                                                                           var geClientInstanceId =
-                                                                                               connectedClient.GetPrivatePropertyValue<int>("InstanceId");
+                                   var geClientInstanceId =
+                                       connectedClient.GetPrivatePropertyValue<int>("InstanceId");
 
-                                                                                           var newClientPushAutomationEntry = (ClientRegID: newClientPushRegId, ClientModule: connectedClient);
+                                   var newClientPushAutomationEntry = (ClientRegID: newClientPushRegId, ClientModule: connectedClient);
 
-                                                                                           PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
+                                   PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
 
-                                                                                           if (!PushRegistrationRepository.ContainsKey(geClientInstanceId))
-                                                                                           {
-                                                                                               PushRegistrationRepositoryBuilder.Add(geClientInstanceId, newClientPushAutomationEntry);
-                                                                                               PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
+                                   if (!PushRegistrationRepository.ContainsKey(geClientInstanceId))
+                                   {
+                                       PushRegistrationRepositoryBuilder.Add(geClientInstanceId, newClientPushAutomationEntry);
+                                       PushRegistrationRepository = PushRegistrationRepositoryBuilder.ToImmutable();
 
-                                                                                               using var registrationResponseWriter = new ClientRegistrationResponseWriter(newClientPushRegId);
-                                                                                               responseObserver.OnNext(registrationResponseWriter);
-                                                                                           }
+                                       using var registrationResponseWriter = new ClientRegistrationResponseWriter(newClientPushRegId);
+                                       responseObserver.OnNext(registrationResponseWriter);
+                                   }
 
-                                                                                           responseObserver.OnCompleted();
-                                                                                       }
-                                                                                       else
-                                                                                       {
-                                                                                           goto MainWorkProcessGroup;
-                                                                                       }
-                                                                                   }
-                                                                               }
+                                   responseObserver.OnCompleted();
+                               }
+                               else
+                               {
+                                   goto MainWorkProcessGroup;
+                               }
+                           }
+                       }
 
-                                                                               RequestReaderMutex.ReleaseMutex();
+                       RequestReaderMutex.ReleaseMutex();
 
-                                                                               await Task.Delay(300).ConfigureAwait(false);
+                       await Task.Delay(300).ConfigureAwait(false);
 
-                                                                               break;
-                                                                           }
-                                                                       }
+                       break;
+                   }
+               }
 
-                                                                       return Disposable.Empty;
-                                                                   });
+               return Disposable.Empty;
+           });
     }
 
     /// <summary>
@@ -1026,7 +1031,7 @@ public class TripleStoreRuntimeModule : TripleServerBase
 
                         try
                         {
-                            List<Triple> collectionOfTriples = new List<Triple> {newTripleStore.TripleCell};
+                            List<Triple> collectionOfTriples = new() {newTripleStore.TripleCell};
 
                             using var saveRequestWriter = new TripleSaveRequestWriter
                             {
@@ -1161,6 +1166,22 @@ public class TripleStoreRuntimeModule : TripleServerBase
                                             storeFromMemoryCloud.TripleCell.Predicate,
                                             storeFromMemoryCloud.TripleCell.Object,
                                             storeFromMemoryCloud.TripleCell.Namespace));
+
+                                    var newCell = Trinity.Global.LocalStorage.LoadGenericCell(storeFromMemoryCloud.CellId);
+
+                                    var cellType = newCell.CellType;
+
+                                    var cellSchema = Trinity.Global.StorageSchema.CellDescriptors;
+
+                                    foreach (var cellDescriptor in cellSchema)
+                                    {
+                                        var cellTypeName = cellDescriptor.TypeName;
+                                        //var cellFields   = cellDescriptor.GetFieldAttributes(cellDescriptor.TypeName);
+                                        var cellDesc     = cellDescriptor.GetFieldDescriptors();
+                                        var fieldsOnCell = cellDescriptor.GetFieldNames();
+                                    }
+
+                                    var newGeneric = Trinity.Global.LocalStorage.NewGenericCell(newCell.CellId, newCell.TypeName);
 
                                     // Let's save the TripleStore to the LocalStorage and let the Client know 
 
@@ -1351,6 +1372,7 @@ public class TripleStoreRuntimeModule : TripleServerBase
     /// </summary>
     /// <param name="request"></param>
     /// <param name="response"></param>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public override void GetTripleByCellIdHandler(TripleGetRequestReader request, ErrorCodeResponseWriter response)
     {
         response.errno = 0;
@@ -1411,7 +1433,12 @@ public class TripleStoreRuntimeModule : TripleServerBase
                 break;
             }
             default:
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException
+                {
+                    HelpLink = null,
+                    HResult = 0,
+                    Source = null
+                };
         }
     }
 

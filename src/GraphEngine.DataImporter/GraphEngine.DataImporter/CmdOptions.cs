@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GraphEngine.DataImporter
 {
-    class CmdOptions
+    public class CmdOptions
     {
         [Option('t', "tsl", HelpText = "Specifies the TSL file for data importing")]
         public string TSL { get; set;}
@@ -55,7 +55,8 @@ namespace GraphEngine.DataImporter
             };
 
             help.AddPreOptionsLine("Import from files to Graph Engine storage.");
-            help.AddPreOptionsLine(string.Format("Usage: {0} [-t tsl] [-d directory] [-o output_dir] [--delimiter delimiter] [-f file_format] [--notrim] [-a tsl_assembly|-g] [explicit files]", Path.GetFileName(Assembly.GetExecutingAssembly().Location)));
+            help.AddPreOptionsLine(
+                $"Usage: {Path.GetFileName(Assembly.GetExecutingAssembly().Location)} [-t tsl] [-d directory] [-o output_dir] [--delimiter delimiter] [-f file_format] [--notrim] [-a tsl_assembly|-g] [explicit files]");
 
             //help.AddOptions(this);
             // todo scan for supported file types

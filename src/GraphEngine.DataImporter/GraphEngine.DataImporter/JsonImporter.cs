@@ -84,7 +84,7 @@ namespace GraphEngine.DataImporter
             cell.CellId = cellid.Value;
             if (parent_id != null)
             {
-                var parent_fd = cell_desc.GetFieldDescriptors().Where(fd => fd.GetAttributeValue(Consts.c_KW_TreeParent) != null).First();
+                var parent_fd = cell_desc.GetFieldDescriptors().First(fd => fd.GetAttributeValue(Consts.c_KW_TreeParent) != null);
             }
             // TODO check for duplicate records.
             // TODO in a distributed setting we cannot save to local storage like this.

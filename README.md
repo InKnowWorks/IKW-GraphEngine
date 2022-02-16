@@ -11,6 +11,7 @@ The Microsoft Graph Engine is a fantastic technology and although  the original 
 - NEW - Native Support for Fully Managed Reactive Server-side Psuh Automation - Custer Aware support under development
     * Mods to TSL compiler to support Push automation
     * Fully baked .NET 6 Console and WPF Cleint and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
+- Native support for .NET 6 gRPC
 - Refactored Azure Service Fabric and extended support 
 - UPDATE: Native OWL 2 support via TSL 2.0 via Reactive Event processing, C# 10 Functional implementation and new Graph Engine Adapter Pattern
 - Updated and Revised LIKQ for various graph traversal

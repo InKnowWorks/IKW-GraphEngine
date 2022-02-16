@@ -28,9 +28,9 @@ namespace GraphEngine.DataImporter
         {
             if (Predicate == other.Predicate)
             {
-                Object.CompareTo(other.Object);
+                var loc = string.Compare(Object, other.Object, StringComparison.Ordinal);
             }
-            return Predicate.CompareTo(other.Predicate);
+            return string.Compare(Predicate, other.Predicate, StringComparison.Ordinal);
         }
     }
 
@@ -54,6 +54,7 @@ namespace GraphEngine.DataImporter
         internal static Triple ParseTriple(string line)
         {
             string[] splits = line.Split(c_separator);
+
             if (splits.Length < 3)
             {
                 Log.WriteLine("Skip: {0}", line);

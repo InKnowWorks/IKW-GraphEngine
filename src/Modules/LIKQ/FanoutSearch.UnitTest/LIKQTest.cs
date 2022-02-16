@@ -71,8 +71,10 @@ namespace FanoutSearch.UnitTest
         [Fact]
         public void Test3()
         {
-            CustomClass closure_custom_var = new CustomClass();
-            closure_custom_var.val = new CustomClass.NestedStruct() { val = true };
+            CustomClass closure_custom_var = new CustomClass
+            {
+                val = new CustomClass.NestedStruct() { val = true }
+            };
             var paths = KnowledgeGraph.StartFrom(123).FollowEdge("123").VisitNode(_ => _.return_if(closure_custom_var.val.val)).ToList();
         }
 

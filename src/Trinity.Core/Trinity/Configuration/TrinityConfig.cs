@@ -44,7 +44,7 @@ namespace Trinity
     /// <summary>
     /// A class for accessing and manipulating various system parameters.
     /// </summary>
-    public unsafe static partial class TrinityConfig
+    public static unsafe partial class TrinityConfig
     {
         #region Fields
         internal static bool is_config_loaded = false;

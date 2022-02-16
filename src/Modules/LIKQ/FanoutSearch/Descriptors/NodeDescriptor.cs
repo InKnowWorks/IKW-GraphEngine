@@ -32,13 +32,7 @@ namespace FanoutSearch
             internal set;
         }
 
-        public string this[string key]
-        {
-            get
-            {
-                return values[keys.IndexOf(key)];
-            }
-        }
+        public string this[string key] => values[keys.IndexOf(key)];
 
         public bool Contains(string key)
         {
@@ -60,11 +54,9 @@ namespace FanoutSearch
 
         public override string ToString()
         {
-            using (StringWriter sw = new StringWriter())
-            {
-                Serialize(sw);
-                return sw.ToString();
-            }
+            using StringWriter sw = new StringWriter();
+            Serialize(sw);
+            return sw.ToString();
         }
 
         public void Serialize(TextWriter writer)
@@ -102,7 +94,7 @@ namespace FanoutSearch
                 goto return_string;
             }
 
-return_string:
+            return_string:
             return JsonStringProcessor.escape(v);
         }
     }

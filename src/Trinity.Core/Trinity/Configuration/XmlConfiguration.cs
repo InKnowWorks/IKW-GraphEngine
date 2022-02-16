@@ -89,7 +89,7 @@ namespace Trinity.Configuration
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        static public XmlConfiguration Load(string fileName)
+        public static XmlConfiguration Load(string fileName)
         {
             return new XmlConfiguration(fileName);
         }

@@ -15,7 +15,7 @@ namespace Trinity.Core.Lib
     /// <summary>
     /// Provides methods for memory management.
     /// </summary>
-    public unsafe static partial class Memory
+    public static unsafe partial class Memory
     {
         static int warmup = 0;
 

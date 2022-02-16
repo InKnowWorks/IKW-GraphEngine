@@ -13,7 +13,7 @@ namespace Trinity.Network.Messaging
     /// <summary>
     /// Represents a binary network message.
     /// </summary>
-    public unsafe sealed class TrinityMessage : IDisposable
+    public sealed unsafe class TrinityMessage : IDisposable
     {
         static TrinityMessage()
         {

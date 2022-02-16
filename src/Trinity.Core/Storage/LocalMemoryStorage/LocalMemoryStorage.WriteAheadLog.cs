@@ -127,7 +127,7 @@ namespace Trinity.Storage
         /// <param name="cellType">A 16-bit unsigned integer indicating the cell type.</param>
         /// <param name="options">An flag indicating a cell access option.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public unsafe static void CWriteAheadLog(long cellId, byte* cellPtr, int cellSize, ushort cellType, CellAccessOptions options)
+        public static unsafe void CWriteAheadLog(long cellId, byte* cellPtr, int cellSize, ushort cellType, CellAccessOptions options)
         {
             CLocalMemoryStorage.CWriteAheadLog(cellId, cellPtr, cellSize, cellType, options);
         }
