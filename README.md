@@ -76,6 +76,8 @@ Install [Visual Studio 2017 or 2019 and VS *2022][vs] with the following compone
 - .NET Core SDK 3.1
 - .NET 5/6 SDK for Visual Studio
 - cmake (latest)
+- New macOS build
+- Updated Linux build
 
 [.NET 5/6 SDK][dotnet-download] and [cmake][cmake-download] can alternatively be installed using their standalone installers.
 
