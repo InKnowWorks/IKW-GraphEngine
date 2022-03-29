@@ -1,1 +1,0 @@
-K:/Microsoft Visual Studio/2019/Enterprise/MSBuild/Microsoft/VC/v160
