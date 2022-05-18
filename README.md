@@ -1,9 +1,10 @@
 # Graph Engine - Open Source
 
-The Microsoft Graph Engine is a fantastic technology and although  the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using the it in a number of commercial applications and Azure host Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
+The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using the it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
 
 ### New Capabilities are coming! (Spring 2022)
 
+- Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (in progress)
 - Updated C# Code generation: Support for C# 8, 9 and 10 coming in the Spring of 2022
 - New documentation to help developer to better understand leverage the Trinity Graph Engine APIs and 
   new Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime
