@@ -1167,21 +1167,21 @@ public class TripleStoreRuntimeModule : TripleServerBase
                                             storeFromMemoryCloud.TripleCell.Object,
                                             storeFromMemoryCloud.TripleCell.Namespace));
 
-                                    var newCell = Trinity.Global.LocalStorage.LoadGenericCell(storeFromMemoryCloud.CellId);
+                                    //var newCell = Trinity.Global.LocalStorage.LoadGenericCell(storeFromMemoryCloud.CellId);
 
-                                    var cellType = newCell.CellType;
+                                    //var cellType = newCell.CellType;
 
-                                    var cellSchema = Trinity.Global.StorageSchema.CellDescriptors;
+                                    //var cellSchema = Trinity.Global.StorageSchema.CellDescriptors;
 
-                                    foreach (var cellDescriptor in cellSchema)
-                                    {
-                                        var cellTypeName = cellDescriptor.TypeName;
-                                        //var cellFields   = cellDescriptor.GetFieldAttributes(cellDescriptor.TypeName);
-                                        var cellDesc     = cellDescriptor.GetFieldDescriptors();
-                                        var fieldsOnCell = cellDescriptor.GetFieldNames();
-                                    }
+                                    //foreach (var cellDescriptor in cellSchema)
+                                    //{
+                                    //    var cellTypeName = cellDescriptor.TypeName;
+                                    //    //var cellFields   = cellDescriptor.GetFieldAttributes(cellDescriptor.TypeName);
+                                    //    var cellDesc     = cellDescriptor.GetFieldDescriptors();
+                                    //    var fieldsOnCell = cellDescriptor.GetFieldNames();
+                                    //}
 
-                                    var newGeneric = Trinity.Global.LocalStorage.NewGenericCell(newCell.CellId, newCell.TypeName);
+                                    //var newGeneric = Trinity.Global.LocalStorage.NewGenericCell(newCell.CellId, newCell.TypeName);
 
                                     // Let's save the TripleStore to the LocalStorage and let the Client know 
 

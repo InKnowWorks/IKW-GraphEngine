@@ -14,7 +14,7 @@ namespace Trinity.DynamicCluster.Tasks
     [Serializable]
     internal class ShrinkDataTask : ITask
     {
-        public static readonly Guid Guid = new Guid("DF3AE902-78C7-49E0-B99B-8D4279D62E53");
+        public static readonly Guid s_guid = new("DF3AE902-78C7-49E0-B99B-8D4279D62E53");
         private Guid m_guid = Guid.NewGuid();
         private ReplicaInformation m_target;
         private List<(Chunk from, Chunk to)> m_plan;
@@ -29,7 +29,7 @@ namespace Trinity.DynamicCluster.Tasks
 
         public Guid Id => m_guid;
 
-        public Guid Tag => Guid;
+        public Guid Tag => s_guid;
 
         public async Task Execute(CancellationToken cancel)
         {

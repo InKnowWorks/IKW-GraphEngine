@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.RetryPolicies;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
-using Microsoft.Azure.Storage.RetryPolicies;
 using Trinity.DynamicCluster.Config;
 
 namespace Trinity.Azure.Storage
@@ -77,7 +77,7 @@ namespace Trinity.Azure.Storage
 #if CORECLR
             file.DownloadTextAsync(Encoding.UTF8, new AccessCondition(), m_reqops_download, m_opctx, m_cancel);
 #else
-            file.DownloadTextAsync(m_cancel);
+            file.DownloadTextAsync();
 #endif
 
         public async Task<IEnumerable<IListBlobItem>> ListBlobsAsync(CloudBlobContainer container)
@@ -110,7 +110,7 @@ namespace Trinity.Azure.Storage
 #if CORECLR
             blob.UploadFromByteArrayAsync(data, 0, data.Length, new AccessCondition(), m_reqops_upload, m_opctx, m_cancel);
 #else
-            blob.UploadFromByteArrayAsync(data, 0, data.Length, cancellationToken: m_cancel);
+            blob.UploadFromByteArrayAsync(data, 0, data.Length);
 #endif
 
         public async Task DeleteAsync(CloudBlob file)
@@ -118,7 +118,7 @@ namespace Trinity.Azure.Storage
 #if CORECLR
             await file.DeleteIfExistsAsync(DeleteSnapshotsOption.None, new AccessCondition(), m_reqops_upload, m_opctx, m_cancel);
 #else
-            await file.DeleteIfExistsAsync(m_cancel);
+            await file.DeleteIfExistsAsync();
 #endif
         }
     }

@@ -54,7 +54,7 @@ namespace Trinity.DynamicCluster.Replication
             if (!m_namesvc.IsMaster) return;
             await Task.WhenAll(
                 m_taskqueue.Wait(ReplicatorTask.Guid),
-                m_taskqueue.Wait(ShrinkDataTask.Guid),
+                m_taskqueue.Wait(ShrinkDataTask.s_guid),
                 m_taskqueue.Wait(PersistedSaveTask.Guid));
 
             var replica_chunks = m_idx.GetMyPartitionReplicaChunks().ToList();
@@ -86,7 +86,7 @@ namespace Trinity.DynamicCluster.Replication
 
                 if (shrinkDataTasks.Any())
                 {
-                    chain.Add(new GroupedTask(shrinkDataTasks, ShrinkDataTask.Guid));
+                    chain.Add(new GroupedTask(shrinkDataTasks, ShrinkDataTask.s_guid));
                 }
 
                 bool any = chain.Any();

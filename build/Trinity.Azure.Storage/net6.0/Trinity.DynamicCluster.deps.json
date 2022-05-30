@@ -6,31 +6,31 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Trinity.DynamicCluster/2.0.11335": {
+      "Trinity.DynamicCluster/2.0.11412": {
         "dependencies": {
-          "GraphEngine.Client": "2.0.11335",
-          "GraphEngine.Core": "2.0.11335",
-          "Nito.AsyncEx.Coordination": "5.1.0",
-          "Nito.AsyncEx.Tasks": "5.1.0",
-          "System.Collections.Immutable": "1.7.1"
+          "GraphEngine.Client": "2.0.11412",
+          "GraphEngine.Core": "2.0.11412",
+          "Nito.AsyncEx.Coordination": "5.1.2",
+          "Nito.AsyncEx.Tasks": "5.1.2",
+          "System.Collections.Immutable": "6.0.0"
         },
         "runtime": {
           "Trinity.DynamicCluster.dll": {}
         }
       },
-      "GraphEngine.Client/2.0.11335": {
+      "GraphEngine.Client/2.0.11412": {
         "dependencies": {
-          "GraphEngine.Core": "2.0.11335",
+          "GraphEngine.Core": "2.0.11412",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.1/Trinity.Client.dll": {
-            "assemblyVersion": "2.0.11335.0",
-            "fileVersion": "2.0.11335.0"
+            "assemblyVersion": "2.0.11412.0",
+            "fileVersion": "2.0.11412.0"
           }
         }
       },
-      "GraphEngine.Core/2.0.11335": {
+      "GraphEngine.Core/2.0.11412": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -38,8 +38,8 @@
         },
         "runtime": {
           "lib/net6.0/Trinity.Core.dll": {
-            "assemblyVersion": "2.0.11335.0",
-            "fileVersion": "2.0.11335.0"
+            "assemblyVersion": "2.0.11412.0",
+            "fileVersion": "2.0.11412.0"
           }
         },
         "runtimeTargets": {
@@ -87,49 +87,53 @@
           }
         }
       },
-      "Nito.AsyncEx.Coordination/5.1.0": {
+      "Nito.AsyncEx.Coordination/5.1.2": {
         "dependencies": {
-          "Nito.AsyncEx.Tasks": "5.1.0",
-          "Nito.Collections.Deque": "1.1.0"
+          "Nito.AsyncEx.Tasks": "5.1.2",
+          "Nito.Collections.Deque": "1.1.1"
         },
         "runtime": {
           "lib/netstandard2.0/Nito.AsyncEx.Coordination.dll": {
-            "assemblyVersion": "5.1.0.0",
-            "fileVersion": "5.1.0.0"
+            "assemblyVersion": "5.1.2.0",
+            "fileVersion": "5.1.2.0"
           }
         }
       },
-      "Nito.AsyncEx.Tasks/5.1.0": {
+      "Nito.AsyncEx.Tasks/5.1.2": {
         "dependencies": {
-          "Nito.Disposables": "2.2.0"
+          "Nito.Disposables": "2.2.1"
         },
         "runtime": {
           "lib/netstandard2.0/Nito.AsyncEx.Tasks.dll": {
-            "assemblyVersion": "5.1.0.0",
-            "fileVersion": "5.1.0.0"
+            "assemblyVersion": "5.1.2.0",
+            "fileVersion": "5.1.2.0"
           }
         }
       },
-      "Nito.Collections.Deque/1.1.0": {
+      "Nito.Collections.Deque/1.1.1": {
         "runtime": {
           "lib/netstandard2.0/Nito.Collections.Deque.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.0"
+            "assemblyVersion": "1.1.1.0",
+            "fileVersion": "1.1.1.0"
           }
         }
       },
-      "Nito.Disposables/2.2.0": {
+      "Nito.Disposables/2.2.1": {
         "dependencies": {
-          "System.Collections.Immutable": "1.7.1"
+          "System.Collections.Immutable": "6.0.0"
         },
         "runtime": {
           "lib/netstandard2.1/Nito.Disposables.dll": {
-            "assemblyVersion": "2.2.0.0",
-            "fileVersion": "2.2.0.0"
+            "assemblyVersion": "2.2.1.0",
+            "fileVersion": "2.2.1.0"
           }
         }
       },
-      "System.Collections.Immutable/1.7.1": {},
+      "System.Collections.Immutable/6.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
       "System.Configuration.ConfigurationManager/6.0.0": {
         "dependencies": {
           "System.Security.Cryptography.ProtectedData": "6.0.0",
@@ -186,6 +190,7 @@
           }
         }
       },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Security.AccessControl/6.0.0": {},
       "System.Security.Cryptography.ProtectedData/6.0.0": {
         "runtime": {
@@ -238,24 +243,24 @@
     }
   },
   "libraries": {
-    "Trinity.DynamicCluster/2.0.11335": {
+    "Trinity.DynamicCluster/2.0.11412": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "GraphEngine.Client/2.0.11335": {
+    "GraphEngine.Client/2.0.11412": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-p2ODuBlKxFYhX23Phf/hQQUyohLKfjC6O0MFYalqLylqEhyhgKyih1dGfaaVH8xMtDVpdD4K1M2z3QJ9gMnCTQ==",
-      "path": "graphengine.client/2.0.11335",
-      "hashPath": "graphengine.client.2.0.11335.nupkg.sha512"
+      "sha512": "sha512-yn41ePsX9CrpVEVOwLOhG3K2mc+6v8IE5gA4d14kUryFq6o2Fre0l/idPYzNQGZFpAdsAyDReXtK0p+RfABYKQ==",
+      "path": "graphengine.client/2.0.11412",
+      "hashPath": "graphengine.client.2.0.11412.nupkg.sha512"
     },
-    "GraphEngine.Core/2.0.11335": {
+    "GraphEngine.Core/2.0.11412": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-37meJNC9PT5BlVT3495ZdnlDCFeB4cQaUks3qyC4zqxyZYRy2S0FZpEbgumHD3qhVf5de8YBNMQ9kutjo8UwFw==",
-      "path": "graphengine.core/2.0.11335",
-      "hashPath": "graphengine.core.2.0.11335.nupkg.sha512"
+      "sha512": "sha512-ZGRwEVkDPt0TDaTXHivljJHtxMqg/YOsfUgJHwoYbqXFVtou3l8b3E1C7TGzRL83GjhmCJ4NBDP3HLaGTKSNIg==",
+      "path": "graphengine.core/2.0.11412",
+      "hashPath": "graphengine.core.2.0.11412.nupkg.sha512"
     },
     "Microsoft.Extensions.ObjectPool/6.0.0": {
       "type": "package",
@@ -278,40 +283,40 @@
       "path": "newtonsoft.json/13.0.1",
       "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
     },
-    "Nito.AsyncEx.Coordination/5.1.0": {
+    "Nito.AsyncEx.Coordination/5.1.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Nv+oA+cSxidjOImiKcz2FJgMIDxiK0A6xormKmsUklUBjTNqQpjtdJsACMgTQG56PkTHdbMi5QijPTTUsmcCeg==",
-      "path": "nito.asyncex.coordination/5.1.0",
-      "hashPath": "nito.asyncex.coordination.5.1.0.nupkg.sha512"
+      "sha512": "sha512-QMyUfsaxov//0ZMbOHWr9hJaBFteZd66DV1ay4J5wRODDb8+K/uHC7+3VsOflo6SVw/29mu8OWZp8vMDSuzc0w==",
+      "path": "nito.asyncex.coordination/5.1.2",
+      "hashPath": "nito.asyncex.coordination.5.1.2.nupkg.sha512"
     },
-    "Nito.AsyncEx.Tasks/5.1.0": {
+    "Nito.AsyncEx.Tasks/5.1.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tU3Ib4zs8ivM+uS8n7F7ReWZlA3mODyLqwPE+v+WJI94hZ8xLXl+a9npfj/IcmeXo9a6fGKLWkswKQHOeTWqwA==",
-      "path": "nito.asyncex.tasks/5.1.0",
-      "hashPath": "nito.asyncex.tasks.5.1.0.nupkg.sha512"
+      "sha512": "sha512-jEkCfR2/M26OK/U4G7SEN063EU/F4LiVA06TtpZILMdX/quIHCg+wn31Zerl2LC+u1cyFancjTY3cNAr2/89PA==",
+      "path": "nito.asyncex.tasks/5.1.2",
+      "hashPath": "nito.asyncex.tasks.5.1.2.nupkg.sha512"
     },
-    "Nito.Collections.Deque/1.1.0": {
+    "Nito.Collections.Deque/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RXHe531Oaw2IathDr0Q2kbid0iuudBxtgZsfBZ2eUPuFI8I1P7HMiuUeaIefqYykcDYFTDQsFAPAljduIjihLA==",
-      "path": "nito.collections.deque/1.1.0",
-      "hashPath": "nito.collections.deque.1.1.0.nupkg.sha512"
+      "sha512": "sha512-CU0/Iuv5VDynK8I8pDLwkgF0rZhbQoZahtodfL0M3x2gFkpBRApKs8RyMyNlAi1mwExE4gsmqQXk4aFVvW9a4Q==",
+      "path": "nito.collections.deque/1.1.1",
+      "hashPath": "nito.collections.deque.1.1.1.nupkg.sha512"
     },
-    "Nito.Disposables/2.2.0": {
+    "Nito.Disposables/2.2.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QcL+uBwUCEoK8GKp/WzjdCiG8/3G1WLlVNJgLJUNG7bIIVAcEV+Mro4s53VT4Nd8xMSplv0gy+Priw44vRvLaA==",
-      "path": "nito.disposables/2.2.0",
-      "hashPath": "nito.disposables.2.2.0.nupkg.sha512"
+      "sha512": "sha512-6sZ5uynQeAE9dPWBQGKebNmxbY4xsvcc5VplB5WkYEESUS7oy4AwnFp0FhqxTSKm/PaFrFqLrYr696CYN8cugg==",
+      "path": "nito.disposables/2.2.1",
+      "hashPath": "nito.disposables.2.2.1.nupkg.sha512"
     },
-    "System.Collections.Immutable/1.7.1": {
+    "System.Collections.Immutable/6.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-B43Zsz5EfMwyEbnObwRxW5u85fzJma3lrDeGcSAV1qkhSRTNY5uXAByTn9h9ddNdhM+4/YoLc/CI43umjwIl9Q==",
-      "path": "system.collections.immutable/1.7.1",
-      "hashPath": "system.collections.immutable.1.7.1.nupkg.sha512"
+      "sha512": "sha512-l4zZJ1WU2hqpQQHXz1rvC3etVZN+2DLmQMO79FhOTZHMn8tDRr+WU287sbomD0BETlmKDn0ygUgVy9k5xkkJdA==",
+      "path": "system.collections.immutable/6.0.0",
+      "hashPath": "system.collections.immutable.6.0.0.nupkg.sha512"
     },
     "System.Configuration.ConfigurationManager/6.0.0": {
       "type": "package",
@@ -333,6 +338,13 @@
       "sha512": "sha512-NfuoKUiP2nUWwKZN6twGqXioIe1zVD0RIj2t976A+czLHr2nY454RwwXs6JU9Htc6mwqL6Dn/nEL3dpVf2jOhg==",
       "path": "system.drawing.common/6.0.0",
       "hashPath": "system.drawing.common.6.0.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
     },
     "System.Security.AccessControl/6.0.0": {
       "type": "package",

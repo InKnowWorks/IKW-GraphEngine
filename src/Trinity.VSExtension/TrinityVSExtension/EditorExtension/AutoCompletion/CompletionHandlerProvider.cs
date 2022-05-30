@@ -8,9 +8,7 @@ using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
-//using Microsoft.VisualStudio.Text;
-//using Microsoft.VisualStudio.Text.Editor;
-//using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Utilities;
 
 namespace Trinity.VSExtension.EditorExtension.AutoCompletion
@@ -37,9 +35,12 @@ namespace Trinity.VSExtension.EditorExtension.AutoCompletion
             if (textView == null)
                 return;
 
-            Func<TSLCompletionHandler> createCommandHandler = delegate() { return new TSLCompletionHandler(textViewAdapter, textView, this); };
+            TSLCompletionHandler CreateCommandHandler()
+            {
+                return new TSLCompletionHandler(textViewAdapter, textView, this);
+            }
 
-            textView.Properties.GetOrCreateSingletonProperty(createCommandHandler);
+            textView.Properties.GetOrCreateSingletonProperty((Func<TSLCompletionHandler>) CreateCommandHandler);
         }
     }
 }

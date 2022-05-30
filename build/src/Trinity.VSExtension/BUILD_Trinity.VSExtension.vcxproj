@@ -110,9 +110,9 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 ..\..\tools\nuget.exe restore O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln
 if %errorlevel% neq 0 goto :cmEnd
-"K:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Clean /p:Configuration=Release
+"L:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Clean /p:Configuration=Release
 if %errorlevel% neq 0 goto :cmEnd
-"K:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Build /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.VSExtension/.imports.props /p:Configuration=Release /p:Platform=x86
+"L:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Build /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.VSExtension/.imports.props /p:Configuration=Release /p:Platform=x86
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -127,9 +127,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 ..\..\tools\nuget.exe restore O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln
 if %errorlevel% neq 0 goto :cmEnd
-"K:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Clean /p:Configuration=Release
+"L:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Clean /p:Configuration=Release
 if %errorlevel% neq 0 goto :cmEnd
-"K:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Build /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.VSExtension/.imports.props /p:Configuration=Release /p:Platform=x86
+"L:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Build /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.VSExtension/.imports.props /p:Configuration=Release /p:Platform=x86
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -144,9 +144,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 ..\..\tools\nuget.exe restore O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln
 if %errorlevel% neq 0 goto :cmEnd
-"K:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Clean /p:Configuration=Release
+"L:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Clean /p:Configuration=Release
 if %errorlevel% neq 0 goto :cmEnd
-"K:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Build /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.VSExtension/.imports.props /p:Configuration=Release /p:Platform=x86
+"L:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Build /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.VSExtension/.imports.props /p:Configuration=Release /p:Platform=x86
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -161,9 +161,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
 ..\..\tools\nuget.exe restore O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln
 if %errorlevel% neq 0 goto :cmEnd
-"K:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Clean /p:Configuration=Release
+"L:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Clean /p:Configuration=Release
 if %errorlevel% neq 0 goto :cmEnd
-"K:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Build /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.VSExtension/.imports.props /p:Configuration=Release /p:Platform=x86
+"L:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" O:/IKW-GraphEngine/src/Trinity.VSExtension/Trinity.VSExtension.VS2019.sln /t:Build /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.VSExtension/.imports.props /p:Configuration=Release /p:Platform=x86
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

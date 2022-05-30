@@ -1,137 +1,92 @@
-# Graph Engine - Open Source
+# Microsoft Graph Engine
 
-The Microsoft Graph Engine is a fantastic technology and although  the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works has planned used in a number of commercial applications. We use it heavily @ InKnowWorks and thus we continue to evolve the technology.
-
-### New Capabilities are coming! (Spring 2022)
-
-- Updated C# Code generation: Support for C# 8, 9 and 10 coming in the Spring of 2022
-- New documentation to help developer to better understand leverage the Trinity Graph Engine APIs and 
-  new Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime
-- Native code generation for Java 15 Client-side code only
-- NEW - Native Support for Fully Managed Reactive Server-side Psuh Automation - Custer Aware support under development
-    * Mods to TSL compiler to support Push automation
-    * Fully baked .NET 6 Console and WPF Cleint and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
-- Native support for .NET 6 gRPC
-- Refactored Azure Service Fabric and extended support 
-- UPDATE: Native OWL 2 support via TSL 2.0 via Reactive Event processing, C# 10 Functional implementation and new Graph Engine Adapter Pattern
-- Updated and Revised LIKQ for various graph traversal
-    * Demos that demostrate the powerful Prolog-like capabilities of the LIKQ
-- New Graph Engine VS 2022 plug-in
-    * New VS 2022 Templates
-        - TSL Graph Data Taxonomy Model Templates
-        - RPC Server, Proxy and Server Protocol Templates
-        - Graphical TSL Designer
-- New Developers Guide
-- much more ..
-
-| - | Windows Multi Targeting | Ubuntu 16.04 .NET Core |
+| - | Windows | Linux |
 |:------:|:------:|:------:|
-|Build|[<img src="https://trinitygraphengine.visualstudio.com/_apis/public/build/definitions/4cfbb293-cd2c-4f49-aa03-06894081c93b/3/badge"/>](https://trinitygraphengine.visualstudio.com/trinity-ci/_build/index?definitionId=3)|[<img src="https://trinitygraphengine.visualstudio.com/_apis/public/build/definitions/4cfbb293-cd2c-4f49-aa03-06894081c93b/4/badge"/>](https://trinitygraphengine.visualstudio.com/trinity-ci/_build/index?definitionId=4)|
-|Tests|_|_|
-|Stress|_|_|
+|Build|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Windows)|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Linux)|
 
-This repository contains the source code of [Graph Engine][graph-engine] and its graph
+This repository contains the source code of [Microsoft Graph Engine][graph-engine] and its graph
 query language -- [Language Integrated Knowledge Query][likq] (LIKQ).
 
-Microsoft Graph Engine is a distributed
-in-memory data processing engine, underpinned by a strongly-typed
-in-memory key-value store and a general-purpose distributed computation
+Microsoft Graph Engine is a distributed in-memory data processing engine,
+underpinned by a strongly-typed in-memory key-value store and a general-purpose distributed computation
 engine.
 
 [LIKQ][likq-gh]
-is a versatile graph query language atop Graph Engine. It
+is a versatile graph query language built atop Graph Engine. It
 combines the capability of fast graph exploration with the flexibility
-of lambda expression. Server-side computations can be expressed in
-lambda expressions, embedded in LIKQ, and executed on Graph Engine servers during graph traversal.
+of lambda expressions. Server-side computations can be expressed in
+lambda expressions, embedded in LIKQ, and executed on the Graph Engine servers during graph traversal.
 
-## How to contribute
+## Recent changes
 
-If you are interested in contributing to Graph Engine, please fork the
-repository and submit pull requests to the `master` branch.
+The main version number is bumped to 3.0 to reflect the recent toolchain updates.
+- .NET from 3.1 to 6.0
+- .NET Framework from 4.61 to 4.8
+- Visual Studio from 2017/2019 to 2022
 
-Pull requests, issue reports, and suggestions are welcome.
+One goal of Graph Engine 3.0 is to bring the system up-to-date and make it slimmer.
+Some obsolete or outdated modules and tools will be removed from the build pipeline.
 
+## Getting started
 
-## Getting started with Graph Engine
-
-### NuGet packages and Visual Studio extension
-
-NuGet packages [Graph Engine Core][graph-engine-core] and [LIKQ][likq-nuget] are available in the NuGet Gallery.
-
-If you develop Graph Engine applications using [Visual Studio][vs] on Windows, [Graph Engine VSExtension][vs-extension] can be used to facilitate the development work.
+Recommended operating system: Windows 10 or Ubuntu 20.04.
 
 ### Building on Windows
 
-Install [Visual Studio 2017 or 2019 and VS *2022][vs] with the following components selected:
+Download and install [Visual Studio][vs] with the following "workloads" and "individual components" selected:
+- The ".NET desktop development" and "Desktop development with C++" workloads.
+- The ".NET Portable Library targeting pack" individual component.
 
-- Support for VS 2022 is under development
-
-- .NET desktop development
-    - .NET Framework 4.7.2 development tools
-    - .NET 5.0 / .NET 6.0
-- Desktop development with C++
-    - Windows 10 SDK
-    - Windows 11 SDK
-- Visual Studio extension development
-- .NET Core SDK 3.1
-- .NET 5/6 SDK for Visual Studio
-- cmake (latest)
-
-[.NET 5/6 SDK][dotnet-download] and [cmake][cmake-download] can alternatively be installed using their standalone installers.
-
-The Windows build will generate multi-targeting nuget packages.
-Open a powershell window, run `tools/build.ps1` for Visual Studio 2017 or `tools/build.ps1 -VS2019` for Visual Studio 2019.
-
-The Linux native assemblies will also be packaged (pre-built at `lib`) to allow the Windows build to work for Linux `.Net Core` as well.
+Open a powershell window, run `tools/build.ps1` for generating multi-targeting nuget packages.
+The script has been tested on Windows 10 (21H2) with Visual Studio 2022.
 
 ### Building on Linux
 
-Install `libunwind8`, `g++`, `cmake` and `libssl-dev`. For example, run `sudo apt install libunwind8 g++ cmake libssl-dev` for Ubuntu.
+Install g++, cmake, and libssl-dev. For example, on Ubuntu, simply run
 
-Install [.NET 5.0][dotnet-download] and execute `bash tools/build.sh`.
-Install [.NET 6.0][dotnet-download] and execute `bash tools/build.sh`.
+```shell
+sudo apt install g++ cmake libssl-dev
+```
 
-The Windows native assemblies will also be packaged so that the
-Linux build will work for Windows `.Net Core` as well.
+Install [.NET SDK x64 6.0][dotnet6-on-ubuntu20-04] and run:
 
-**Note:** Because `.Net Framework` is Windows-only, the packages built on Linux only support `.Net Core`. The build script is tested only on `Ubuntu 16.04`, `Ubuntu 18.04`, and `Ubuntu 20.04`.
+```shell
+bash tools/build.sh
+```
 
-### How to use the built Graph Engine packages
+The build script has been tested on Ubuntu 20.04 with g++ 9.4.0.
 
-Nuget packages will be built as
-`build/GraphEngine**._version_.nupkg`. The folder `build/` will be
-registered as a local NuGet repository and the local package cache for
-`GraphEngine.Core` will be cleared. After the packages are built, run `dotnet restore` to use the newly built package.
+### Using the built packages
 
-### Build for Mac OS (Coming in 2022!)
+You can find the built nuget packages `build/GraphEngine**._version_.nupkg` in the `build/` folder.
+The folder `build/` will be registered as a local NuGet repository and the local package cache for
+`GraphEngine.Core` will be cleared. After the packages are built, run `dotnet restore` to use the newly built packages.
 
-### Run your first Graph Engine app
+### Running your first Graph Engine app
 
 Go to the `samples/Friends/Friends` folder, execute `dotnet restore` and `dotnet run` to run the sample project.
 
-### New Samples apps and new learnings + useful documentation
+## Contributing
 
-Lost of new Samples 
-- WPF 
-- UWP (Current)
-- WinUI (current)
-- Reactive Design Patterns for Graph Engine Server and Client side implementations
-- RDF, RDFS, and Labled Property Graphs and HyperGraphs data models
+Pull requests, issue reports, and suggestions are welcome.
 
-[LIKQ][likq-gh]
-is a versatile graph query language on top of Graph Engine that
-combines the capability of fast graph exploration with the flexibility
-of lambda expression. Server-side computations can be expressed in
-lambda expressions, embedded in LIKQ, and executed server side
-during graph traversal.
+Please read the [code of conduct](CODE_OF_CONDUCT.md) before contributing code.
 
-## How to Contribute
+Follow these [instructions](SECURITY.md) for reporting security issues.
 
-If you are interested in contributing to the code, please fork the
-repository and submit pull requests to the `master` branch.
+## License
 
+Copyright (c) Microsoft Corporation. All rights reserved.
 
-### Don't' use these Nuget packages as they are obsolete !
+Licensed under the [MIT](LICENSE.md) license.
+
+## Disclaimer
+
+Microsoft Graph Engine is a research project. It is not an officially supported Microsoft product.
+
+<!--
+Links
+-->
 
 [graph-engine]: https://www.graphengine.io/
 
@@ -141,14 +96,16 @@ repository and submit pull requests to the `master` branch.
 
 [academic-graph-search]: https://azure.microsoft.com/en-us/services/cognitive-services/academic-knowledge/
 
+[vs-extension]: https://visualstudiogallery.msdn.microsoft.com/12835dd2-2d0e-4b8e-9e7e-9f505bb909b8
+
 [graph-engine-core]: https://www.nuget.org/packages/GraphEngine.Core/
 
 [likq-nuget]: https://www.nuget.org/packages/GraphEngine.LIKQ/
 
 [vs]: https://www.visualstudio.com/
 
-[dotnet-download]: https://dotnet.microsoft.com/download/
+[dotnet-download]: https://dotnet.microsoft.com/
 
-[cmake-download]: https://cmake.org/download/
+[dotnet6-on-ubuntu20-04]: https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
 
 [license]: LICENSE.md

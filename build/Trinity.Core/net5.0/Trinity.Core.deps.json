@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "Trinity.Core/2.0.11335": {
+      "Trinity.Core/2.0.11412": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -186,7 +186,7 @@
     }
   },
   "libraries": {
-    "Trinity.Core/2.0.11335": {
+    "Trinity.Core/2.0.11412": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

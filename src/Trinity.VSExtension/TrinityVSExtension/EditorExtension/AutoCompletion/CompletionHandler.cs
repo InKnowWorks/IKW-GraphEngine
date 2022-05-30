@@ -38,6 +38,7 @@ namespace Trinity.VSExtension.EditorExtension.AutoCompletion
         #region Public Implementation
         public int QueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             //if (pguidCmdGroup == VSConstants.VSStd2K)
             //{
             //    switch ((VSConstants.VSStd2KCmdID)prgCmds[0].cmdID)

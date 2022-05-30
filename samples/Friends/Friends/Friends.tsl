@@ -22,3 +22,27 @@ cell struct Friendship
 {
 	List<long> friends;
 }
+
+struct SaveFriendRequest
+{
+	String Name;
+	int Age;
+}
+
+struct SaveFriendResponse
+{
+	String Name;
+	int Age;
+}
+
+protocol FriendServerProtocol
+{
+	Type: Syn;
+	Request: SaveFriendRequest;
+	Response: SaveFriendResponse;
+}
+
+server FriendServer
+{
+    protocol FriendServerProtocol;
+}
