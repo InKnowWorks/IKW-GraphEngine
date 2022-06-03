@@ -106,11 +106,9 @@ namespace Trinity.DynamicCluster.Health
                 try
                 {
                     CancellationTokenSource timeout_src = new CancellationTokenSource(10000);
-                    using (var rsp = await replica.QueryReplicaHealth().WaitAsync(timeout_src.Token))
-                    {
-                        if (rsp.errno != Errno.E_OK) { throw new NoSuitableReplicaException(); }
-                        await m_healthmgr.ReportReplicaStatus(HealthStatus.Healthy, repid, $"Replica is healthy");
-                    }
+                    using var rsp = await replica.QueryReplicaHealth().WaitAsync(timeout_src.Token);
+                    if (rsp.errno != Errno.E_OK) { throw new NoSuitableReplicaException(); }
+                    await m_healthmgr.ReportReplicaStatus(HealthStatus.Healthy, repid, $"Replica is healthy");
                 }
                 catch (NoSuitableReplicaException)
                 {
@@ -175,11 +173,9 @@ namespace Trinity.DynamicCluster.Health
                     .Select(_ => _.QueryPartitionHealth())
                     .Select(t => t.ContinueWith(_ExtractErrno));
 
-                using (var tsrc = new CancellationTokenSource(60000))
-                {
-                    var results = await Task.WhenAll(rsps).WaitAsync(tsrc.Token);
-                    if (results.All(_ => _ == Errno.E_OK)) cloud_healthy = true;
-                }
+                using var tsrc = new CancellationTokenSource(60000);
+                var results = await Task.WhenAll(rsps).WaitAsync(tsrc.Token);
+                if (results.All(_ => _ == Errno.E_OK)) cloud_healthy = true;
             }
             catch
             {

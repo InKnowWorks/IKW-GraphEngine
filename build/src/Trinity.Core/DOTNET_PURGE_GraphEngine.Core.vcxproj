@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
@@ -23,8 +23,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{146E0803-47CF-3190-A64B-CCAB5633F8BC}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
     <ProjectName>DOTNET_PURGE_GraphEngine.Core</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
@@ -33,22 +33,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -108,7 +108,7 @@
     <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\db864b517610073d935020e63ee5e866\DOTNET_PURGE_GraphEngine.Core.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-K:\CMake\bin\cmake.exe -E echo "======= [x] Purging nuget package cache for GraphEngine.Core"
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E echo "======= [x] Purging nuget package cache for GraphEngine.Core"
 if %errorlevel% neq 0 goto :cmEnd
 powershell -NoLogo -NoProfile -NonInteractive -Command "Remove-Item -Recurse -Force -ErrorAction Ignore 'C:/Users/tavi.INKNOWWORKSDEV/.nuget/packages/graphengine.core'; exit 0"
 if %errorlevel% neq 0 goto :cmEnd
@@ -124,7 +124,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-K:\CMake\bin\cmake.exe -E echo "======= [x] Purging nuget package cache for GraphEngine.Core"
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E echo "======= [x] Purging nuget package cache for GraphEngine.Core"
 if %errorlevel% neq 0 goto :cmEnd
 powershell -NoLogo -NoProfile -NonInteractive -Command "Remove-Item -Recurse -Force -ErrorAction Ignore 'C:/Users/tavi.INKNOWWORKSDEV/.nuget/packages/graphengine.core'; exit 0"
 if %errorlevel% neq 0 goto :cmEnd
@@ -140,7 +140,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-K:\CMake\bin\cmake.exe -E echo "======= [x] Purging nuget package cache for GraphEngine.Core"
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E echo "======= [x] Purging nuget package cache for GraphEngine.Core"
 if %errorlevel% neq 0 goto :cmEnd
 powershell -NoLogo -NoProfile -NonInteractive -Command "Remove-Item -Recurse -Force -ErrorAction Ignore 'C:/Users/tavi.INKNOWWORKSDEV/.nuget/packages/graphengine.core'; exit 0"
 if %errorlevel% neq 0 goto :cmEnd
@@ -156,7 +156,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-K:\CMake\bin\cmake.exe -E echo "======= [x] Purging nuget package cache for GraphEngine.Core"
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E echo "======= [x] Purging nuget package cache for GraphEngine.Core"
 if %errorlevel% neq 0 goto :cmEnd
 powershell -NoLogo -NoProfile -NonInteractive -Command "Remove-Item -Recurse -Force -ErrorAction Ignore 'C:/Users/tavi.INKNOWWORKSDEV/.nuget/packages/graphengine.core'; exit 0"
 if %errorlevel% neq 0 goto :cmEnd
@@ -177,7 +177,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -190,7 +190,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -203,7 +203,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -216,7 +216,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

@@ -42,7 +42,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/cmake_install.cmake")
   include("O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Client/cmake_install.cmake")
   include("O:/IKW-GraphEngine/build/src/Modules/GraphEngine.DynamicCluster/cmake_install.cmake")
-  include("O:/IKW-GraphEngine/build/src/Trinity.VSExtension/cmake_install.cmake")
 
 endif()
 

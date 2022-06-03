@@ -240,20 +240,18 @@ namespace Trinity.DynamicCluster.Test
         {
             var stg1s = Utils.Infinity<IStorage1>().Take(5).ToList();
             var stg2s = Utils.Infinity<IStorage2>().Take(5).ToList();
-            using (var p = new Partition())
+            using var p = new Partition();
+            foreach (var s in stg1s) p.Mount(s, cks);
+            p.Broadcast(_ => _.SendMessage(tm));
+            Assert.IsTrue(stg1s.All(_ => _.cnt == 1));
+            foreach (var s in stg2s) p.Mount(s, cks);
+            try
             {
-                foreach (var s in stg1s) p.Mount(s, cks);
                 p.Broadcast(_ => _.SendMessage(tm));
-                Assert.IsTrue(stg1s.All(_ => _.cnt == 1));
-                foreach (var s in stg2s) p.Mount(s, cks);
-                try
-                {
-                    p.Broadcast(_ => _.SendMessage(tm));
-                    Assert.Fail();
-                }
-                catch (BroadcastException ex) { }
-                Assert.IsTrue(stg1s.All(_ => _.cnt == 2));
+                Assert.Fail();
             }
+            catch (BroadcastException ex) { }
+            Assert.IsTrue(stg1s.All(_ => _.cnt == 2));
         }
 
         [TestMethod]
@@ -261,26 +259,24 @@ namespace Trinity.DynamicCluster.Test
         {
             var stg1s = Utils.Infinity<IStorage1>().Take(5).ToList();
             var stg2s = Utils.Infinity<IStorage2>().Take(5).ToList();
-            using (var p = new Partition())
+            using var p = new Partition();
+            foreach (var s in stg1s) p.Mount(s, cks);
+            p.Broadcast(_ => { _.SendMessage(tm, out var rsp); return rsp; });
+            Assert.IsTrue(stg1s.All(_ => _.cnt == 1));
+            foreach (var s in stg2s) p.Mount(s, cks);
+            try
             {
-                foreach (var s in stg1s) p.Mount(s, cks);
                 p.Broadcast(_ => { _.SendMessage(tm, out var rsp); return rsp; });
-                Assert.IsTrue(stg1s.All(_ => _.cnt == 1));
-                foreach (var s in stg2s) p.Mount(s, cks);
-                try
-                {
-                    p.Broadcast(_ => { _.SendMessage(tm, out var rsp); return rsp; });
-                    Assert.Fail();
-                }
-                catch (BroadcastException<TrinityResponse> bex)
-                {
-                    Assert.AreEqual(5, bex.Exceptions.Count());
-                    Assert.AreEqual(5, bex.Results.Count());
-                    bex.Dispose();
-                }
-                catch (BroadcastException ex) { throw; }
-                Assert.IsTrue(stg1s.All(_ => _.cnt == 2));
+                Assert.Fail();
             }
+            catch (BroadcastException<TrinityResponse> bex)
+            {
+                Assert.AreEqual(5, bex.Exceptions.Count());
+                Assert.AreEqual(5, bex.Results.Count());
+                bex.Dispose();
+            }
+            catch (BroadcastException ex) { throw; }
+            Assert.IsTrue(stg1s.All(_ => _.cnt == 2));
         }
 
         [TestMethod]
@@ -288,26 +284,24 @@ namespace Trinity.DynamicCluster.Test
         {
             var stg1s = Utils.Infinity<IStorage1>().Take(5).ToList();
             var stg2s = Utils.Infinity<IStorage2>().Take(5).ToList();
-            using (var p = new Partition())
+            using var p = new Partition();
+            foreach (var s in stg1s) p.Mount(s, cks);
+            await p.Broadcast(_ => { _.SendMessage(tm, out var rsp); return Task.FromResult(rsp); });
+            Assert.IsTrue(stg1s.All(_ => _.cnt == 1));
+            foreach (var s in stg2s) p.Mount(s, cks);
+            try
             {
-                foreach (var s in stg1s) p.Mount(s, cks);
                 await p.Broadcast(_ => { _.SendMessage(tm, out var rsp); return Task.FromResult(rsp); });
-                Assert.IsTrue(stg1s.All(_ => _.cnt == 1));
-                foreach (var s in stg2s) p.Mount(s, cks);
-                try
-                {
-                    await p.Broadcast(_ => { _.SendMessage(tm, out var rsp); return Task.FromResult(rsp); });
-                    Assert.Fail();
-                }
-                catch (BroadcastException<TrinityResponse> bex)
-                {
-                    Assert.AreEqual(5, bex.Exceptions.Count());
-                    Assert.AreEqual(5, bex.Results.Count());
-                    bex.Dispose();
-                }
-                catch (BroadcastException ex) { throw; }
-                Assert.IsTrue(stg1s.All(_ => _.cnt == 2));
+                Assert.Fail();
             }
+            catch (BroadcastException<TrinityResponse> bex)
+            {
+                Assert.AreEqual(5, bex.Exceptions.Count());
+                Assert.AreEqual(5, bex.Results.Count());
+                bex.Dispose();
+            }
+            catch (BroadcastException ex) { throw; }
+            Assert.IsTrue(stg1s.All(_ => _.cnt == 2));
         }
     }
 }

@@ -158,8 +158,8 @@ namespace Trinity.DynamicCluster.Storage
                try
                {
                    int id = GetInstanceId(s.ReplicaInformation.Id);
-                   using (var request = new StorageInformationWriter(MyPartitionId, m_nameservice.InstanceId))
-                   { m_module.NotifyRemoteStorageOnLeaving(id, request); }
+                   using var request = new StorageInformationWriter(MyPartitionId, m_nameservice.InstanceId);
+                   m_module.NotifyRemoteStorageOnLeaving(id, request);
                }
                catch { }
            });

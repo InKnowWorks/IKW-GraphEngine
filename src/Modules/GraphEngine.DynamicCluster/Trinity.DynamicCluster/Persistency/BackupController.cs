@@ -96,17 +96,15 @@ namespace Trinity.DynamicCluster.Storage
             var task_id = Guid.NewGuid();
             var masters = m_dmc.m_cloudidx.GetMasters();
 
-            using (var req = new BackupTaskInformationWriter(task_id, version))
+            using var req = new BackupTaskInformationWriter(task_id, version);
+            var rsps = await masters.Select(m => m.PersistedLoadPartition(req)).Unwrap();
+            bool fail = false;
+            foreach (var rsp in rsps)
             {
-                var rsps = await masters.Select(m => m.PersistedLoadPartition(req)).Unwrap();
-                bool fail = false;
-                foreach (var rsp in rsps)
-                {
-                    if (rsp.errno != Errno.E_OK) { fail = true; }
-                    rsp.Dispose();
-                }
-                if (fail) throw new RestoreException();
+                if (rsp.errno != Errno.E_OK) { fail = true; }
+                rsp.Dispose();
             }
+            if (fail) throw new RestoreException();
         }
 
         private async Task BackupAllPartitions()

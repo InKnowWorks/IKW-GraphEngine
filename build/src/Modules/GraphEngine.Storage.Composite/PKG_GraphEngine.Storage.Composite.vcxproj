@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
@@ -23,8 +23,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AB5B48DF-9E7B-3934-9E5C-0C3B2D34416C}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
     <ProjectName>PKG_GraphEngine.Storage.Composite</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
@@ -33,22 +33,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -109,7 +109,7 @@
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/CMakeFiles/generate.stamp
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -117,12 +117,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">K:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeCCompiler.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\CMakeFiles\3.23.1\CMakeCCompiler.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeCInformation.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeCommonLanguageInclude.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeLanguageInformation.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Compiler\CMakeCommonCompilerMacros.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Compiler\MSVC-C.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Platform\Windows-MSVC-C.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Platform\Windows-MSVC.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/CMakeFiles/generate.stamp
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -130,12 +130,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">K:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeCCompiler.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\CMakeFiles\3.23.1\CMakeCCompiler.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeCInformation.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeCommonLanguageInclude.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeLanguageInformation.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Compiler\CMakeCommonCompilerMacros.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Compiler\MSVC-C.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Platform\Windows-MSVC-C.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Platform\Windows-MSVC.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/CMakeFiles/generate.stamp
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -143,12 +143,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">K:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeCCompiler.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\CMakeFiles\3.23.1\CMakeCCompiler.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeCInformation.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeCommonLanguageInclude.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeLanguageInformation.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Compiler\CMakeCommonCompilerMacros.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Compiler\MSVC-C.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Platform\Windows-MSVC-C.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Platform\Windows-MSVC.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/CMakeFiles/generate.stamp
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -156,7 +156,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">K:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;K:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;K:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;K:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;O:\IKW-GraphEngine\build\CMakeFiles\3.22.0-rc2\CMakeCCompiler.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\CMakeFiles\3.23.1\CMakeCCompiler.cmake;O:\IKW-GraphEngine\cmake\DotnetImports.props.in;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeCInformation.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeCommonLanguageInclude.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\CMakeLanguageInformation.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Compiler\CMakeCommonCompilerMacros.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Compiler\MSVC-C.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Platform\Windows-MSVC-C.cmake;O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\share\cmake-3.23\Modules\Platform\Windows-MSVC.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>

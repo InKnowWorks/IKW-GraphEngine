@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net48</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Platforms>AnyCPU;x64</Platforms>
 	  <Version>$(DOTNET_PACKAGE_VERSION)</Version>

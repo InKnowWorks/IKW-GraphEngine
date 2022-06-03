@@ -148,20 +148,16 @@ namespace Trinity.DynamicCluster
         public static T Deserialize<T>(byte[] payload)
         {
             IFormatter fmt = new BinaryFormatter();
-            using (var ms = new MemoryStream(payload))
-            {
-                return (T)fmt.Deserialize(ms);
-            }
+            using var ms = new MemoryStream(payload);
+            return (T)fmt.Deserialize(ms);
         }
 
         public static byte[] Serialize<T>(T payload)
         {
             IFormatter fmt = new BinaryFormatter();
-            using (var ms = new MemoryStream())
-            {
-                fmt.Serialize(ms, payload);
-                return ms.ToArray();
-            }
+            using var ms = new MemoryStream();
+            fmt.Serialize(ms, payload);
+            return ms.ToArray();
         }
 
         public static async Task WhenAll(this IEnumerable<Task> tasks)
@@ -202,13 +198,11 @@ namespace Trinity.DynamicCluster
         public static IEnumerable<IEnumerable<T>> Segment<T>(this IEnumerable<T> source, long segmentThreshold, Func<T, long> weightFunc = null)
         {
             if (weightFunc == null) weightFunc = _ => 1;
-            using (var enumerator = source.GetEnumerator())
-            {
-                var segment = _Segment(enumerator, segmentThreshold, weightFunc);
-                // one step lookahead, and then destroy the enumerator when segment doesn't yield at least one element.
-                if (!segment.Any()) yield break;
-                yield return segment;
-            }
+            using var enumerator = source.GetEnumerator();
+            var segment = _Segment(enumerator, segmentThreshold, weightFunc);
+            // one step lookahead, and then destroy the enumerator when segment doesn't yield at least one element.
+            if (!segment.Any()) yield break;
+            yield return segment;
         }
 
         public static IEnumerable<T> Schedule<T>(this IEnumerable<T> source, SchedulePolicy policy)
@@ -227,7 +221,7 @@ namespace Trinity.DynamicCluster
         {
             ConcurrentQueue<T> queue = new ConcurrentQueue<T>();
             object syncobj = new object();
-            var iter = source.GetEnumerator();
+            using var iter = source.GetEnumerator();
             return () =>
             {
                 T result;

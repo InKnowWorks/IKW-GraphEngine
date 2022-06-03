@@ -72,14 +72,12 @@ namespace Trinity.Azure.Storage
         private async Task<InMemoryDataChunk> _Download_impl(Chunk chunk)
         {
             var file = m_dir.GetBlockBlobReference(chunk.Id.ToString());
-            using (var ms = new MemoryStream())
-            {
-                Log.WriteLine(LogLevel.Info, $"{nameof(BlobDownloader)}: Version {m_version}: downloading {ChunkSerialization.ToString(chunk)}.");
-                await file.DownloadToStreamAsync(ms);
-                var buf = ms.ToArray();
-                Log.WriteLine(LogLevel.Info, $"{nameof(BlobDownloader)}: Version {m_version}: finished {ChunkSerialization.ToString(chunk)}.");
-                return new InMemoryDataChunk(chunk, buf, m_lowKey, m_highKey);
-            }
+            using var ms = new MemoryStream();
+            Log.WriteLine(LogLevel.Info, $"{nameof(BlobDownloader)}: Version {m_version}: downloading {ChunkSerialization.ToString(chunk)}.");
+            await file.DownloadToStreamAsync(ms);
+            var buf = ms.ToArray();
+            Log.WriteLine(LogLevel.Info, $"{nameof(BlobDownloader)}: Version {m_version}: finished {ChunkSerialization.ToString(chunk)}.");
+            return new InMemoryDataChunk(chunk, buf, m_lowKey, m_highKey);
         }
 
         public void Dispose()

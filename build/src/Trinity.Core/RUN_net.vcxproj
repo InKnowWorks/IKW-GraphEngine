@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
@@ -23,8 +23,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{989D5265-0114-3317-A537-8C9ADDBD3974}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
     <ProjectName>RUN_net</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
@@ -33,22 +33,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -116,11 +116,11 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" clean O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj -c Debug /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props -f netcoreapp3.1
+"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj -c Debug /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props -f net6.0
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/net/netcoreapp3.1/net.dll
+"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/net/net6.0/net.dll
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/net.runtimestamp
+O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/net.runtimestamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -141,11 +141,11 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" clean O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props -f netcoreapp3.1
+"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props -f net6.0
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/net/netcoreapp3.1/net.dll
+"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/net/net6.0/net.dll
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/net.runtimestamp
+O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/net.runtimestamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -166,11 +166,11 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" clean O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props -f netcoreapp3.1
+"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props -f net6.0
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/net/netcoreapp3.1/net.dll
+"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/net/net6.0/net.dll
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/net.runtimestamp
+O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/net.runtimestamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -191,11 +191,11 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" clean O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props -f netcoreapp3.1
+"C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Trinity.Core.SmokeTest/net/net.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Trinity.Core/net.csproj.imports.props -f net6.0
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/net/netcoreapp3.1/net.dll
+"C:\Program Files\dotnet\dotnet.exe" O:/IKW-GraphEngine/build/net/net6.0/net.dll
 if %errorlevel% neq 0 goto :cmEnd
-K:\CMake\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/net.runtimestamp
+O:\IKW-GraphEngine\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Trinity.Core/net.runtimestamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -265,7 +265,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -278,7 +278,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -291,7 +291,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -304,7 +304,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.Core/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.Core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

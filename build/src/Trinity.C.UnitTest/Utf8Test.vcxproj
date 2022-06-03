@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
@@ -23,8 +23,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5CEBC2BE-8EC8-389D-893A-8F4783B19F7E}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
     <ProjectName>Utf8Test</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
@@ -33,22 +33,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -282,7 +282,7 @@
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.C.UnitTest/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.C.UnitTest/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.C.UnitTest/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -295,7 +295,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.C.UnitTest/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.C.UnitTest/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.C.UnitTest/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -308,7 +308,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.C.UnitTest/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.C.UnitTest/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.C.UnitTest/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -321,7 +321,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule O:/IKW-GraphEngine/src/Trinity.C.UnitTest/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-K:\CMake\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.C.UnitTest/CMakeFiles/generate.stamp
+..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -SO:/IKW-GraphEngine -BO:/IKW-GraphEngine/build --check-stamp-file O:/IKW-GraphEngine/build/src/Trinity.C.UnitTest/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

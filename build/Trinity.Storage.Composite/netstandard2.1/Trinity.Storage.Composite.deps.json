@@ -7,15 +7,15 @@
   "targets": {
     ".NETStandard,Version=v2.1": {},
     ".NETStandard,Version=v2.1/": {
-      "Trinity.Storage.Composite/2.0.11412": {
+      "Trinity.Storage.Composite/3.0.11455": {
         "dependencies": {
-          "GraphEngine.Core": "2.0.11412"
+          "GraphEngine.Core": "3.0.11455"
         },
         "runtime": {
           "Trinity.Storage.Composite.dll": {}
         }
       },
-      "GraphEngine.Core/2.0.11412": {
+      "GraphEngine.Core/3.0.11455": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -23,8 +23,8 @@
         },
         "runtime": {
           "lib/netstandard2.1/Trinity.Core.dll": {
-            "assemblyVersion": "2.0.11412.0",
-            "fileVersion": "2.0.11412.0"
+            "assemblyVersion": "3.0.11455.0",
+            "fileVersion": "3.0.11455.0"
           }
         }
       },
@@ -55,17 +55,17 @@
     }
   },
   "libraries": {
-    "Trinity.Storage.Composite/2.0.11412": {
+    "Trinity.Storage.Composite/3.0.11455": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "GraphEngine.Core/2.0.11412": {
+    "GraphEngine.Core/3.0.11455": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FXs/3H3GxhexQ2CopMNc/ZqKWqgPqD2lmuMAj2UuHbVojFjNlTZMDYXWUKTmJR2ujMKPeD2AqiA//Phpc/jHaA==",
-      "path": "graphengine.core/2.0.11412",
-      "hashPath": "graphengine.core.2.0.11412.nupkg.sha512"
+      "sha512": "sha512-bU3D9NnJl2pq2LTlzYMtZRaZR2+kRyH9P7h4Ee53Om0P9ONvuaIstcsEZ9lFN7u1MWhId4bYxZNietcjPX0ezA==",
+      "path": "graphengine.core/3.0.11455",
+      "hashPath": "graphengine.core.3.0.11455.nupkg.sha512"
     },
     "Microsoft.Extensions.ObjectPool/6.0.0": {
       "type": "package",

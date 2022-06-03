@@ -146,14 +146,12 @@ namespace Trinity.DynamicCluster.Storage
         private async Task MasterNotifyProc()
         {
             if (!m_nameservice.IsMaster) return;
-            using(var req = new StorageInformationWriter(MyPartitionId, m_nameservice.InstanceId))
-            {
-                var rsps = await Utils.Integers(m_nameservice.PartitionCount)
-                                .Select(i => m_partitions(i)
-                                .Broadcast(p => p.AnnounceMaster(req)))
-                                .Unwrap();
-                rsps.SelectMany(_ => _).ForEach(_ => _.Dispose());
-            }
+            using var req = new StorageInformationWriter(MyPartitionId, m_nameservice.InstanceId);
+            var rsps = await Utils.Integers(m_nameservice.PartitionCount)
+                .Select(i => m_partitions(i)
+                    .Broadcast(p => p.AnnounceMaster(req)))
+                .Unwrap();
+            rsps.SelectMany(_ => _).ForEach(_ => _.Dispose());
         }
 
         /// <summary>
@@ -203,13 +201,12 @@ namespace Trinity.DynamicCluster.Storage
         private async Task<IEnumerable<Chunk>> _GetChunks(IStorage storage)
         {
             List<Chunk> chunks = new List<Chunk>();
-            using (var rsp = await storage.GetChunks())
+            using var rsp = await storage.GetChunks();
+            foreach(var ci in rsp.chunk_info)
             {
-                foreach(var ci in rsp.chunk_info)
-                {
-                    chunks.Add(new Chunk(ci.lowKey, ci.highKey, ci.id));
-                }
+                chunks.Add(new Chunk(ci.lowKey, ci.highKey, ci.id));
             }
+
             return chunks;
         }
 

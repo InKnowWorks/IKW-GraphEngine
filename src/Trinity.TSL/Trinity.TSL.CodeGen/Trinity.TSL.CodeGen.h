@@ -4,10 +4,10 @@
 #include "SyntaxNode.h"
 namespace Trinity
 {
-    
+	
     namespace Codegen
     {
-        
+		
 
         struct ModuleContext
         {

@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!--<TargetFrameworks>netstandard2.1</TargetFrameworks>-->
-    <TargetFrameworks>netstandard2.1;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;net6.0;net48</TargetFrameworks>
     <AssemblyName>Trinity.DynamicCluster</AssemblyName>
     <RootNamespace>Trinity.DynamicCluster</RootNamespace>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
+
+    <PropertyGroup>
+        <LangVersion>10.0</LangVersion>
+    </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="GraphEngine.Client" Version="$(DOTNET_PACKAGE_VERSION)" />
@@ -50,6 +53,7 @@
     <RepositoryUrl>https://github.com/Microsoft/GraphEngine</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
     <LangVersion>default</LangVersion>
   </PropertyGroup>

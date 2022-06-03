@@ -14,7 +14,7 @@ namespace Trinity.DynamicCluster.Tasks
     [Serializable]
     internal class ShrinkDataTask : ITask
     {
-        public static readonly Guid s_guid = new("DF3AE902-78C7-49E0-B99B-8D4279D62E53");
+        public static readonly Guid s_guid = new Guid("DF3AE902-78C7-49E0-B99B-8D4279D62E53");
         private Guid m_guid = Guid.NewGuid();
         private ReplicaInformation m_target;
         private List<(Chunk from, Chunk to)> m_plan;
@@ -42,13 +42,11 @@ namespace Trinity.DynamicCluster.Tasks
         {
             var target_id = m_dmc.GetInstanceId(m_target.Id);
             var mod = m_dmc.GetCommunicationModule<DynamicClusterCommModule>();
-            using (var msg = new ShrinkDataTaskInformationWriter(
-                       task_id: m_guid,
-                       remove_target: m_plan.Select(_ => _diff(_.from, _.to)).ToList()))
-            using (var rsp = await mod.ShrinkData(target_id, msg))
-            {
-                if (rsp.errno != Errno.E_OK) throw new Exception();
-            }
+            using var msg = new ShrinkDataTaskInformationWriter(
+                task_id: m_guid,
+                remove_target: m_plan.Select(_ => _diff(_.from, _.to)).ToList());
+            using var rsp = await mod.ShrinkData(target_id, msg);
+            if (rsp.errno != Errno.E_OK) throw new Exception();
         }
 
         private ChunkInformation _diff(Chunk from, Chunk to)

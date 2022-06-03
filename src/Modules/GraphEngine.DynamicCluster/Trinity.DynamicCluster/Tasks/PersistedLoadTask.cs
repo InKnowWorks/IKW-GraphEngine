@@ -34,11 +34,9 @@ namespace Trinity.DynamicCluster.Tasks
             var dmc = DynamicMemoryCloud.Instance;
             var mod = dmc.GetCommunicationModule<DynamicClusterCommModule>();
             int id = dmc.GetInstanceId(r.Id);
-            using (var cmd = new PersistedSliceWriter(s.version, s.lowkey, s.highkey))
-            using (var rsp = await mod.PersistedDownload(id, cmd))
-            {
-                if (rsp.errno != Errno.E_OK) throw new Exception();
-            }
+            using var cmd = new PersistedSliceWriter(s.version, s.lowkey, s.highkey);
+            using var rsp = await mod.PersistedDownload(id, cmd);
+            if (rsp.errno != Errno.E_OK) throw new Exception();
         }
     }
 }
