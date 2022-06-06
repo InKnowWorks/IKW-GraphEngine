@@ -7,10 +7,10 @@
   "targets": {
     ".NETStandard,Version=v2.1": {},
     ".NETStandard,Version=v2.1/": {
-      "Trinity.Azure.Storage/3.0.11455": {
+      "Trinity.Azure.Storage/3.0.11461": {
         "dependencies": {
-          "GraphEngine.Core": "3.0.11455",
-          "GraphEngine.DynamicCluster": "3.0.11455",
+          "GraphEngine.Core": "3.0.11461",
+          "GraphEngine.DynamicCluster": "3.0.11461",
           "System.Threading.Tasks.Dataflow": "4.8.0",
           "WindowsAzure.Storage": "8.6.0"
         },
@@ -18,19 +18,19 @@
           "Trinity.Azure.Storage.dll": {}
         }
       },
-      "GraphEngine.Client/3.0.11455": {
+      "GraphEngine.Client/3.0.11461": {
         "dependencies": {
-          "GraphEngine.Core": "3.0.11455",
+          "GraphEngine.Core": "3.0.11461",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.1/Trinity.Client.dll": {
-            "assemblyVersion": "3.0.11455.0",
-            "fileVersion": "3.0.11455.0"
+            "assemblyVersion": "3.0.11461.0",
+            "fileVersion": "3.0.11461.0"
           }
         }
       },
-      "GraphEngine.Core/3.0.11455": {
+      "GraphEngine.Core/3.0.11461": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -38,8 +38,8 @@
         },
         "runtime": {
           "lib/netstandard2.1/Trinity.Core.dll": {
-            "assemblyVersion": "3.0.11455.0",
-            "fileVersion": "3.0.11455.0"
+            "assemblyVersion": "3.0.11461.0",
+            "fileVersion": "3.0.11461.0"
           }
         }
       },
@@ -1052,10 +1052,10 @@
           }
         }
       },
-      "GraphEngine.DynamicCluster/3.0.11455": {
+      "GraphEngine.DynamicCluster/3.0.11461": {
         "dependencies": {
-          "GraphEngine.Client": "3.0.11455",
-          "GraphEngine.Core": "3.0.11455",
+          "GraphEngine.Client": "3.0.11461",
+          "GraphEngine.Core": "3.0.11461",
           "Nito.AsyncEx.Coordination": "5.1.2",
           "Nito.AsyncEx.Tasks": "5.1.2",
           "System.Collections.Immutable": "6.0.0"
@@ -1067,24 +1067,24 @@
     }
   },
   "libraries": {
-    "Trinity.Azure.Storage/3.0.11455": {
+    "Trinity.Azure.Storage/3.0.11461": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "GraphEngine.Client/3.0.11455": {
+    "GraphEngine.Client/3.0.11461": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-D9ZolC8uCotYGVzrzHpSQVkzyZyuRsbKPQjMSY1+MbWEsGJWYrf5Vagg6IG55jmch88GGael2V5dvCESFaCqTA==",
-      "path": "graphengine.client/3.0.11455",
-      "hashPath": "graphengine.client.3.0.11455.nupkg.sha512"
+      "sha512": "sha512-KZ5P3AsPuIxqkncn/qmqJWpIfUxXXI8i2KYFA4MrCy6dmdTcgCLt438aQe+aiILe8uHuMTNWC/z83/+PQqtE0A==",
+      "path": "graphengine.client/3.0.11461",
+      "hashPath": "graphengine.client.3.0.11461.nupkg.sha512"
     },
-    "GraphEngine.Core/3.0.11455": {
+    "GraphEngine.Core/3.0.11461": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-gZDymQhrcW2kg3VgdFnGnSYNYprr/RfFEMnRj0pfs8vkzwSCVt9SZJwvr+5KGMLDdJHVtOvk07ZpJE13tYdO2A==",
-      "path": "graphengine.core/3.0.11455",
-      "hashPath": "graphengine.core.3.0.11455.nupkg.sha512"
+      "sha512": "sha512-AKl+E5xLa4Cx6BId8kdVQuEAdER+5H8hOrBIXNq553S7R9JNLfqGKy9+fowGBmc/W/7i+gSLqg2DLwr5EpNMVQ==",
+      "path": "graphengine.core/3.0.11461",
+      "hashPath": "graphengine.core.3.0.11461.nupkg.sha512"
     },
     "Microsoft.Data.Edm/5.8.2": {
       "type": "package",
@@ -1632,7 +1632,7 @@
       "path": "windowsazure.storage/8.6.0",
       "hashPath": "windowsazure.storage.8.6.0.nupkg.sha512"
     },
-    "GraphEngine.DynamicCluster/3.0.11455": {
+    "GraphEngine.DynamicCluster/3.0.11461": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

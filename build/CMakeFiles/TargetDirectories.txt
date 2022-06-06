@@ -1,3 +1,8 @@
+O:/IKW-GraphEngine/build/CMakeFiles/BUILD_GraphEngine.ServiceFabric.dir
+O:/IKW-GraphEngine/build/CMakeFiles/DOTNET_PURGE_GraphEngine.ServiceFabric.Infrastructure.dir
+O:/IKW-GraphEngine/build/CMakeFiles/PKG_GraphEngine.ServiceFabric.Infrastructure.dir
+O:/IKW-GraphEngine/build/CMakeFiles/DOTNET_PURGE_GraphEngine.ServiceFabric.Remoting.dir
+O:/IKW-GraphEngine/build/CMakeFiles/PKG_GraphEngine.ServiceFabric.Remoting.dir
 O:/IKW-GraphEngine/build/CMakeFiles/RUN_TESTS.dir
 O:/IKW-GraphEngine/build/CMakeFiles/INSTALL.dir
 O:/IKW-GraphEngine/build/CMakeFiles/ALL_BUILD.dir

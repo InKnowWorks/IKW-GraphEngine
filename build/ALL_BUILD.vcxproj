@@ -179,6 +179,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="O:\IKW-GraphEngine\build\BUILD_GraphEngine.ServiceFabric.vcxproj">
+      <Project>{649261FF-E9BC-3394-9C3C-CEADA2BFC93A}</Project>
+      <Name>BUILD_GraphEngine.ServiceFabric</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
     <ProjectReference Include="O:\IKW-GraphEngine\build\src\Modules\GraphEngine.DynamicCluster\BUILD_Trinity.Azure.Storage.vcxproj">
       <Project>{A03EDBAC-9C24-3366-A554-8309E675DFB8}</Project>
       <Name>BUILD_Trinity.Azure.Storage</Name>
