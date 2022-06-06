@@ -398,7 +398,7 @@ namespace Trinity.TripleStore.TestServer
                                 {
                                     new Triple
                                     {
-                                        Subject = $"GraphEngineServer + Id: {DateTime.Now.Ticks.ToString()}",
+                                        Subject   = $"GraphEngineServer + Id: {DateTime.Now.Ticks.ToString()}",
                                         Predicate = "is", Object = $"Running @ {DateTime.Now}"
                                     }
                                 };
