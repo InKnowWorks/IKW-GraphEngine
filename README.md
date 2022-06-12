@@ -27,6 +27,10 @@ The Microsoft Graph Engine is a fantastic technology and although the original M
 - New Developers Guide
 - much more ..
 
+### This Repo does include support for Graph Engine integrated with Azure Service Fabric
+    - Support for Azure Service Fabric is still under development
+    - Release is targeted for late Summer 2022
+
 | - | Windows | Linux |
 |:------:|:------:|:------:|
 |Build|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Windows)|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Linux)|
