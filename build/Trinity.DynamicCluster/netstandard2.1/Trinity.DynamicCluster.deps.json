@@ -7,10 +7,10 @@
   "targets": {
     ".NETStandard,Version=v2.1": {},
     ".NETStandard,Version=v2.1/": {
-      "Trinity.DynamicCluster/3.0.11461": {
+      "Trinity.DynamicCluster/3.0.11468": {
         "dependencies": {
-          "GraphEngine.Client": "3.0.11461",
-          "GraphEngine.Core": "3.0.11461",
+          "GraphEngine.Client": "3.0.11468",
+          "GraphEngine.Core": "3.0.11468",
           "Nito.AsyncEx.Coordination": "5.1.2",
           "Nito.AsyncEx.Tasks": "5.1.2",
           "System.Collections.Immutable": "6.0.0"
@@ -19,19 +19,19 @@
           "Trinity.DynamicCluster.dll": {}
         }
       },
-      "GraphEngine.Client/3.0.11461": {
+      "GraphEngine.Client/3.0.11468": {
         "dependencies": {
-          "GraphEngine.Core": "3.0.11461",
+          "GraphEngine.Core": "3.0.11468",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.1/Trinity.Client.dll": {
-            "assemblyVersion": "3.0.11461.0",
-            "fileVersion": "3.0.11461.0"
+            "assemblyVersion": "3.0.11468.0",
+            "fileVersion": "3.0.11468.0"
           }
         }
       },
-      "GraphEngine.Core/3.0.11461": {
+      "GraphEngine.Core/3.0.11468": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -39,8 +39,8 @@
         },
         "runtime": {
           "lib/netstandard2.1/Trinity.Core.dll": {
-            "assemblyVersion": "3.0.11461.0",
-            "fileVersion": "3.0.11461.0"
+            "assemblyVersion": "3.0.11468.0",
+            "fileVersion": "3.0.11468.0"
           }
         }
       },
@@ -163,24 +163,24 @@
     }
   },
   "libraries": {
-    "Trinity.DynamicCluster/3.0.11461": {
+    "Trinity.DynamicCluster/3.0.11468": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "GraphEngine.Client/3.0.11461": {
+    "GraphEngine.Client/3.0.11468": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-i6nXbEHV95LOcubu4Pi2E+oRcEyFm/NjEXjURP09Vpw0aMLzsnPTBKPcXYY80KNukE0b42GTkoSMvT+MwBYSSw==",
-      "path": "graphengine.client/3.0.11461",
-      "hashPath": "graphengine.client.3.0.11461.nupkg.sha512"
+      "sha512": "sha512-jQ464uBsztA94Ob3moNYdWTH1Ejbtg8ps+VHdU+jkDjK45OnxzdO08Z/49Bd9RAKgHTj2c/fQl4AITRfchk33Q==",
+      "path": "graphengine.client/3.0.11468",
+      "hashPath": "graphengine.client.3.0.11468.nupkg.sha512"
     },
-    "GraphEngine.Core/3.0.11461": {
+    "GraphEngine.Core/3.0.11468": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ufLYgN/CRtatXz7wuNUcpxv2qD2hJhjdr+UOw79FajJvdrrkYKZm2UsZg+tNYGe/ksodzE3YIiL20LrH9nEd6Q==",
-      "path": "graphengine.core/3.0.11461",
-      "hashPath": "graphengine.core.3.0.11461.nupkg.sha512"
+      "sha512": "sha512-ZPnQikp+/XRFoJgcP8J2r4Qvl2ZJKGQCm4bbhi27y0mvOE8UmIDQBmkDcjMOhRYmeNc9FFA/s99Z2QXxZocQRw==",
+      "path": "graphengine.core/3.0.11468",
+      "hashPath": "graphengine.core.3.0.11468.nupkg.sha512"
     },
     "Microsoft.Extensions.ObjectPool/6.0.0": {
       "type": "package",

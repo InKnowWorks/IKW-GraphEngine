@@ -6,10 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="freebase-film-tsl\**" />
+    <EmbeddedResource Remove="freebase-film-tsl\**" />
+    <None Remove="freebase-film-tsl\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="sqlite" Version="3.13.0" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.5" />
     <PackageReference Include="GraphEngine.Core" Version="3.*" />
     <PackageReference Include="GraphEngine.LIKQ" Version="3.*" />
+    <ProjectReference Include="..\freebase-tsl\freebase-tsl.csproj" />
     <ProjectReference Include="./freebase-film-tsl/freebase-film-tsl.csproj" />
   </ItemGroup>
 

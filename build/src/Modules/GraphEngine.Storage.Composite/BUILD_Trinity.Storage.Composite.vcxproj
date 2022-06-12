@@ -105,8 +105,8 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\c62d09bed5021daa3ea4943e3d687f16\GraphEngine.Storage.Composite.3.0.11461.nupkg.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg, ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg, Trinity.Storage.Composite.buildtimestamp</Message>
+    <CustomBuild Include="O:\IKW-GraphEngine\build\CMakeFiles\c62d09bed5021daa3ea4943e3d687f16\GraphEngine.Storage.Composite.3.0.11468.nupkg.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg, ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg, Trinity.Storage.Composite.buildtimestamp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 ..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E echo "======= Building .NET project Trinity.Storage.Composite [Debug ]"
 if %errorlevel% neq 0 goto :cmEnd
@@ -116,13 +116,13 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite/Trinity.Storage.Composite.csproj -c Debug /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" pack --no-build --no-restore O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite/Trinity.Storage.Composite.csproj -c Debug /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.csproj.imports.props --include-symbols
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg O:/IKW-GraphEngine/build
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg O:/IKW-GraphEngine/build
 if %errorlevel% neq 0 goto :cmEnd
 ..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.buildtimestamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -133,9 +133,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\AggregatedStorageSchema.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\CSProj.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Commands.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\CompositeStorage.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Exceptions.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\GenericCellOperations.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Package.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\SchemaUpdate.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Startup.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\StorageExtensionRecord.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Trinity.Storage.Composite.csproj;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Utilities.cs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg, ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg, Trinity.Storage.Composite.buildtimestamp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg, ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg, Trinity.Storage.Composite.buildtimestamp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 ..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E echo "======= Building .NET project Trinity.Storage.Composite [Release ]"
 if %errorlevel% neq 0 goto :cmEnd
@@ -145,13 +145,13 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite/Trinity.Storage.Composite.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" pack --no-build --no-restore O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite/Trinity.Storage.Composite.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.csproj.imports.props --include-symbols
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg O:/IKW-GraphEngine/build
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg O:/IKW-GraphEngine/build
 if %errorlevel% neq 0 goto :cmEnd
 ..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.buildtimestamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -162,9 +162,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\AggregatedStorageSchema.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\CSProj.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Commands.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\CompositeStorage.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Exceptions.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\GenericCellOperations.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Package.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\SchemaUpdate.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Startup.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\StorageExtensionRecord.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Trinity.Storage.Composite.csproj;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Utilities.cs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg, ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg, Trinity.Storage.Composite.buildtimestamp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg, ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg, Trinity.Storage.Composite.buildtimestamp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 ..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E echo "======= Building .NET project Trinity.Storage.Composite [Release ]"
 if %errorlevel% neq 0 goto :cmEnd
@@ -174,13 +174,13 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite/Trinity.Storage.Composite.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" pack --no-build --no-restore O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite/Trinity.Storage.Composite.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.csproj.imports.props --include-symbols
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg O:/IKW-GraphEngine/build
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg O:/IKW-GraphEngine/build
 if %errorlevel% neq 0 goto :cmEnd
 ..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.buildtimestamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -191,9 +191,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\AggregatedStorageSchema.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\CSProj.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Commands.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\CompositeStorage.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Exceptions.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\GenericCellOperations.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Package.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\SchemaUpdate.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Startup.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\StorageExtensionRecord.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Trinity.Storage.Composite.csproj;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Utilities.cs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg, ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg, Trinity.Storage.Composite.buildtimestamp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg, ../../../Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg, Trinity.Storage.Composite.buildtimestamp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
 ..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E echo "======= Building .NET project Trinity.Storage.Composite [Release ]"
 if %errorlevel% neq 0 goto :cmEnd
@@ -203,13 +203,13 @@ if %errorlevel% neq 0 goto :cmEnd
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" build --no-restore O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite/Trinity.Storage.Composite.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.csproj.imports.props
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E remove O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\dotnet\dotnet.exe" pack --no-build --no-restore O:/IKW-GraphEngine/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite/Trinity.Storage.Composite.csproj -c Release /p:DirectoryBuildPropsPath=O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.csproj.imports.props --include-symbols
 if %errorlevel% neq 0 goto :cmEnd
-..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.nupkg O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg O:/IKW-GraphEngine/build
+..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E copy O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.nupkg O:/IKW-GraphEngine/build/Trinity.Storage.Composite/GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg O:/IKW-GraphEngine/build
 if %errorlevel% neq 0 goto :cmEnd
 ..\..\..\..\tools\cmake-3.23.1-windows-x86_64\bin\cmake.exe -E touch O:/IKW-GraphEngine/build/src/Modules/GraphEngine.Storage.Composite/Trinity.Storage.Composite.buildtimestamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -220,7 +220,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\AggregatedStorageSchema.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\CSProj.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Commands.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\CompositeStorage.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Exceptions.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\GenericCellOperations.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Package.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\SchemaUpdate.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Startup.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\StorageExtensionRecord.cs;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Trinity.Storage.Composite.csproj;O:\IKW-GraphEngine\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite\Utilities.cs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
@@ -234,7 +234,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\CMakeFiles\BUILD_Trinity.Storage.Composite</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
@@ -246,7 +246,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\CMakeFiles\BUILD_Trinity.Storage.Composite</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
@@ -258,7 +258,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\CMakeFiles\BUILD_Trinity.Storage.Composite</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
@@ -270,7 +270,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11461.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.nupkg;O:\IKW-GraphEngine\build\Trinity.Storage.Composite\GraphEngine.Storage.Composite.3.0.11468.symbols.nupkg;O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\Trinity.Storage.Composite.buildtimestamp;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">O:\IKW-GraphEngine\build\src\Modules\GraphEngine.Storage.Composite\CMakeFiles\BUILD_Trinity.Storage.Composite</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>

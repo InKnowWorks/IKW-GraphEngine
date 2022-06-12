@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net6.0</TargetFrameworks>
@@ -6,14 +6,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="sqlite" Version="3.13.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.5" />
-    <PackageReference Include="GraphEngine.LIKQ" Version="3.*" />
-    <PackageReference Include="GraphEngine.Core" Version="3.*" />
+    <Compile Remove="freebase-tsl\**" />
+    <EmbeddedResource Remove="freebase-tsl\**" />
+    <None Remove="freebase-tsl\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include=".\freebase-tsl\freebase-tsl.csproj" />
+    <PackageReference Include="GraphEngine.Core" Version="3.0.11468" />
+    <PackageReference Include="GraphEngine.LIKQ" Version="3.0.11468" />
+    <PackageReference Include="sqlite" Version="3.13.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\freebase-tsl\freebase-tsl.csproj" />
   </ItemGroup>
 
 </Project>

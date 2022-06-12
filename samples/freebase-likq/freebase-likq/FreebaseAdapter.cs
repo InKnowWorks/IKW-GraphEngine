@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Reflection;
 
 using Trinity;
@@ -11,7 +9,7 @@ using Trinity.Storage;
 using Trinity.Core.Lib;
 using Trinity.TSL.Lib;
 using FanoutSearch;
-using freebase_tsl;
+using freebase.tsl;
 
 namespace freebase_likq
 {

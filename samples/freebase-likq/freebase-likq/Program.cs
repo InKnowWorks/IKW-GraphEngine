@@ -11,7 +11,7 @@ using Trinity.Diagnostics;
 using System.Net;
 using System.Diagnostics;
 using System.IO.Compression;
-using freebase_tsl;
+using freebase.tsl;
 using Microsoft.Data.Sqlite;
 
 namespace freebase_likq

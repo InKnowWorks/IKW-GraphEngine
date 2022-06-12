@@ -7,9 +7,9 @@
   "targets": {
     ".NETStandard,Version=v2.1": {},
     ".NETStandard,Version=v2.1/": {
-      "GraphEngine.LIKQ/3.0.11461": {
+      "GraphEngine.LIKQ/3.0.11468": {
         "dependencies": {
-          "GraphEngine.Core": "3.0.11461",
+          "GraphEngine.Core": "3.0.11468",
           "Microsoft.CodeAnalysis.CSharp": "4.2.0",
           "Microsoft.CodeAnalysis.CSharp.Scripting": "4.2.0",
           "Microsoft.Extensions.Caching.Memory": "6.0.1",
@@ -21,7 +21,7 @@
           "GraphEngine.LIKQ.dll": {}
         }
       },
-      "GraphEngine.Core/3.0.11461": {
+      "GraphEngine.Core/3.0.11468": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -29,8 +29,8 @@
         },
         "runtime": {
           "lib/netstandard2.1/Trinity.Core.dll": {
-            "assemblyVersion": "3.0.11461.0",
-            "fileVersion": "3.0.11461.0"
+            "assemblyVersion": "3.0.11468.0",
+            "fileVersion": "3.0.11468.0"
           }
         }
       },
@@ -456,17 +456,17 @@
     }
   },
   "libraries": {
-    "GraphEngine.LIKQ/3.0.11461": {
+    "GraphEngine.LIKQ/3.0.11468": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "GraphEngine.Core/3.0.11461": {
+    "GraphEngine.Core/3.0.11468": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ufLYgN/CRtatXz7wuNUcpxv2qD2hJhjdr+UOw79FajJvdrrkYKZm2UsZg+tNYGe/ksodzE3YIiL20LrH9nEd6Q==",
-      "path": "graphengine.core/3.0.11461",
-      "hashPath": "graphengine.core.3.0.11461.nupkg.sha512"
+      "sha512": "sha512-ZPnQikp+/XRFoJgcP8J2r4Qvl2ZJKGQCm4bbhi27y0mvOE8UmIDQBmkDcjMOhRYmeNc9FFA/s99Z2QXxZocQRw==",
+      "path": "graphengine.core/3.0.11468",
+      "hashPath": "graphengine.core.3.0.11468.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Analyzers/3.3.3": {
       "type": "package",
