@@ -1,35 +1,35 @@
 # Microsoft Graph Engine
 
-<<<<<<< HEAD
 | - | Windows | Linux |
-=======
 The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using the it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
 
 ### New Capabilities are coming! (Spring 2022)
 
-- Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (in progress)
-- Updated C# Code generation: Support for C# 8, 9 and 10 coming in the Spring of 2022
+- Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
+- Updated C# Code generation: Support for C# 8, 9 and 10 coming in the Fall of 2022 (in progress)
 - New documentation to help developer to better understand leverage the Trinity Graph Engine APIs and 
-  new Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime
+  new Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime (in progress)
 - Native code generation for Java 15 Client-side code only
 - NEW - Native Support for Fully Managed Reactive Server-side Psuh Automation - Custer Aware support under development
     * Mods to TSL compiler to support Push automation
     * Fully baked .NET 6 Console and WPF Cleint and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
-- Native support for .NET 6 gRPC
-- Refactored Azure Service Fabric and extended support 
+    * prototype complete - refactoring in progress
+- Native support for .NET 6 gRPC "ge app server to ge app server" - (in progress)
+- Refactored Azure Service Fabric and extended support (in progress)
 - UPDATE: Native OWL 2 support via TSL 2.0 via Reactive Event processing, C# 10 Functional implementation and new Graph Engine Adapter Pattern
+    * new Visual TSL modeling engine under construction
+    * TSL to OWL 2.0 with DL and Full extensions
 - Updated and Revised LIKQ for various graph traversal
     * Demos that demostrate the powerful Prolog-like capabilities of the LIKQ
-- New Graph Engine VS 2022 plug-in
+- New Graph Engine VS 2022 plug-in (new VS 2022 project setup complete; testing in progress)
     * New VS 2022 Templates
         - TSL Graph Data Taxonomy Model Templates
-        - RPC Server, Proxy and Server Protocol Templates
-        - Graphical TSL Designer
+        - GE App Server, Proxy and Server Protocol Templates
 - New Developers Guide
 - much more ..
 
 | - | Windows Multi Targeting | Ubuntu 16.04 .NET Core |
->>>>>>> c81007cf6afad70aedd162d00012b0d0e20f5c6f
+
 |:------:|:------:|:------:|
 |Build|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Windows)|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Linux)|
 
@@ -66,32 +66,28 @@ Download and install [Visual Studio][vs] with the following "workloads" and "ind
 - The ".NET desktop development" and "Desktop development with C++" workloads.
 - The ".NET Portable Library targeting pack" individual component.
 
-<<<<<<< HEAD
 Open a powershell window, run `tools/build.ps1` for generating multi-targeting nuget packages.
 The script has been tested on Windows 10 (21H2) with Visual Studio 2022.
-=======
+
 - Support for VS 2022 is under development
 
 - .NET desktop development
-    - .NET Framework 4.7.2 development tools
-    - .NET 5.0 / .NET 6.0
+    - .NET Framework 4.8 development tools
+    - .NET 6.0
 - Desktop development with C++
     - Windows 10 SDK
     - Windows 11 SDK
 - Visual Studio extension development
-- .NET Core SDK 3.1
-- .NET 5/6 SDK for Visual Studio
+- .NET 6 SDK for Visual Studio
 - cmake (latest)
-- New macOS build
 - Updated Linux build
 
-[.NET 5/6 SDK][dotnet-download] and [cmake][cmake-download] can alternatively be installed using their standalone installers.
+[.NET 6 SDK][dotnet-download] and [cmake][cmake-download] can alternatively be installed using their standalone installers.
 
 The Windows build will generate multi-targeting nuget packages.
 Open a powershell window, run `tools/build.ps1` for Visual Studio 2017 or `tools/build.ps1 -VS2019` for Visual Studio 2019.
 
 The Linux native assemblies will also be packaged (pre-built at `lib`) to allow the Windows build to work for Linux `.Net Core` as well.
->>>>>>> c81007cf6afad70aedd162d00012b0d0e20f5c6f
 
 ### Building on Linux
 
