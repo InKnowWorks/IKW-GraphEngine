@@ -1,9 +1,10 @@
 # Microsoft Graph Engine
 
 | - | Windows | Linux |
+|:------:|:------:|:------:|
 The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using the it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
 
-### New Capabilities are coming! (Spring 2022)
+### New Capabilities are coming! (Fall 2022)
 
 - Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
 - Updated C# Code generation: Support for C# 8, 9 and 10 coming in the Fall of 2022 (in progress)
@@ -28,9 +29,8 @@ The Microsoft Graph Engine is a fantastic technology and although the original M
 - New Developers Guide
 - much more ..
 
-| - | Windows Multi Targeting | Ubuntu 16.04 .NET Core |
+| Windows Multi Targeting | Ubuntu 16.04 .NET Core |
 
-|:------:|:------:|:------:|
 |Build|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Windows)|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Linux)|
 
 This repository contains the source code of [Microsoft Graph Engine][graph-engine] and its graph
