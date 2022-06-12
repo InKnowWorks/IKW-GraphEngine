@@ -206,10 +206,12 @@ namespace freebase_likq
 
         private IEnumerable<long> ChildrenIDs()
         {
-            using var cell = Global.LocalStorage.Usetype_object(CellId);
-            foreach (var type in cell.types)
+            using (var cell = Global.LocalStorage.Usetype_object(CellId))
             {
-                yield return CellGroupUtil.GetCellID(CellId, type);
+                foreach (var type in cell.types)
+                {
+                    yield return CellGroupUtil.GetCellID(CellId, type);
+                }
             }
         }
 
@@ -226,8 +228,10 @@ namespace freebase_likq
         public void AppendToField<T>(string fieldName, T value)
         {
             long child_id = RouteToChildCell(fieldName);
-            using var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.CreateNewOnCellNotFound);
-            cell.AppendToField<T>(fieldName, value);
+            using (var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.CreateNewOnCellNotFound))
+            {
+                cell.AppendToField<T>(fieldName, value);
+            }
         }
 
 
@@ -249,12 +253,14 @@ namespace freebase_likq
         public IEnumerable<T> EnumerateField<T>(string fieldName)
         {
             long child_id = RouteToChildCell(fieldName);
-            using var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.ReturnNullOnCellNotFound);
-            if (cell != null && cell.ContainsField(fieldName))
+            using (var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.ReturnNullOnCellNotFound))
             {
-                foreach (var item in cell.EnumerateField<T>(fieldName))
+                if (cell != null && cell.ContainsField(fieldName))
                 {
-                    yield return item;
+                    foreach (var item in cell.EnumerateField<T>(fieldName))
+                    {
+                        yield return item;
+                    }
                 }
             }
         }
@@ -263,12 +269,14 @@ namespace freebase_likq
         {
             foreach (var child in GetChildrenIDs())
             {
-                using var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.ReturnNullOnCellNotFound);
-                if (cell != null)
+                using (var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.ReturnNullOnCellNotFound))
                 {
-                    foreach (var item in cell.EnumerateValues<T>(attributeKey, attributeValue))
+                    if (cell != null)
                     {
-                        yield return item;
+                        foreach (var item in cell.EnumerateValues<T>(attributeKey, attributeValue))
+                        {
+                            yield return item;
+                        }
                     }
                 }
             }
@@ -278,24 +286,28 @@ namespace freebase_likq
         {
             if (fieldName.Equals("entity_ids"))
             {
-                using var cell = Global.LocalStorage.UseGenericCell(category_cell_id, CellAccessOptions.ReturnNullOnCellNotFound);
-                if (cell == null)
+                using (var cell = Global.LocalStorage.UseGenericCell(category_cell_id, CellAccessOptions.ReturnNullOnCellNotFound))
                 {
-                    return default(T);
+                    if (cell == null)
+                    {
+                        return default(T);
+                    }
+                    return cell.GetField<T>(fieldName);
                 }
-                return cell.GetField<T>(fieldName);
             }
 
             if (fieldName.Equals("type_object_type"))
             {
-                using var cell = Global.LocalStorage.UseGenericCell(CellId, CellAccessOptions.ReturnNullOnCellNotFound);
-                if (cell == null)
+                using (var cell = Global.LocalStorage.UseGenericCell(CellId, CellAccessOptions.ReturnNullOnCellNotFound))
                 {
-                    throw new ArgumentException("Undefined field.");
-                }
+                    if (cell == null)
+                    {
+                        throw new ArgumentException("Undefined field.");
+                    }
 
-                var type_names = cell.GetField<List<ushort>>("types").Select(tcode => CellGroupUtil.GetTypeName(tcode));
-                return _convert<T>(type_names);
+                    var type_names = cell.GetField<List<ushort>>("types").Select(tcode => CellGroupUtil.GetTypeName(tcode));
+                    return _convert<T>(type_names);
+                }
             }
 
             long child_id = RouteToChildCell(fieldName);
@@ -313,24 +325,26 @@ namespace freebase_likq
         {
             foreach (var child in GetChildrenIDs())
             {
-                using var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.ReturnNullOnCellNotFound);
-                if (cell != null)
+                using (var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.ReturnNullOnCellNotFound))
                 {
-                    if (!_check_attribute(cell, attributeKey, attributeValue))
-                        continue;
-
-                    IEnumerable<KeyValuePair<string, T>> sub_cell_enum_results = null;
-                    try
+                    if (cell != null)
                     {
-                        sub_cell_enum_results = cell.SelectFields<T>(attributeKey, attributeValue).ToList();
-                    }
-                    catch { }
+                        if (!_check_attribute(cell, attributeKey, attributeValue))
+                            continue;
 
-                    if (sub_cell_enum_results != null)
-                    {
-                        foreach (var item in sub_cell_enum_results)
+                        IEnumerable<KeyValuePair<string, T>> sub_cell_enum_results = null;
+                        try
                         {
-                            yield return item;
+                            sub_cell_enum_results = cell.SelectFields<T>(attributeKey, attributeValue).ToList();
+                        }
+                        catch { }
+
+                        if (sub_cell_enum_results != null)
+                        {
+                            foreach (var item in sub_cell_enum_results)
+                            {
+                                yield return item;
+                            }
                         }
                     }
                 }
@@ -363,15 +377,19 @@ namespace freebase_likq
         public void SetField<T>(string fieldName, T value)
         {
             long child_id = RouteToChildCell(fieldName);
-            using var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.CreateNewOnCellNotFound);
-            cell.SetField<T>(fieldName, value);
+            using (var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.CreateNewOnCellNotFound))
+            {
+                cell.SetField<T>(fieldName, value);
+            }
         }
 
         public bool ContainsField(string fieldName)
         {
             long child_id = RouteToChildCell(fieldName);
-            using var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.ReturnNullOnCellNotFound);
-            return cell.ContainsField(fieldName);
+            using (var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.ReturnNullOnCellNotFound))
+            {
+                return cell.ContainsField(fieldName);
+            }
         }
         #endregion
 
@@ -380,18 +398,22 @@ namespace freebase_likq
         public IAttributeCollection GetFieldAttributes(string fieldName)
         {
             long child_id = RouteToChildCell(fieldName);
-            using var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.CreateNewOnCellNotFound);
-            return cell.GetFieldAttributes(fieldName);
+            using (var cell = Global.LocalStorage.UseGenericCell(child_id, CellAccessOptions.CreateNewOnCellNotFound))
+            {
+                return cell.GetFieldAttributes(fieldName);
+            }
         }
 
         public IEnumerable<IFieldDescriptor> GetFieldDescriptors()
         {
             foreach (var child in GetChildrenIDs())
             {
-                using var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.CreateNewOnCellNotFound);
-                foreach (var fd in cell.GetFieldDescriptors())
+                using (var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.CreateNewOnCellNotFound))
                 {
-                    yield return fd;
+                    foreach (var fd in cell.GetFieldDescriptors())
+                    {
+                        yield return fd;
+                    }
                 }
             }
         }
@@ -400,12 +422,14 @@ namespace freebase_likq
         {
             foreach (var child in GetChildrenIDs())
             {
-                using var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.ReturnNullOnCellNotFound);
-                if (cell != null)
+                using (var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.ReturnNullOnCellNotFound))
                 {
-                    foreach (var field_name in cell.GetFieldNames())
+                    if (cell != null)
                     {
-                        yield return field_name;
+                        foreach (var field_name in cell.GetFieldNames())
+                        {
+                            yield return field_name;
+                        }
                     }
                 }
             }
@@ -517,8 +541,10 @@ namespace freebase_likq
 
             foreach (var child in GetChildrenIDs())
             {
-                using var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.ReturnNullOnCellNotFound);
-                BuildCellGroupContent(ref empty, cell, sb, include_cell_id: false);
+                using (var cell = Global.LocalStorage.UseGenericCell(child, CellAccessOptions.ReturnNullOnCellNotFound))
+                {
+                    BuildCellGroupContent(ref empty, cell, sb, include_cell_id: false);
+                }
             }
 
             sb.Append('}');
