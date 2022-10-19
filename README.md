@@ -9,9 +9,9 @@ The Microsoft Graph Engine is a fantastic technology and although the original M
 - New documentation to help developer to better understand leverage the Trinity Graph Engine APIs and 
   new Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime (in progress)
 - Native code generation for Java 15 Client-side code only
-- NEW - Native Support for Fully Managed Reactive Server-side Psuh Automation - Custer Aware support under development
+- NEW - Native Support for Fully Managed Reactive Server-side Push Automation - GE Availability Group Aware support under development
     * Mods to TSL compiler to support Push automation
-    * Fully baked .NET 6 Console and WPF Cleint and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
+    * Fully baked .NET 6 Console and WPF/WinUI/MAUI/Blazer Cleint and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
     * prototype complete - refactoring in progress
 - Native support for .NET 6/7 gRPC "ge app server to ge app server" - (in progress)
 - Refactored Azure Service Fabric and extended support (in progress)
