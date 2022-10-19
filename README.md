@@ -5,7 +5,7 @@ The Microsoft Graph Engine is a fantastic technology and although the original M
 ### New Capabilities are coming! (Fall 2022)
 
 - Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
-- Updated C# Code generation: Support for C# 8, 9 and 10 coming in the Fall of 2022 (in progress)
+- Updated C# Code generation: Support for C# 8, 9 and 10/11 coming in the Fall of 2022 (in progress)
 - New documentation to help developer to better understand leverage the Trinity Graph Engine APIs and 
   new Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime (in progress)
 - Native code generation for Java 15 Client-side code only
@@ -13,13 +13,14 @@ The Microsoft Graph Engine is a fantastic technology and although the original M
     * Mods to TSL compiler to support Push automation
     * Fully baked .NET 6 Console and WPF Cleint and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
     * prototype complete - refactoring in progress
-- Native support for .NET 6 gRPC "ge app server to ge app server" - (in progress)
+- Native support for .NET 6/7 gRPC "ge app server to ge app server" - (in progress)
 - Refactored Azure Service Fabric and extended support (in progress)
 - UPDATE: Native OWL 2 support via TSL 2.0 via Reactive Event processing, C# 10 Functional implementation and new Graph Engine Adapter Pattern
     * new Visual TSL modeling engine under construction
     * TSL to OWL 2.0 with DL and Full extensions
 - Updated and Revised LIKQ for various graph traversal
-    * Demos that demostrate the powerful Prolog-like capabilities of the LIKQ
+    * Demos that demonstrate the powerful Prolog-like capabilities of the LIKQ
+    * Demos that demonstrate integration of the Microsoft Guan Logic statements in LIKQ and in the GE 
 - New Graph Engine VS 2022 plug-in (new VS 2022 project setup complete; testing in progress)
     * New VS 2022 Templates
         - TSL Graph Data Taxonomy Model Templates
@@ -29,7 +30,7 @@ The Microsoft Graph Engine is a fantastic technology and although the original M
 
 ### This Repo does include support for Graph Engine integrated with Azure Service Fabric
     - Support for Azure Service Fabric is still under development
-    - Release is targeted for late Summer 2022
+    - Release is targeted for late Spring 2023
 
 | - | Windows | Linux |
 |:------:|:------:|:------:|
@@ -55,7 +56,7 @@ The main version number is bumped to 3.0 to reflect the recent toolchain updates
 - .NET Framework from 4.61 to 4.8
 - Visual Studio from 2017/2019 to 2022
 
-One goal of Graph Engine 3.0 is to bring the system up-to-date and make it slimmer.
+One goal of Graph Engine 4.0 is to bring the system up-to-date and make it slimmer.
 Some obsolete or outdated modules and tools will be removed from the build pipeline.
 
 ## Getting started
@@ -76,11 +77,13 @@ The script has been tested on Windows 10 (21H2) with Visual Studio 2022.
 - .NET desktop development
     - .NET Framework 4.8 development tools
     - .NET 6.0
+    - .NET 7.0
 - Desktop development with C++
     - Windows 10 SDK
     - Windows 11 SDK
 - Visual Studio extension development
 - .NET 6 SDK for Visual Studio
+- .NET 7 SDK for Visual Studio
 - cmake (latest)
 - Updated Linux build
 
