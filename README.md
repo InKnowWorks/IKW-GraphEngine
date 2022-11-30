@@ -2,7 +2,7 @@
 
 The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using the it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
 
-### New Capabilities are coming! (Fall 2022)
+### New Capabilities are coming! (Winter 2022/ Spring 2023)
 
 - Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
 - Updated C# Code generation: Support for C# 8, 9 and 10/11 coming in the Fall of 2022 (in progress)
@@ -51,7 +51,8 @@ lambda expressions, embedded in LIKQ, and executed on the Graph Engine servers d
 
 ## Recent changes
 
-The main version number is bumped to 3.0 to reflect the recent toolchain updates.
+The main version number is bumped to 4.0 to reflect the recent toolchain updates.
+- .NET 7
 - .NET from 3.1 to 6.0
 - .NET Framework from 4.61 to 4.8
 - Visual Studio from 2017/2019 to 2022
