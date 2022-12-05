@@ -14,6 +14,7 @@ One of the aspects of development in this repo is to leverage the Graph Engine i
     - Logic programming
 * Extentions to LIKQ
 * Leverate (Haskell) Hets - the Heterogeneous Tool Set
+* General Purpose Semantic Enhancement Support
 * much mroe..
 
 ![image](https://user-images.githubusercontent.com/5692812/205723281-59ad9df0-d3ed-4dee-8126-c6bccd08e576.png)
