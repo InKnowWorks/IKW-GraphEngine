@@ -2,6 +2,24 @@
 
 The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using the it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
 
+## Focus on Semantic Technology
+
+One of the aspects of development in this repo is to leverage the Graph Engine is the Semantic (Ontology), Generative (Code Generation) and MB/LB (Model-based Machine Learning) disciplines. We are working to create blended capabilities to create a powerful platform for advanced applications in the Server and Client computing spaces. I am also working on a series of blogs that present all aspects of our research, and I have planned and actively working on a new documentation and a book. I have been using the Graph Engine in serious development scenarios dating back to 2015 and learned a great deal in doing so. In the coming years, I will make time to make public what I have learned and to make it easier for developer to get involved in development and to use the technology in their favorite projects. Here are some of they types of capabilities I am working to inclued:
+
+* Visual Modeling for TSL
+* Deep intergration with Visual Studio and VS Code
+* Built-in support for BFO/IAO Upper ontology code generation
+    - TSL to OWL, RDF, SKOS
+    - Semantic Reasoing
+    - Logic programming
+* Extentions to LIKQ
+* Leverate (Haskell) Hets - the Heterogeneous Tool Set
+* much mroe..
+
+![image](https://user-images.githubusercontent.com/5692812/205723281-59ad9df0-d3ed-4dee-8126-c6bccd08e576.png)
+
+I can't possibly do all of myself so I am hoping that others might want to get involved. I am also working to secure financing in the 2023 to build a team that will continue to develop the Graph Engine is the open.
+
 ### New Capabilities are coming! (Winter 2022/ Spring 2023)
 
 - Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
