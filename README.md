@@ -7,7 +7,9 @@ The Microsoft Graph Engine is a fantastic technology and although the original M
 One of the aspects of development in this repo is to leverage the Graph Engine is the Semantic (Ontology), Generative (Code Generation) and MB/LB (Model-based Machine Learning) disciplines. We are working to create blended capabilities to create a powerful platform for advanced applications in the Server and Client computing spaces. I am also working on a series of blogs that present all aspects of our research, and I have planned and actively working on a new documentation and a book. I have been using the Graph Engine in serious development scenarios dating back to 2015 and learned a great deal in doing so. In the coming years, I will make time to make public what I have learned and to make it easier for developer to get involved in development and to use the technology in their favorite projects. Here are some of they types of capabilities I am working to inclued:
 
 * Visual Modeling for TSL
+*   Alpha version in early Test
 * Deep intergration with Visual Studio and VS Code
+*   VS Code GE Language Service is under development
 * Built-in support for BFO/IAO Upper ontology code generation
     - TSL to OWL, RDF, SKOS
     - Semantic Reasoing
