@@ -2,6 +2,10 @@
 
 The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
 
+## New Discord Channel will launch next week!
+
+The channel be a place where devs can talk about the Graph Engine. New presentations, videos, training and much more.
+
 ## Focus on Semantic Technology
 
 One of the aspects of development in this repo is to leverage the Graph Engine is the Semantic (Ontology), Generative (Code Generation) and MB/LB (Model-based Machine Learning) disciplines. We are working to create blended capabilities to create a powerful platform for advanced applications in the Server and Client computing spaces. I am also working on a series of blogs that present all aspects of our research, and I have planned and actively working on a new documentation and a book. I have been using the Graph Engine in serious development scenarios dating back to 2015 and learned a great deal in doing so. In the coming years, I will make time to make public what I have learned and to make it easier for developer to get involved in development and to use the technology in their favorite projects. Here are some of they types of capabilities I am working to inclued:
