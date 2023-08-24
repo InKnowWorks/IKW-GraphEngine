@@ -4,58 +4,60 @@ The Microsoft Graph Engine is a fantastic technology and although the original M
 
 ## New Discord Channel will launch next week!
 
-The channel be a place where devs can talk about the Graph Engine. New presentations, videos, training and much more.
+My new Discord Channels are nearly ready but I underestimated how much effort is required to prepare media materials. I'm resetting the launch date to October.
 
 ## Focus on Semantic Technology
 
-One of the aspects of development in this repo is to leverage the Graph Engine is the Semantic (Ontology), Generative (Code Generation) and MB/LB (Model-based Machine Learning) disciplines. We are working to create blended capabilities to create a powerful platform for advanced applications in the Server and Client computing spaces. I am also working on a series of blogs that present all aspects of our research, and I have planned and actively working on a new documentation and a book. I have been using the Graph Engine in serious development scenarios dating back to 2015 and learned a great deal in doing so. In the coming years, I will make time to make public what I have learned and to make it easier for developer to get involved in development and to use the technology in their favorite projects. Here are some of they types of capabilities I am working to inclued:
+One of the aspects of development in this repo is to leverage the Graph Engine in the Semantic (Ontology), Generative (Code Generation), and MB/LB (Model-based Machine Learning) disciplines. We are working to create blended capabilities to create a powerful platform for advanced applications in the Server and Client computing spaces. I am also working on a series of blogs that present all aspects of our research, and I have planned and actively working on new documentation and a book. I have been using the Graph Engine in serious development scenarios dating back to 2015 and learned a great deal in doing so. In the coming years, I will make time to make public what I have learned and to make it easier for developers to get involved in the development and to use the technology in their favorite projects. Here are some of the types of capabilities I am working to include:
 
 * Visual Modeling for TSL
 *   Alpha version in early Test
-* Deep intergration with Visual Studio and VS Code
+* Deep integration with Visual Studio and VS Code
 *   VS Code GE Language Service is under development
 * Built-in support for BFO/IAO Upper ontology code generation
     - TSL to OWL, RDF, SKOS
-    - Semantic Reasoing
+    - Semantic Reasoning
     - Logic programming
-* Extentions to LIKQ
+* Extensions to LIKQ
 * Leverage (Haskell) Hets - the Heterogeneous Tool Set
 * General Purpose Semantic Enhancement Support
-* much mroe..
+* much more..
 
 ![image](https://user-images.githubusercontent.com/5692812/205723281-59ad9df0-d3ed-4dee-8126-c6bccd08e576.png)
 
-I can't possibly do all of myself so I am hoping that others might want to get involved. I am also working to secure financing in the 2023 to build a team that will continue to develop the Graph Engine is the open.
+I can't possibly do all of myself so I am hoping that others might want to get involved. I am also working to secure financing in 2023/2024 to build a team that will continue to develop the Graph Engine in the open.
 
-### New Capabilities are coming! (Winter 2022/ Spring 2023)
+### New Capabilities are coming! (Fall 2024/Winter 2024)
 
 - Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
-- Updated C# Code generation: Support for C# 8, 9 and 10/11 coming in the Fall of 2022 (in progress)
-- New documentation to help developer to better understand leverage the Trinity Graph Engine APIs and 
-  new Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime (in progress)
+- Updated C# Code generation: Support for C# 8, 9, and 10/11 coming in the Fall of 2022 (in progress)
+- New documentation to help the developer to better understand and leverage the Trinity Graph Engine APIs and 
+  Neww Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime (in progress)
 - Native code generation for Java 15 Client-side code only
 - NEW - Native Support for Fully Managed Reactive Server-side Push Automation - GE Availability Group Aware support under development
     * Mods to TSL compiler to support Push automation
-    * Fully baked .NET 6 Console and WPF/WinUI/MAUI/Blazer Cleint and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
-    * prototype complete - refactoring in progress
+    * Fully baked .NET 6 Console and WPF/WinUI/MAUI/Blazer Client and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
+    * Prototype complete - refactoring in progress
 - Native support for .NET 6/7 gRPC "ge app server to ge app server" - (in progress)
 - Refactored Azure Service Fabric and extended support (in progress)
-- UPDATE: Native OWL 2 support via TSL 2.0 via Reactive Event processing, C# 10 Functional implementation and new Graph Engine Adapter Pattern
-    * new Visual TSL modeling engine under construction
+- UPDATE: Native OWL 2 support via TSL 2.0 via Reactive Event processing, C# 10 Functional implementation, and new Graph Engine Adapter Pattern
+    * New Visual TSL modeling engine under construction
     * TSL to OWL 2.0 with DL and Full extensions
 - Updated and Revised LIKQ for various graph traversal
     * Demos that demonstrate the powerful Prolog-like capabilities of the LIKQ
-    * Demos that demonstrate integration of the Microsoft Guan Logic statements in LIKQ and in the GE 
+    * Demos that demonstrate the integration of the Microsoft Guan Logic statements in LIKQ and in the GE 
 - New Graph Engine VS 2022 plug-in (new VS 2022 project setup complete; testing in progress)
     * New VS 2022 Templates
         - TSL Graph Data Taxonomy Model Templates
-        - GE App Server, Proxy and Server Protocol Templates
+        - GE App Server, Proxy, and Server Protocol Templates
+     
+- New integration with the Microsoft Guan Logic Library
 - New Developers Guide
 - much more ..
 
 ### This Repo does include support for Graph Engine integrated with Azure Service Fabric
     - Support for Azure Service Fabric is still under development
-    - Release is targeted for late Spring 2023
+    - Release is targeted for late Winter 2024
 
 | - | Windows | Linux |
 |:------:|:------:|:------:|
@@ -65,7 +67,7 @@ This repository contains the source code of [Microsoft Graph Engine][graph-engin
 query language -- [Language Integrated Knowledge Query][likq] (LIKQ).
 
 Microsoft Graph Engine is a distributed in-memory data processing engine,
-underpinned by a strongly-typed in-memory key-value store and a general-purpose distributed computation
+underpinned by a strongly typed in-memory key-value store and a general-purpose distributed computation
 engine.
 
 [LIKQ][likq-gh]
@@ -103,20 +105,21 @@ The script has been tested on Windows 10 (21H2) with Visual Studio 2022.
 - .NET desktop development
     - .NET Framework 4.8 development tools
     - .NET 6.0
-    - .NET 7.0
+    - .NET 7.0/8.0
 - Desktop development with C++
     - Windows 10 SDK
     - Windows 11 SDK
 - Visual Studio extension development
 - .NET 6 SDK for Visual Studio
 - .NET 7 SDK for Visual Studio
+- .NET 8 SDK for Visual Studio
 - cmake (latest)
 - Updated Linux build
 
 [.NET 6 SDK][dotnet-download] and [cmake][cmake-download] can alternatively be installed using their standalone installers.
 
 The Windows build will generate multi-targeting nuget packages.
-Open a powershell window, run `tools/build.ps1` for Visual Studio 2017 or `tools/build.ps1 -VS2019` for Visual Studio 2019.
+Open a PowerShell window, run `tools/build.ps1` for Visual Studio 2017 or `tools/build.ps1 -VS2019` for Visual Studio 2019.
 
 The Linux native assemblies will also be packaged (pre-built at `lib`) to allow the Windows build to work for Linux `.Net Core` as well.
 
