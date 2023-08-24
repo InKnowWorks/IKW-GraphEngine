@@ -2,7 +2,7 @@
 
 The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
 
-## New Discord Channel will launch next week!
+## New Discord Channel will launch in October 2024
 
 My new Discord Channels are nearly ready but I underestimated how much effort is required to prepare media materials. I'm resetting the launch date to October.
 
