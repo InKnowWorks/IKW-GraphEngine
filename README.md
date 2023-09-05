@@ -27,7 +27,7 @@ One of the aspects of development in this repo is to leverage the Graph Engine i
 
 I can't possibly do all of myself so I am hoping that others might want to get involved. I am also working to secure financing in 2023/2024 to build a team that will continue to develop the Graph Engine in the open.
 
-### New Capabilities are coming! (Winter 2024, Summar 2024)
+### New Capabilities are coming!
 
 - Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
 - Updated C# Code generation: Support for C# 8, 9, and 10/11 coming in the Fall of 2022 (in progress)
