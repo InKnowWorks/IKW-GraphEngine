@@ -2,7 +2,7 @@
 
 The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
 
-## New Discord Channel will launch in October 2024
+## New Discord Channel will launch in October 2023
 
 My new Discord Channels are nearly ready but I underestimated how much effort is required to prepare media materials. I'm resetting the launch date to October.
 
@@ -27,7 +27,7 @@ One of the aspects of development in this repo is to leverage the Graph Engine i
 
 I can't possibly do all of myself so I am hoping that others might want to get involved. I am also working to secure financing in 2023/2024 to build a team that will continue to develop the Graph Engine in the open.
 
-### New Capabilities are coming! (Fall 2024/Winter 2024)
+### New Capabilities are coming! (Winter 2024, Summar 2024)
 
 - Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
 - Updated C# Code generation: Support for C# 8, 9, and 10/11 coming in the Fall of 2022 (in progress)
