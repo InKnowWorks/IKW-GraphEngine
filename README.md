@@ -1,59 +1,70 @@
-# Microsoft Graph Engine
+# Microsoft Graph Engine: A Semantic and Ontologically-Grounded Evolution
 
-The Microsoft Graph Engine is a fantastic technology and although the original Microsoft Repo does not get much love or attention from the Microsoft Research team the software works and we are using it in a number of commercial applications and Azure hosted Microservices. We use it heavily @ InKnowWorks and at RocketUrBiz and thus we continue to evolve the technology.
+The Microsoft Graph Engine (GE), originally a product of Microsoft Research, serves as the backbone of multiple production-grade applications at InKnowWorks and RocketUrBiz. This repository aims to extend and enhance the Trinity Graph Engine's capabilities, focusing on semantic and ontological dimensions, leveraging Trinity's Distributed Symmetric RPC over TCP/IP for high-throughput, low-latency distributed systems.
 
-## New Discord Channel will launch in October 2023
+## Discord Channel Update: Launch Rescheduled for October 2023
 
-My new Discord Channels are nearly ready but I underestimated how much effort is required to prepare media materials. I'm resetting the launch date to October.
+Preparation of requisite media materials for the Discord channels is more labor-intensive than initially estimated. The launch is therefore rescheduled to October 2023.
 
-## Focus on Semantic Technology
+## Ontologically-Driven Focus
 
-One of the aspects of development in this repo is to leverage the Graph Engine in the Semantic (Ontology), Generative (Code Generation), and MB/LB (Model-based Machine Learning) disciplines. We are working to create blended capabilities to create a powerful platform for advanced applications in the Server and Client computing spaces. I am also working on a series of blogs that present all aspects of our research, and I have planned and actively working on new documentation and a book. I have been using the Graph Engine in serious development scenarios dating back to 2015 and learned a great deal in doing so. In the coming years, I will make time to make public what I have learned and to make it easier for developers to get involved in the development and to use the technology in their favorite projects. Here are some of the types of capabilities I am working to include:
+This repository focuses on advancing the Trinity Graph Engine (TGE) into a robust platform for semantic technologies (OWL 2 DL, BFO, IAO), generative programming, and model-based machine learning (MB/LB). The roadmap includes:
 
-* Visual Modeling for TSL
-*   Alpha version in early Test
-* Deep integration with Visual Studio and VS Code
-*   VS Code GE Language Service is under development
-* Built-in support for BFO/IAO Upper ontology code generation
-    - TSL to OWL, RDF, SKOS
-    - Semantic Reasoning
-    - Logic programming
-* Extensions to LIKQ
-* Leverage (Haskell) Hets - the Heterogeneous Tool Set
-* General Purpose Semantic Enhancement Support
-* much more..
+* **Visual Modeling for TSL**
+    - Utilizing formal logic notations for design (FOL, SOL)
+* **Semantic Layering**
+    - TSL to OWL, RDF, SKOS transformations
+    - Enabling A-Box, T-Box, and R-Box ontological reasoning
+* **Extensions to LIKQ**
+    - Incorporating Prolog-like graph traversal logic
+* **Reactive Functional Programming**
+    - C# 10/11 functional implementations with Rx.NET and MessagePipe
+    - TSL compiler modifications to support reactive server-side push automation
 
 ![image](https://user-images.githubusercontent.com/5692812/205723281-59ad9df0-d3ed-4dee-8126-c6bccd08e576.png)
 
-I can't possibly do all of myself so I am hoping that others might want to get involved. I am also working to secure financing in 2023/2024 to build a team that will continue to develop the Graph Engine in the open.
+The aim is to build a collaborative community. Financing is being secured for 2023/2024 to assemble a dedicated team for open development.
 
-### New Capabilities are coming!
+### Extending Microsoft Guan Logic Programming Library
 
-- Revised and Updated MSBuild CI/CD for GitHub and Azure Git Repos (completed)
-- Updated C# Code generation: Support for C# 8, 9, and 10/11 coming in the Fall of 2022 (in progress)
-- New documentation to help the developer to better understand and leverage the Trinity Graph Engine APIs and 
-  Neww Design Guide on best practices in support for Graph Engine Symmetric (DUAL) DSL runtime (in progress)
-- Native code generation for Java 15 Client-side code only
-- NEW - Native Support for Fully Managed Reactive Server-side Push Automation - GE Availability Group Aware support under development
-    * Mods to TSL compiler to support Push automation
-    * Fully baked .NET 6 Console and WPF/WinUI/MAUI/Blazer Client and Server apps that demonstrate the power of the Graph Engine Semantic programming paradigms
-    * Prototype complete - refactoring in progress
-- Native support for .NET 6/7 gRPC "ge app server to ge app server" - (in progress)
-- Refactored Azure Service Fabric and extended support (in progress)
-- UPDATE: Native OWL 2 support via TSL 2.0 via Reactive Event processing, C# 10 Functional implementation, and new Graph Engine Adapter Pattern
-    * New Visual TSL modeling engine under construction
-    * TSL to OWL 2.0 with DL and Full extensions
-- Updated and Revised LIKQ for various graph traversal
-    * Demos that demonstrate the powerful Prolog-like capabilities of the LIKQ
-    * Demos that demonstrate the integration of the Microsoft Guan Logic statements in LIKQ and in the GE 
-- New Graph Engine VS 2022 plug-in (new VS 2022 project setup complete; testing in progress)
-    * New VS 2022 Templates
-        - TSL Graph Data Taxonomy Model Templates
-        - GE App Server, Proxy, and Server Protocol Templates
-     
-- New integration with the Microsoft Guan Logic Library
-- New Developers Guide
-- much more ..
+This repository aims to extend the foundational capabilities of Microsoft's Guan Logic Programming Library by integrating various ontological and formal logic systems, thus enriching the logic engine's capacity for semantic reasoning and knowledge representation. The enhancements include:
+
+* **BFO 2.0 Logic Productions**: Embedding Basic Formal Ontology 2.0 for grounding real-world entities and events.
+* **RO Mereological Productions**: Integration of the Relations Ontology for spatial-temporal reasoning.
+* **IAO Logic Productions**: Incorporating the Information Artifact Ontology for digital artifact representation.
+* **SKOS Logic Productions**: Enabling the Simple Knowledge Organization System for semantic tagging and categorization.
+* **OWL 2 DL Logic Productions**: Extending Web Ontology Language (OWL) 2 Description Logic for nuanced T-Box, A-Box, R-Box, and B-Box reasoning.
+* **Extended FOL and SOL**: Enhancing First-Order and Second-Order Logic productions for generalized logical reasoning.
+* **Transaction Logic (T-Logic)**: Support for transaction-oriented reasoning, critical for database and workflow operations.
+* **BFO 2 SPAN/SNAP Logics**: Integrating SNAP (Spatio-temporal snapshot) and SPAN (Spatio-temporal process) logics for dynamic world modeling.
+* **Graph Logics**: Expanding Trinity's TSL capabilities to include logic productions for Hypergraphs, Multi-graphs, and Directed Graphs.
+
+By extending the Guan Logic Programming Library in this manner, we aim to create a robust logic engine capable of handling complex semantic reasoning tasks, from semantic data modeling to ontology-driven natural language understanding. These features are in alignment with our overarching goal of creating a semantically rich, ontologically-grounded, high-throughput, low-latency distributed system leveraging Trinity's Distributed Symmetric RPC environment.
+
+### Forthcoming Features
+
+- **C# Code Generation**: Support for C# 10/11, with emphasis on reactive functional paradigms.
+- **Semantic Programming Paradigms**: TSL to OWL 2.0 mappings with DL and Full extensions.
+- **Reactive Server-side Push Automation**: Utilizing TGE's Duplex Symmetric RPC to implement GE Availability Group Aware support.
+- **gRPC Alternatives**: Native support for .NET 6/7 utilizing TGE's Symmetric RPC for high-throughput, low-latency distributed systems.
+- **Azure Service Fabric**: Extended and refactored support, targeting Winter 2024 for release.
+
+### Build Environment
+
+| - | Windows | Linux |
+|:------:|:------:|:------:|
+|Build|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Windows)|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Linux)|
+
+### Getting Started
+
+For Windows: Utilize Visual Studio 2022 with .NET 7/8 SDKs installed. Execute `tools/build.ps1` for generating multi-targeting NuGet packages.
+
+For Linux: Install g++, cmake, and libssl-dev, followed by .NET SDK x64 6.0. Run `bash tools/build.sh`.
+
+## Contributions and License
+
+Your contributions via pull requests, issue reports, and suggestions are welcome. Please adhere to our [code of conduct](CODE_OF_CONDUCT.md).
+
 
 ### This Repo does include support for Graph Engine integrated with Azure Service Fabric
     - Support for Azure Service Fabric is still under development
