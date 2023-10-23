@@ -49,12 +49,6 @@ By extending the Guan Logic Programming Library in this manner, we aim to create
 - **gRPC Alternatives**: Native support for .NET 6/7 utilizing TGE's Symmetric RPC for high-throughput, low-latency distributed systems.
 - **Azure Service Fabric**: Extended and refactored support, targeting Winter 2024 for release.
 
-### Build Environment
-
-| - | Windows | Linux |
-|:------:|:------:|:------:|
-|Build|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Windows)|![Build status badge](https://msai.visualstudio.com/GraphEngine/_apis/build/status/GraphEngine-Linux)|
-
 ### Getting Started
 
 For Windows: Utilize Visual Studio 2022 with .NET 7/8 SDKs installed. Execute `tools/build.ps1` for generating multi-targeting NuGet packages.
@@ -64,7 +58,6 @@ For Linux: Install g++, cmake, and libssl-dev, followed by .NET SDK x64 6.0. Run
 ## Contributions and License
 
 Your contributions via pull requests, issue reports, and suggestions are welcome. Please adhere to our [code of conduct](CODE_OF_CONDUCT.md).
-
 
 ### This Repo does include support for Graph Engine integrated with Azure Service Fabric
     - Support for Azure Service Fabric is still under development
