@@ -49,6 +49,40 @@ By extending the Guan Logic Programming Library in this manner, we aim to create
 - **gRPC Alternatives**: Native support for .NET 6/7 utilizing TGE's Symmetric RPC for high-throughput, low-latency distributed systems.
 - **Azure Service Fabric**: Extended and refactored support, targeting Winter 2024 for release.
 
+## New Full Sample Programs
+
+Our repository offers a multitude of comprehensive sample programs to assist both newcomers and seasoned developers in mastering the TGE ecosystem. These samples cover a broad spectrum of use-cases, from basic graph traversal to complex microservices design. Examples include:
+
+- **Directed Graph Examples**: Demonstrating basic graph traversal algorithms using TGE API sets and LIKQ.
+- **Hypergraph and Multi-graph TSL Schema Modeling**: An in-depth look at designing complex graph structures.
+- **Real-world Distributed Hashing**: Practical hashing techniques in a distributed environment.
+- **Knowledge Graph Design with GE TSL**: A primer on constructing knowledge graphs using TGE’s TSL.
+- **Aligning Knowledge Bases with Knowledge Graphs**: How to semantically align a Knowledge Base (KB) with a Knowledge Graph (KG) using GE TSL.
+- **Effective TGE Symmetric D-RPC API Design Idioms**: Best practices for designing Distributed Symmetric RPC APIs.
+- **Reactive Event Streaming with Rx.NET and MessagePipe**: Implementing real-time event streaming.
+- **Integrating TGE with Microsoft Orleans**: A guide to TGE-Orleans integration.
+- **Designing .NET Services using TGE**: Best practices and guidelines.
+- **Understanding and Leveraging TGE Proxy**: A deep dive into TGE Proxy capabilities.
+- **GE Microservices Design and Implementation**: A comprehensive guide to designing microservices using TGE.
+
+## New Enhancements
+
+Our development roadmap features several enhancements aimed at improving the developer experience and expanding TGE's capabilities:
+
+- **SSL over TCP**: Enhancing security through SSL encryption.
+- **New TGE TSL Attributed DSL Mark-up Annotations**: Introducing a new TSL Attribute Processor modeled after TGE’s LIKQ Attribute Processor.
+- **Updated TSL Editor with Live Editing and IntelliSense for VS 2022+**: Enhanced editing capabilities for TSL.
+- **New TGE TSL Graph Visualizer**: A graphical tool for visualizing TSL-defined structures.
+- **New Visual Studio Templates for TGE**: Streamlining project setup.
+- **Enhanced Documentation**: Including a new Developer's Guide and updated API documents.
+
+### TSL Compiler Updates:
+
+- **C++ Code Generator to Emit C# 10 code**: ETA Summer 2024.
+- **Complete Rewrite of TSL Compiler**: ETA Summer 2025.
+    - Support for the latest C# language features such as Records, Record Struct, Named Tuples, and functional programming paradigms like FRP, ROP, and FP (akin to LanguageExt).
+
+
 ### Getting Started
 
 For Windows: Utilize Visual Studio 2022 with .NET 7/8 SDKs installed. Execute `tools/build.ps1` for generating multi-targeting NuGet packages.
