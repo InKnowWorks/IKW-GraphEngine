@@ -85,11 +85,7 @@ lambda expressions, embedded in LIKQ, and executed on the Graph Engine servers d
 The main version number is bumped to 4.0 to reflect the recent toolchain updates.
 - .NET 7
 - .NET from 3.1 to 6.0
-- .NET Framework from 4.61 to 4.8
 - Visual Studio from 2017/2019 to 2022
-
-One goal of Graph Engine 4.0 is to bring the system up-to-date and make it slimmer.
-Some obsolete or outdated modules and tools will be removed from the build pipeline.
 
 ## Getting started
 
@@ -107,7 +103,6 @@ The script has been tested on Windows 10 (21H2) with Visual Studio 2022.
 - Support for VS 2022 is under development
 
 - .NET desktop development
-    - .NET Framework 4.8 development tools
     - .NET 6.0
     - .NET 7.0/8.0
 - Desktop development with C++
