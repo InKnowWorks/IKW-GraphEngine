@@ -71,6 +71,59 @@ Our development roadmap features several enhancements aimed at improving the dev
 
 - **SSL over TCP**: Enhancing security through SSL encryption.
 - **New TGE TSL Attributed DSL Mark-up Annotations**: Introducing a new TSL Attribute Processor modeled after TGE’s LIKQ Attribute Processor.
+
+ ![image](https://github.com/InKnowWorks/IKW-GraphEngine/assets/5692812/df51fc52-0c82-428d-863e-49704a47aec7)
+
+- # UIServiceRegistrationInfo Cell Struct Definition
+
+## Overview
+The `UIServiceRegistrationInfo` cell struct is designed for a graph database system, integrating concepts from Basic Formal Ontology (BFO) and Relation Ontology (RO). This document breaks down its components and explains their significance in the context of a software domain.
+
+### Struct Attributes
+- **GraphNodeType: Hyper**: Enables hyperedges, connecting multiple nodes.
+- **BFO: Continuant**: Represents entities persisting through time while undergoing changes.
+- **RO: part_of**: Implies relationships where components may be part of or contained in other entities.
+
+## Fields Description
+
+### 1. ServiceIdRegId (Guid)
+- **BFO: Quality, InformationContentEntity**: A 'Quality' providing information about another entity.
+
+### 2. IsActive (bool)
+- **BFO: RealizableEntity, Disposition**: A boolean property manifesting under certain conditions.
+
+### 3. DateTimeStamp (DateTime)
+- **BFO: Quality, TemporalQuality**: Timestamp indicating when an event occurred or will occur.
+
+### 4. ServiceName (string)
+- **BFO: Quality, InformationContentEntity**: Informational string describing the service.
+
+### 5. Description (DescriptionInfoSet)
+- **Criteria: ContextDependent, GraphEdgeType: Directed**
+- **BFO: FiatObjectPart to Role, StrongComposition**: Fundamental part of `UIServiceRegistrationInfo`.
+
+### 6. AssociatedViewModels (List<CellId>)
+- **GraphEdgeType: Multi**
+- **BFO: GenericallyDependentContinuant, Object to ObjectAggregate**: Aggregating multiple objects.
+
+### 7. CommandInfoSetData (List<UIShellCommandInfo>, optional)
+- **Criteria: ContextDependent, GraphEdgeType: Multi**
+- **BFO: FiatObjectPart to Role, StrongComposition**: Potential, but not necessary, relationship.
+
+### 8. ServiceInfoSetData (List<ServiceShellViewModelAssociation>, optional)
+- **GraphEdgeType: Multi, WeakAggregate**
+- **BFO: GenericallyDependentContinuant, Role**: Contextually dependent role of `UIServiceRegistrationInfo`.
+
+### 9. EventInfoSet (List<CellId>, optional)
+- **GraphEdgeType: Multi, WeakAggregate**
+- **BFO: GenericallyDependentContinuant, Role**: Represents a contextually dependent role.
+
+## Graph Database Implications
+In a graph database, each property of this struct would be represented as nodes or edges, with BFO and RO annotations providing semantic context for complex querying and reasoning.
+
+## Conclusion
+The `UIServiceRegistrationInfo` struct is designed to capture not just data, but the relationships and potential states of that data, enhancing the system's analysis and inference capabilities.
+
 - **Updated TSL Editor with Live Editing and IntelliSense for VS 2022+**: Enhanced editing capabilities for TSL.
 - **New TGE TSL Graph Visualizer**: A graphical tool for visualizing TSL-defined structures.
 - **New Visual Studio Templates for TGE**: Streamlining project setup.
