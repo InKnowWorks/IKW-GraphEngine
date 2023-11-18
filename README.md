@@ -72,7 +72,8 @@ Our development roadmap features several enhancements aimed at improving the dev
 - **SSL over TCP**: Enhancing security through SSL encryption.
 - **New TGE TSL Attributed DSL Mark-up Annotations**: Introducing a new TSL Attribute Processor modeled after TGE’s LIKQ Attribute Processor.
 
- ![image](https://github.com/InKnowWorks/IKW-GraphEngine/assets/5692812/df51fc52-0c82-428d-863e-49704a47aec7)
+![image](https://github.com/InKnowWorks/IKW-GraphEngine/assets/5692812/dc96e3d8-7399-451b-9834-6950f5b7d3c1)
+
 
 - # UIServiceRegistrationInfo Cell Struct Definition
 
