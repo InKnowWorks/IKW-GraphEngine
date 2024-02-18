@@ -2,9 +2,13 @@
 
 The Microsoft Graph Engine (GE), originally a product of Microsoft Research, serves as the backbone of multiple production-grade applications at InKnowWorks and RocketUrBiz. This repository aims to extend and enhance the Trinity Graph Engine's capabilities, focusing on semantic and ontological dimensions, leveraging Trinity's Distributed Symmetric RPC over TCP/IP for high-throughput, low-latency distributed systems.
 
+# Major Refresh of this Git Repository:
+
+In April 2024 I will replace this exisitng Git Repo with a new structure.
+
 ## Discord Channel Update: Launch Rescheduled for May 2024
 
-Preparation of requisite media materials for the Discord channels is more labor-intensive than initially estimated. The launch is therefore rescheduled to October 2023.
+Preparation of requisite media materials for the Discord channels is more labor-intensive than initially estimated. The launch is therefore rescheduled to May 2024.
 
 ## Ontologically-Driven Focus
 
