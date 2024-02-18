@@ -2,7 +2,7 @@
 
 The Microsoft Graph Engine (GE), originally a product of Microsoft Research, serves as the backbone of multiple production-grade applications at InKnowWorks and RocketUrBiz. This repository aims to extend and enhance the Trinity Graph Engine's capabilities, focusing on semantic and ontological dimensions, leveraging Trinity's Distributed Symmetric RPC over TCP/IP for high-throughput, low-latency distributed systems.
 
-## Discord Channel Update: Launch Rescheduled for May 2023
+## Discord Channel Update: Launch Rescheduled for May 2024
 
 Preparation of requisite media materials for the Discord channels is more labor-intensive than initially estimated. The launch is therefore rescheduled to October 2023.
 
