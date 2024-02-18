@@ -2,7 +2,7 @@
 
 The Microsoft Graph Engine (GE), originally a product of Microsoft Research, serves as the backbone of multiple production-grade applications at InKnowWorks and RocketUrBiz. This repository aims to extend and enhance the Trinity Graph Engine's capabilities, focusing on semantic and ontological dimensions, leveraging Trinity's Distributed Symmetric RPC over TCP/IP for high-throughput, low-latency distributed systems.
 
-## Discord Channel Update: Launch Rescheduled for October 2023
+## Discord Channel Update: Launch Rescheduled for May 2023
 
 Preparation of requisite media materials for the Discord channels is more labor-intensive than initially estimated. The launch is therefore rescheduled to October 2023.
 
@@ -11,15 +11,16 @@ Preparation of requisite media materials for the Discord channels is more labor-
 This repository focuses on advancing the Trinity Graph Engine (TGE) into a robust platform for semantic technologies (OWL 2 DL, BFO, IAO), generative programming, and model-based machine learning (MB/LB). The roadmap includes:
 
 * **Visual Modeling for TSL**
-    - Utilizing formal logic notations for design (FOL, SOL)
+    - Utilizing formal logic notations for design (FOL, SOL, Transaction Logic)
 * **Semantic Layering**
-    - TSL to OWL, RDF, SKOS transformations
-    - Enabling A-Box, T-Box, and R-Box ontological reasoning
+    - TSL to BFO 2020, OWL, RDF/RDFS, IAO, RO, (Common Core Ontology) CCO, SKOS transformations
+    - Enabling A-Box, T-Box, and R-Box ontological reasoning via BFO 2020 Common Logic Axioms
 * **Extensions to LIKQ**
     - Incorporating Prolog-like graph traversal logic
 * **Reactive Functional Programming**
-    - C# 10/11 functional implementations with Rx.NET and MessagePipe
+    - C# 10/11/12 functional implementations with Rx.NET and MessagePipe
     - TSL compiler modifications to support reactive server-side push automation
+    - TSL compiler modifications to support BFO 2020 Attribuites on TSL "struct"
 
 ![image](https://user-images.githubusercontent.com/5692812/205723281-59ad9df0-d3ed-4dee-8126-c6bccd08e576.png)
 
@@ -29,7 +30,7 @@ The aim is to build a collaborative community. Financing is being secured for 20
 
 This repository aims to extend the foundational capabilities of Microsoft's Guan Logic Programming Library by integrating various ontological and formal logic systems, thus enriching the logic engine's capacity for semantic reasoning and knowledge representation. The enhancements include:
 
-* **BFO 2.0 Logic Productions**: Embedding Basic Formal Ontology 2.0 for grounding real-world entities and events.
+* **BFO 2020 Logic Productions**: Embedding Basic Formal Ontology 2.0 for grounding real-world entities and events.
 * **RO Mereological Productions**: Integration of the Relations Ontology for spatial-temporal reasoning.
 * **IAO Logic Productions**: Incorporating the Information Artifact Ontology for digital artifact representation.
 * **SKOS Logic Productions**: Enabling the Simple Knowledge Organization System for semantic tagging and categorization.
@@ -39,15 +40,14 @@ This repository aims to extend the foundational capabilities of Microsoft's Guan
 * **BFO 2 SPAN/SNAP Logics**: Integrating SNAP (Spatio-temporal snapshot) and SPAN (Spatio-temporal process) logics for dynamic world modeling.
 * **Graph Logics**: Expanding Trinity's TSL capabilities to include logic productions for Hypergraphs, Multi-graphs, and Directed Graphs.
 
-By extending the Guan Logic Programming Library in this manner, we aim to create a robust logic engine capable of handling complex semantic reasoning tasks, from semantic data modeling to ontology-driven natural language understanding. These features are in alignment with our overarching goal of creating a semantically rich, ontologically-grounded, high-throughput, low-latency distributed system leveraging Trinity's Distributed Symmetric RPC environment.
+By extending the **Guan Logic Programming Engine/Library** in this manner, we aim to create a robust logic engine capable of handling complex semantic reasoning tasks, from semantic data modeling to ontology-driven natural language understanding. These features are in alignment with our overarching goal of creating a semantically rich, ontologically-grounded, high-throughput, low-latency distributed system leveraging Trinity's Distributed Symmetric RPC environment.
 
 ### Forthcoming Features
 
-- **C# Code Generation**: Support for C# 10/11, with emphasis on reactive functional paradigms.
-- **Semantic Programming Paradigms**: TSL to OWL 2.0 mappings with DL and Full extensions.
+- **C# Code Generation**: Support for C# 10/11/12, with emphasis on reactive functional paradigms.
+- **Semantic Programming Paradigms**: TSL to BFO 2020 and CL Axioms
 - **Reactive Server-side Push Automation**: Utilizing TGE's Duplex Symmetric RPC to implement GE Availability Group Aware support.
 - **gRPC Alternatives**: Native support for .NET 6/7 utilizing TGE's Symmetric RPC for high-throughput, low-latency distributed systems.
-- **Azure Service Fabric**: Extended and refactored support, targeting Winter 2024 for release.
 
 ## New Full Sample Programs
 
@@ -73,7 +73,6 @@ Our development roadmap features several enhancements aimed at improving the dev
 - **New TGE TSL Attributed DSL Mark-up Annotations**: Introducing a new TSL Attribute Processor modeled after TGE’s LIKQ Attribute Processor.
 
 ![image](https://github.com/InKnowWorks/IKW-GraphEngine/assets/5692812/dc96e3d8-7399-451b-9834-6950f5b7d3c1)
-
 
 - # UIServiceRegistrationInfo Cell Struct Definition
 
@@ -135,7 +134,6 @@ The `UIServiceRegistrationInfo` struct is designed to capture not just data, but
 - **C++ Code Generator to Emit C# 10 code**: ETA Summer 2024.
 - **Complete Rewrite of TSL Compiler**: ETA Summer 2025.
     - Support for the latest C# language features such as Records, Record Struct, Named Tuples, and functional programming paradigms like FRP, ROP, and FP (akin to LanguageExt).
-
 
 ### Getting Started
 
