@@ -17,12 +17,12 @@ This repository focuses on advancing the Trinity Graph Engine (TGE) into a robus
 * **Visual Modeling for TSL**
     - Utilizing formal logic notations for design (FOL, SOL, Transaction Logic)
 * **Semantic Layering**
-    - TSL to BFO 2020, OWL, RDF/RDFS, IAO, RO, (Common Core Ontology) CCO, SKOS transformations
+    - TSL to BFO 2020, Hyper-relational, IAO, RO, CCO, and SKOS transformations
     - Enabling A-Box, T-Box, and R-Box ontological reasoning via BFO 2020 Common Logic Axioms
 * **Extensions to LIKQ**
     - Incorporating Prolog-like graph traversal logic
 * **Reactive Functional Programming**
-    - C# 10/11/12 functional implementations with Rx.NET and MessagePipe
+    - C# 10/11/12/13 functional implementations with Rx.NET and MessagePipe
     - TSL compiler modifications to support reactive server-side push automation
     - TSL compiler modifications to support BFO 2020 Attributes on TSL "struct"
 
@@ -34,21 +34,21 @@ The aim is to build a collaborative community. Financing is being secured for 20
 
 This repository aims to extend the foundational capabilities of Microsoft's Guan Logic Programming Library by integrating various ontological and formal logic systems, thus enriching the logic engine's capacity for semantic reasoning and knowledge representation. The enhancements include:
 
-* **BFO 2020 Logic Productions**: Embedding Basic Formal Ontology 2.0 for grounding real-world entities and events.
+* **BFO 2020 Logic Productions**: Embedding Basic Formal Ontology 2020 for grounding real-world entities and events.
+* **CUBRC CCO Logic Productions**: Embedding CCO (latest) grounding real-world entities and events.
 * **RO Mereological Productions**: Integration of the Relations Ontology for spatial-temporal reasoning.
 * **IAO Logic Productions**: Incorporating the Information Artifact Ontology for digital artifact representation.
 * **SKOS Logic Productions**: Enabling the Simple Knowledge Organization System for semantic tagging and categorization.
-* **OWL 2 DL Logic Productions**: Extending Web Ontology Language (OWL) 2 Description Logic for nuanced T-Box, A-Box, R-Box, and B-Box reasoning.
 * **Extended FOL and SOL**: Enhancing First-Order and Second-Order Logic productions for generalized logical reasoning.
 * **Transaction Logic (T-Logic)**: Support for transaction-oriented reasoning, critical for database and workflow operations.
-* **BFO 2 SPAN/SNAP Logics**: Integrating SNAP (Spatio-temporal snapshot) and SPAN (Spatio-temporal process) logics for dynamic world modeling.
+* **BFO 2020 Common Logic**: Mereological and Merotopological Modeling and Reasoning.
 * **Graph Logics**: Expanding Trinity's TSL capabilities to include logic productions for Hypergraphs, Multi-graphs, and Directed Graphs.
 
 By extending the **Guan Logic Programming Engine/Library** in this manner, we aim to create a robust logic engine capable of handling complex semantic reasoning tasks, from semantic data modeling to ontology-driven natural language understanding. These features are in alignment with our overarching goal of creating a semantically rich, ontologically-grounded, high-throughput, low-latency distributed system leveraging Trinity's Distributed Symmetric RPC environment.
 
 ### Forthcoming Features
 
-- **C# Code Generation**: Support for C# 10/11/12, with emphasis on reactive functional paradigms.
+- **C# Code Generation**: Support for C# 10/11/12/13, with emphasis on reactive low-level high performance functional paradigms.
 - **Semantic Programming Paradigms**: TSL to BFO 2020 and CL Axioms
 - **Reactive Server-side Push Automation**: Utilizing TGE's Duplex Symmetric RPC to implement GE Availability Group Aware support.
 - **gRPC Alternatives**: Native support for .NET 6/7 utilizing TGE's Symmetric RPC for high-throughput, low-latency distributed systems.
@@ -63,7 +63,7 @@ Our repository offers a multitude of comprehensive sample programs to assist bot
 - **Knowledge Graph Design with GE TSL**: A primer on constructing knowledge graphs using TGE’s TSL.
 - **Aligning Knowledge Bases with Knowledge Graphs**: How to semantically align a Knowledge Base (KB) with a Knowledge Graph (KG) using GE TSL.
 - **Effective TGE Symmetric D-RPC API Design Idioms**: Best practices for designing Distributed Symmetric RPC APIs.
-- **Reactive Event Streaming with Rx.NET and MessagePipe**: Implementing real-time event streaming.
+- **Reactive Event Streaming with R3 and MessagePipe**: Implementing real-time event streaming.
 - **Integrating TGE with Microsoft Orleans**: A guide to TGE-Orleans integration.
 - **Designing .NET Services using TGE**: Best practices and guidelines.
 - **Understanding and Leveraging TGE Proxy**: A deep dive into TGE Proxy capabilities.
@@ -85,7 +85,7 @@ The `UIServiceRegistrationInfo` cell struct is designed for a graph database sys
 
 ### Struct Attributes
 - **GraphNodeType: Hyper**: Enables hyperedges, connecting multiple nodes.
-- **BFO: Continuant**: Represents entities persisting through time while undergoing changes.
+- **BFO: Continuant**: Represents entities persisting through time while changing.
 - **RO: part_of**: Implies relationships where components may be part of or contained in other entities.
 
 ## Fields Description
@@ -194,15 +194,14 @@ The script has been tested on Windows 10 (21H2) with Visual Studio 2022.
 
 - .NET desktop development
     - .NET 6.0
-    - .NET 7.0/8.0
+    - .NET 7.0/8.0/9.0/10.0 Preview
 - Desktop development with C++
     - Windows 10 SDK
     - Windows 11 SDK
 - Visual Studio extension development
-- .NET 6 SDK for Visual Studio
-- .NET 7 SDK for Visual Studio
 - .NET 8 SDK for Visual Studio
-- cmake (latest)
+- .NET 9 SDK for Visual Studio
+- CMake (latest)
 - Updated Linux build
 
 [.NET 6 SDK][dotnet-download] and [cmake][cmake-download] can alternatively be installed using their standalone installers.
