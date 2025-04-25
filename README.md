@@ -4,9 +4,9 @@ The Microsoft Graph Engine (GE), originally a product of Microsoft Research, ser
 
 # Major Refresh of this Git Repository:
 
-In April 2024 I will replace this exisitng Git Repo with a new structure.
+In June 2025, I will replace this existing Git Repo with a new structure.
 
-## Discord Channel Update: Launch Rescheduled for May 2024
+## Discord Channel Update: Launch Rescheduled for July 2025
 
 Preparation of requisite media materials for the Discord channels is more labor-intensive than initially estimated. The launch is therefore rescheduled to May 2024.
 
@@ -24,7 +24,7 @@ This repository focuses on advancing the Trinity Graph Engine (TGE) into a robus
 * **Reactive Functional Programming**
     - C# 10/11/12 functional implementations with Rx.NET and MessagePipe
     - TSL compiler modifications to support reactive server-side push automation
-    - TSL compiler modifications to support BFO 2020 Attribuites on TSL "struct"
+    - TSL compiler modifications to support BFO 2020 Attributes on TSL "struct"
 
 ![image](https://user-images.githubusercontent.com/5692812/205723281-59ad9df0-d3ed-4dee-8126-c6bccd08e576.png)
 
