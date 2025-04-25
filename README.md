@@ -1,6 +1,6 @@
 # Microsoft Graph Engine: A Semantic and Ontologically-Grounded Evolution
 
-The Microsoft Graph Engine (GE), originally a product of Microsoft Research, serves as the backbone of multiple production-grade applications at InKnowWorks and RocketUrBiz. This repository aims to extend and enhance the Trinity Graph Engine's capabilities, focusing on semantic and ontological dimensions, leveraging Trinity's Distributed Symmetric RPC over TCP/IP for high-throughput, low-latency distributed systems.
+The Microsoft Graph Engine (GE), originally a product of Microsoft Research, serves as the backbone of multiple production-grade applications at InKnowWorks and RocketUrBiz. This repository aims to extend and enhance the Trinity Graph Engine's capabilities, focusing on semantic and ontological dimensions. It will leverage Trinity's Distributed Symmetric RPC over TCP/IP for high-throughput, low-latency distributed systems.
 
 # Major Refresh of this Git Repository:
 
@@ -8,11 +8,11 @@ In June 2025, I will replace this existing Git Repo with a new structure.
 
 ## Discord Channel Update: Launch Rescheduled for July 2025
 
-Preparation of requisite media materials for the Discord channels is more labor-intensive than initially estimated. The launch is therefore rescheduled to May 2024.
+Preparing the requisite media materials for the Discord channels is more labor-intensive than initially estimated. Therefore, the launch has been rescheduled to July 2025.
 
 ## Ontologically-Driven Focus
 
-This repository focuses on advancing the Trinity Graph Engine (TGE) into a robust platform for semantic technologies (OWL 2 DL, BFO, IAO), generative programming, and model-based machine learning (MB/LB). The roadmap includes:
+This repository focuses on advancing the Trinity Graph Engine (TGE) into a robust platform for semantic technologies (BFO, IAO, CCO), generative programming, and model-based machine learning (MB/LB). The roadmap includes:
 
 * **Visual Modeling for TSL**
     - Utilizing formal logic notations for design (FOL, SOL, Transaction Logic)
