@@ -1,6 +1,6 @@
 # Microsoft Graph Engine: A Semantic and Ontologically-Grounded Evolution
 
-The Microsoft Graph Engine (GE), originally a product of Microsoft Research, serves as the backbone of multiple production-grade applications at InKnowWorks and RocketUrBiz. This repository aims to extend and enhance the Trinity Graph Engine's capabilities, focusing on semantic and ontological dimensions. It will leverage Trinity's Distributed Symmetric RPC over TCP/IP for high-throughput, low-latency distributed systems.
+The Microsoft Graph Engine (GE), originally a product of Microsoft Research, serves as the backbone of multiple production-grade applications at InKnowWorks and RocketUrBiz. This repository aims to extend and enhance the Trinity Graph Engine's capabilities, focusing on semantic and ontological dimensions. It will leverage Trinity's Distributed Symmetric RPC over TCP/IP and gRPC for high-throughput, low-latency distributed systems.
 
 # Major Refresh of this Git Repository:
 
