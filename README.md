@@ -135,8 +135,8 @@ The `UIServiceRegistrationInfo` struct is designed to capture not just data, but
 
 ### TSL Compiler Updates:
 
-- **C++ Code Generator to Emit C# 10 code**: ETA Summer 2024.
-- **Complete Rewrite of TSL Compiler**: ETA Summer 2025.
+- **C++ Code Generator to Emit C# 13 code**: ETA Fall 2025.
+- **Upgrade of TSL Compiler**: ETA Fall 2025.
     - Support for the latest C# language features such as Records, Record Struct, Named Tuples, and functional programming paradigms like FRP, ROP, and FP (akin to LanguageExt).
 
 ### Getting Started
